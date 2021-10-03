@@ -1,12 +1,12 @@
 {
   "name": "repoco",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A minimalist headless CMS with local git repo support",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Wayne Myers",
   "license": "ISC"
 }
