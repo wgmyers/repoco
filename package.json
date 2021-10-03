@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon ./app.js",
+    "scss": "node-sass --watch scss -o public/css",
     "lint": "eslint *.js lib/*.js public/js/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +20,7 @@
     "bootstrap": "^5.1.1",
     "express": "^4.17.1",
     "jquery": "^3.6.0",
+    "node-sass": "^6.0.1",
     "pug": "^3.0.2"
   }
 }

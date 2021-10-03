@@ -1,6 +1,9 @@
 # TODO
 
-1. Basic node/express scaffolding
+DONE 1. Basic node/express scaffolding
+
+NB - we appear to have installed Bootstrap 5, which means we didn't really need
+jQuery. So, to remove it or not? Let's leave it for now, but maybe lose it later.
 
 2. Figure out per-site configuration - YAML, DB?
 
