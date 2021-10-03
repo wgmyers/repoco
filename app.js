@@ -37,6 +37,14 @@ app.get("/", (req, res) => {
   res.render("index", { title: "Home" });
 });
 
+app.get("/edit", (req, res) => {
+  res.render("edit", { title: "Edit" });
+});
+
+app.get("/help", (req, res) => {
+  res.render("help", { title: "Help" });
+});
+
 /**
  * Server Activation
  */
