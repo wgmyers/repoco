@@ -5,12 +5,14 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon ./app.js",
+    "lint": "eslint *.js lib/*.js public/js/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Wayne Myers",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^7.32.0",
     "nodemon": "^2.0.13"
   },
   "dependencies": {
