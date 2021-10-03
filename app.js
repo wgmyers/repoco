@@ -24,6 +24,11 @@ app.set("view engine", "pug");
 
 app.use(express.static(path.join(__dirname, "public")));
 
+// Use local versions of jquery and bootstrap so we don't depend on external CDN
+app.use("/css/bootstrap", express.static(path.join(__dirname, "node_modules/bootstrap/dist/css")));
+app.use("/js/bootstrap", express.static(path.join(__dirname, "node_modules/bootstrap/dist/js")));
+app.use("/js/jquery", express.static(path.join(__dirname, "node_modules/jquery/dist")));
+
 /**
  * Routes Definitions
  */
