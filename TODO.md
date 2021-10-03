@@ -73,5 +73,4 @@ jQuery. So, to remove it or not? Let's leave it for now, but maybe lose it later
 
 * DONE Basic scaffolding
 * DONE Basic layout of pages, w/ navbar
-* Basic colour scheme, lil' logo etc
 * Basic update to init doc - routes/, bin/www, test scaffolding etc.
