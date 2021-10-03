@@ -3,9 +3,13 @@
 
 // Include any default variable overrides here (though functions won't be available)
 // Your variable overrides
-$body-bg: #000;
-$body-color: #ddd;
+$body-bg: #eee;
+$body-color: #111;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 // Then add additional custom code here
+// Sticky footer?
+main > .container {
+    padding: 60px 15px 0;
+}

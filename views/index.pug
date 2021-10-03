@@ -1,13 +1,27 @@
 extends layout
 
 block layout-content
-  div.View
-    h1.Banner My Lovely Node/Express/Pug App
-    div.Message
-      div.Title
-        h3 Nothing Really Matters
-        h1 Everything's Going To Be Alright
-      span.Details Now Make This Into Something Good
-    div.NavButtons
-      a(href="/")
-          div.NavButton This Button Does Nothing
+  
+  header
+    nav.navbar.navbar-expand-lg.fixed-top.navbar-light.bg-light
+      .container-fluid
+        a.navbar-brand(href="#") Repoco
+        button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+          span.navbar-toggler-icon
+        .collapse.navbar-collapse(id="navbarSupportedContent")
+          ul.navbar-nav.mx-auto.mb-2.mb-lg-0
+            li.nav-item
+              a.nav-link.active(aria-current="page" href="#") Home
+            li.nav-item
+              a.nav-link(href="#") Edit
+            li.nav-item
+              a.nav-link(href="#") Help
+  
+  main.flex-shrink-0
+    .container
+      h1 Welcome to Repoco
+          
+  footer.footer.mt-auto.py-3.bg-light
+    .container.text-center
+      span.text-muted.fw-light.fs-6 (c) 2021 - 
+        a(href="https://www.yutani.org/") Wayne Myers

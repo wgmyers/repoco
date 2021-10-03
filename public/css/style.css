@@ -1,5 +1,6 @@
 /* public/css/style.css */
 
-body {
-  background: aqua;
+// Sticky footer?
+main > .container {
+    padding: 60px 15px 0;
 }
