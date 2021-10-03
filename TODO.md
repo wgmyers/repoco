@@ -72,6 +72,6 @@ NB - we appear to have installed Bootstrap 5, which means we didn't really need
 jQuery. So, to remove it or not? Let's leave it for now, but maybe lose it later.
 
 * DONE Basic scaffolding
-* Basic layout of pages, w/ navbar
+* DONE Basic layout of pages, w/ navbar
 * Basic colour scheme, lil' logo etc
 * Basic update to init doc - routes/, bin/www, test scaffolding etc.
