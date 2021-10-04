@@ -1,9 +1,15 @@
 extends layout
 
+block append styles
+  link(rel="stylesheet" href="/css/easymde/easymde.min.css")
+
+block append scripts
+  script(src="/js/easymde/easymde.min.js")
+  script(src="/js/editor.js")
+
 block layout-content
   main.flex-shrink-0
     .container
       h1 Editor
-      p This is where the good shit happens.
-      p Yay
+      textarea
   
