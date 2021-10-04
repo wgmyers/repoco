@@ -8,9 +8,6 @@ html.h-100
       meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
       meta(name="theme-color", content="#000000")
       title Repoco | #{title}
-    block scripts
-      script(src="/js/jquery/jquery.min.js")
-      script(src="/js/bootstrap/bootstrap.bundle.min.js")
     block styles
       link(rel="stylesheet" href="/css/custom.css")
       link(rel="stylesheet" href="/css/style.css")
@@ -18,3 +15,7 @@ html.h-100
     include header.pug
     block layout-content
     include footer.pug
+    block scripts
+      script(src="/js/jquery/jquery.min.js")
+      script(src="/js/bootstrap/bootstrap.bundle.min.js")
+      script(src="/js/menu.js")
