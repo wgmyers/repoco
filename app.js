@@ -7,6 +7,8 @@
 const express = require("express");
 const path = require("path");
 
+const site = require("./lib/site");
+
 /**
  * App Variables
  */
@@ -41,6 +43,7 @@ app.use("/js/fancytree", express.static(path.join(__dirname, "node_modules/jquer
  * Routes Definitions
  */
 
+// HTML routes
 app.get("/", (req, res) => {
   res.render("index", { title: "Home" });
 });
@@ -52,6 +55,13 @@ app.get("/edit", (req, res) => {
 app.get("/help", (req, res) => {
   res.render("help", { title: "Help" });
 });
+
+// API routes
+app.get("/api/sites", (req, res) => {
+  res.json(site.load_sites());
+});
+
+// Error routes
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

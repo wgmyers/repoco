@@ -21,6 +21,8 @@
 
 ### DONE
 
+* Add api route to populate filetree
+* Add basic error page handling
 * Embed filetree on UI LHS
 * Split edit UI into two columns with space for filetree
 * Basic embed of MD editor
