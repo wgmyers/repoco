@@ -23,6 +23,7 @@
     "express": "^4.17.1",
     "jquery": "^3.6.0",
     "jquery.fancytree": "^2.38.0",
+    "js-yaml": "^4.1.0",
     "pug": "^3.0.2"
   }
 }
