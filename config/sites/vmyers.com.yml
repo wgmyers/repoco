@@ -1,0 +1,12 @@
+---
+files:
+  pages:
+    - 'about.md'
+    - 'contact.md'
+    - 'index.md'
+  data:
+    - '/path/to/data.csv'
+    - '/path/to/moredata.csv'
+  config:
+    - '/path/to/nav.yml'
+    - 'config.yml'

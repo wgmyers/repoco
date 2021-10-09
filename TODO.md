@@ -3,17 +3,17 @@
 1. DONE Basic node/express scaffolding
 2. DONE Basic data structure outline
 3. Edit page integrating file tree and MD editor for markdown w/ load/save file
-4. Code tidy - .env, bin/www, routes/ logging etc
-5. Git integration
-6. User login
-7. Test suite
-8. Deploy!
+4. Add support for plaintext and csv editors
+5. Code tidy - .env, bin/www, routes/, logging, simple tests etc
+6. Git integration
+7. User login
+8. Actual Test suite
+9. Deploy!
 
 ## TASKS
 
 ### DOING
 
-* Embed filetree on UI LHS
 * Load filetree content from config
 * Clicking on file in filetree loads it in editor
 * Mark edited files
@@ -21,6 +21,7 @@
 
 ### DONE
 
+* Embed filetree on UI LHS
 * Split edit UI into two columns with space for filetree
 * Basic embed of MD editor
 * Research filetree / MD editor / CSV editor / git components
