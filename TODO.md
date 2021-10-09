@@ -147,7 +147,7 @@ files:
     - 'config.yml'
 ```
 
-Basically we have 'files' as a top level thing (why?) and then arbitrary names
+Basically we have 'files' as a top level thing and then arbitrary names
 containing stuff, including optional paths to the specific file, counted from
 the root of the git repo. Filetype is be implied by extension. Initially we're
 only going to handle .md files. Next will be .csv files. Later, if we want to
@@ -158,7 +158,10 @@ a straight-up syntax highlighted text editor might solve a lot of those issues,
 but we definitely need something more than that for Markdown, which is our
 MAIN DESIGN GOAL at the moment.
 
-Please don't over-engineer this.
+Later we will add a 'git' top level item to configure git settings, such as
+local or remote repo etc.
+
+We may need to add other stuff too.
 
 
 ## Scaffolding notes

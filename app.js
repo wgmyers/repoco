@@ -53,6 +53,48 @@ app.get("/help", (req, res) => {
   res.render("help", { title: "Help" });
 });
 
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  const err = new Error("Page Not Found");
+  err.status = 404;
+  next(err);
+});
+
+// error handlers
+
+// development error handler
+// will print stacktrace (pug - #{error.stack})
+if (app.get("env") === "development") {
+  app.use((err, req, res, _next) => {
+    const errcode = err.status || 500;
+    let errmsg = err.message;
+    if (errcode == 500) {
+      errmsg = "Internal server error";
+    }
+    //console.log(err);
+    res.status(errcode);
+    res.render("error", {
+      message: errcode + ": " + errmsg,
+      error: err
+    });
+  });
+}
+
+// production error handler
+// no stacktraces or internals leaked to user
+app.use((err, req, res, _next) => {
+  const errcode = err.status || 500;
+  let errmsg = err.message;
+  if (errcode == 500) {
+    errmsg = "Internal server error";
+  }
+  res.status(errcode);
+  res.render("error", {
+    message: errcode + ": " + errmsg,
+    error: undefined
+  });
+});
+
 /**
  * Server Activation
  */

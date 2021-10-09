@@ -1,0 +1,11 @@
+extends layout
+
+block layout-content
+  .container.vh-100
+    .row.vh-100.align-items-center
+      .col-12.flex-fill.text-center
+        h1 Eep!
+        h3 #{message}
+        if error
+          pre #{error.stack}
+          
