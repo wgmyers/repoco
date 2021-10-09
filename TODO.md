@@ -1,12 +1,106 @@
 # TODO
 
-1. Basic node/express scaffolding
-2. Basic data structure outline
-3. Edit page integrating file tree and MD editor for markdown
-4. User login
+1. DONE Basic node/express scaffolding
+2. DONE Basic data structure outline
+3. Edit page integrating file tree and MD editor for markdown w/ load/save file
+4. Code tidy - .env, bin/www, routes/ logging etc
 5. Git integration
-6. Test suite
-7. Deploy!
+6. User login
+7. Test suite
+8. Deploy!
+
+## TASKS
+
+### DOING
+
+* Embed filetree on UI LHS
+* Load filetree content from config
+* Clicking on file in filetree loads it in editor
+* Mark edited files
+* Implement save file button
+
+### DONE
+
+* Split edit UI into two columns with space for filetree
+* Basic embed of MD editor
+* Research filetree / MD editor / CSV editor / git components
+* Devise data structure
+* Set up node/express scaffolding
+
+# NOTES
+
+## Edit page notes
+
+For markdown editing: EasyMDE.
+
+See notes over in vmyers.com TODO.md.
+
+For filetree: TBD
+
+Options:
+
+* jstree: https://www.jstree.com/
+
+jQuery. Demo not hugely impressive. Lots of plugins, supports dnd. Don't want dnd.
+
+* bstreeview: https://github.com/chniter/bstreeview
+* bs5treeview: https://github.com/nhmvienna/bs5treeview
+
+jQuery, integrated with BS4, or BS5 with either the BS5 version or simple edits.
+Seems to require font awesome? That's ok, though, as EasyMDE does too, so maybe
+I should just use font awesome.
+Not clear how to implement actions on clicking a child node though.
+
+* tree.js https://github.com/lunu-bounir/tree.js
+
+Vanilla JS. No documentation, some examples. Not maintained.
+
+* treejs https://github.com/daweilv/treejs
+
+Vanilla JS. Weird checkboxes. No icons.
+
+* zTree http://www.treejs.cn/v3/faq.php#_206
+
+Very full featured. jQuery.
+
+Github https://github.com/zTree/zTree_v3
+
+* Fancytree https://github.com/mar10/fancytree
+
+Very full featured. jQuery. Extremely impressive demo using itself.
+
+* Don't bother option
+
+Or, I could just use vanilla Bootstrap accordions and list groups:
+
+https://getbootstrap.com/docs/5.0/components/accordion/
+https://getbootstrap.com/docs/5.0/components/list-group/
+
+For csv:
+
+CSV file handler: https://github.com/mholt/PapaParse
+CSV display handler: http://tabulator.info/
+
+(more JS table displays here: https://jspreadsheets.com/)
+
+Steps:
+* Integrate EasyMDE into a page
+* Integrate a filetree solution into same page (?)
+* Add config for test files and some test files
+* Have filetree load the test files and display them
+* Implement load file
+* Implement save file
+* Publish button - won't do anything yet b/c no git integration
+
+## User login notes
+
+Just use passport-local-mongoose for this. Perfectly reasonable use case for
+the db since we'll be needing to store a bunch of other per-user info.
+
+## Git integration notes
+
+We should ensure this is modular, with an abstraction layer over a specific
+git-local library, so support for github etc can be easily added later on.
 
 ## Data structure notes
 
@@ -73,4 +167,3 @@ jQuery. So, to remove it or not? Let's leave it for now, but maybe lose it later
 
 * DONE Basic scaffolding
 * DONE Basic layout of pages, w/ navbar
-* Basic update to init doc - routes/, bin/www, test scaffolding etc.
