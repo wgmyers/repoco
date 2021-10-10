@@ -14,7 +14,7 @@
 
 ### DOING
 
-* Clicking on file in filetree loads it in editor
+* Hide jekyll markdown file header optionally
 * Support for multiple config files
 * Mark edited files
 * Implement save file button
@@ -22,6 +22,7 @@
 
 ### DONE
 
+* Clicking on file in filetree loads it in editor
 * Load filetree content from config
 * Add api route to populate filetree
 * Add basic error page handling

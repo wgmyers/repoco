@@ -2,6 +2,22 @@
 
 // Embed the fancy shmancy filetree
 
+function load_file_event(file) {
+  const event = new CustomEvent(
+  	"load_file",
+  	{
+  		detail: {
+  			message: "Custom fileload request event",
+        file: file,
+  			time: new Date(),
+  		},
+  		bubbles: true,
+  		cancelable: true
+  	}
+  );
+  document.dispatchEvent(event);
+}
+
 $(function() {  // on page load
   // Create the tree inside the <div id="tree"> element.
   $("#tree").fancytree({
@@ -29,8 +45,7 @@ $(function() {  // on page load
     // Event handler to handle click on leaf nodes
     click: function(event, data) {
       if(data.node.data.loadable) {
-        alert(`Loading ${data.node.data.loadpath}`);
-        // FIXME: what do we actually do now?
+        load_file_event(data.node.data.loadpath);
         return false;
       }
     },

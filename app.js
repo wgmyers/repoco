@@ -8,6 +8,7 @@ const express = require("express");
 const path = require("path");
 
 const site = require("./lib/site");
+const files = require("./lib/files");
 
 /**
  * App Variables
@@ -59,6 +60,10 @@ app.get("/help", (req, res) => {
 // API routes
 app.get("/api/sites", (req, res) => {
   res.json(site.load_sites());
+});
+
+app.get("/api/files/:site/:file", (req, res) => {
+  res.json(files.load_file(req.params.site, req.params.file));
 });
 
 // Error routes
