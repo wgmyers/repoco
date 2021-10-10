@@ -20,7 +20,7 @@ async function load_file(file) {
     if (json.status == 'ok') {
       easyMDE.value(json.contents);
     } else {
-      easyMDE.valuee(json.message);
+      easyMDE.value(json.message);
     }
   } else {
     // FIXME: No.
