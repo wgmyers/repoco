@@ -1,12 +1,18 @@
 ---
 files:
   pages:
+    - 'abcoasters.md'
     - 'about.md'
-    - 'contact.md'
+    - 'abseries.md'
+    - 'beyond.md'
     - 'index.md'
+    - 'links.md'
+    - 'music.md'
+    - 'notes.md'
+    - 'programme.md'
+    - 'stepsheets.md'
   data:
-    - '/path/to/data.csv'
-    - '/path/to/moredata.csv'
+    - '_data/singlevideos.csv'
+    - '_data/videos.csv'
   config:
-    - '/path/to/nav.yml'
-    - 'config.yml'
+    - '_config.yml'
