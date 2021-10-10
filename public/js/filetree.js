@@ -10,6 +10,8 @@ $(function() {  // on page load
       url: "/api/sites",
       cache: false
     },
+
+    // Event handler to process the response from /api/sites
     // See https://github.com/mar10/fancytree/wiki/TutorialLoadData#recipes
     postProcess: function(event, data) {
       const json = data.response;
@@ -22,8 +24,17 @@ $(function() {  // on page load
           error: json.error
         }
       }
-    }
-    // ...
+    },
+
+    // Event handler to handle click on leaf nodes
+    click: function(event, data) {
+      if(data.node.data.loadable) {
+        alert(`Loading ${data.node.data.loadpath}`);
+        // FIXME: what do we actually do now?
+        return false;
+      }
+    },
+
   });
-  // Note: Loading and initialization may be asynchronous, so the nodes may not be accessible yet.
+
 });

@@ -15,8 +15,10 @@
 ### DOING
 
 * Clicking on file in filetree loads it in editor
+* Support for multiple config files
 * Mark edited files
 * Implement save file button
+* Implement publish button (implies git)
 
 ### DONE
 
@@ -38,7 +40,9 @@ For markdown editing: EasyMDE.
 
 See notes over in vmyers.com TODO.md.
 
-For filetree: TBD
+For filetree: Fancytree
+
+* Looks veh fullfeatured. Ok so far.
 
 Options:
 
