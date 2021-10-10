@@ -46,7 +46,7 @@ $(function() {  // on page load
     click: function(event, data) {
       if(data.node.data.loadable) {
         load_file_event(data.node.data.loadpath);
-        return false;
+        // NB: We don't return false so filetree highlights the clicked file
       }
     },
 
