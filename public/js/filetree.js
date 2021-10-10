@@ -2,18 +2,20 @@
 
 // Embed the fancy shmancy filetree
 
+/* eslint-env jquery */
+
 function load_file_event(file) {
   const event = new CustomEvent(
-  	"load_file",
-  	{
-  		detail: {
-  			message: "Custom fileload request event",
+    "load_file",
+    {
+      detail: {
+        message: "Custom fileload request event",
         file: file,
-  			time: new Date(),
-  		},
-  		bubbles: true,
-  		cancelable: true
-  	}
+        time: new Date(),
+      },
+      bubbles: true,
+      cancelable: true
+    }
   );
   document.dispatchEvent(event);
 }
@@ -38,7 +40,7 @@ $(function() {  // on page load
         // Signal error condition to tree loader
         data.result = {
           error: json.error
-        }
+        };
       }
     },
 

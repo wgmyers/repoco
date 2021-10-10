@@ -17,7 +17,7 @@ async function load_file(file) {
   if (response.ok) { // if HTTP-status is 200-299
     // get the response body (the method explained below)
     let json = await response.json();
-    if (json.status == 'ok') {
+    if (json.status == "ok") {
       easyMDE.value(json.contents);
     } else {
       easyMDE.value(json.message);
