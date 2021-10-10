@@ -12,14 +12,14 @@ $(function() {  // on page load
     },
     // See https://github.com/mar10/fancytree/wiki/TutorialLoadData#recipes
     postProcess: function(event, data) {
-      var orgResponse = data.response;
+      const json = data.response;
 
-      if( orgResponse.status === "ok" ) {
-        data.result = orgResponse.result;
+      if( json.status === "ok" ) {
+        data.result = json.result;
       } else {
         // Signal error condition to tree loader
         data.result = {
-          error: "ERROR #" + orgResponse.faultCode + ": " + orgResponse.faultMsg
+          error: json.error
         }
       }
     }
