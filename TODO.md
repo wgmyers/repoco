@@ -16,13 +16,14 @@
 
 * Hide jekyll markdown file header optionally
 * Support for multiple config files
-* Mark edited files
-* Implement save file button
+* Mark edited files dirty and make user confirm if they try and load a different file
+* Implement save file button (plus restore any hidden content such as jekyll headers)
 * Implement publish button (implies git)
 
 ### DONE
 
 * Clicking on file in filetree loads it in editor
+* Add api route to load file
 * Load filetree content from config
 * Add api route to populate filetree
 * Add basic error page handling

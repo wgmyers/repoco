@@ -16,3 +16,4 @@ files:
     - '_data/videos.csv'
   config:
     - '_config.yml'
+generator: "jekyll"

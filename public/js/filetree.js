@@ -4,14 +4,13 @@
 
 /* eslint-env jquery */
 
-function load_file_event(file) {
+function load_file_event(file, generator) {
   const event = new CustomEvent(
     "load_file",
     {
       detail: {
-        message: "Custom fileload request event",
         file: file,
-        time: new Date(),
+        generator: generator
       },
       bubbles: true,
       cancelable: true
@@ -47,7 +46,7 @@ $(function() {  // on page load
     // Event handler to handle click on leaf nodes
     click: function(event, data) {
       if(data.node.data.loadable) {
-        load_file_event(data.node.data.loadpath);
+        load_file_event(data.node.data.loadpath, data.node.data.generator);
         // NB: We don't return false so filetree highlights the clicked file
       }
     },
