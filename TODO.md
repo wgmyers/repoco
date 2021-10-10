@@ -4,7 +4,7 @@
 2. DONE Basic data structure outline
 3. Edit page integrating file tree and MD editor for markdown w/ load/save file
 4. Add support for plaintext and csv editors
-5. Code tidy - .env, bin/www, routes/, logging, simple tests etc
+5. Code tidy - .env, bin/www, routes/, logging, flash errors, simple tests etc
 6. Git integration
 7. User login
 8. Actual Test suite
@@ -14,13 +14,13 @@
 
 ### DOING
 
-* Load filetree content from config
 * Clicking on file in filetree loads it in editor
 * Mark edited files
 * Implement save file button
 
 ### DONE
 
+* Load filetree content from config
 * Add api route to populate filetree
 * Add basic error page handling
 * Embed filetree on UI LHS
