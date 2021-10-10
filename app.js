@@ -1,5 +1,7 @@
 // app.js
 
+/*eslint no-unused-vars: ["error", { "argsIgnorePattern": "^_" }]*/
+
 /**
  * Required External Modules
  */

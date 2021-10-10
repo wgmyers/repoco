@@ -1,5 +1,7 @@
 // editor.js
 
+/*global EasyMDE */
+
 // Create a markdown editor with (mostly) default settings
 // FIXME: sort settings out
 const easyMDE = new EasyMDE({
