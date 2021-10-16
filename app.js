@@ -9,16 +9,15 @@
 const express = require("express");
 const path = require("path");
 
-const site = require("./lib/site");
-const files = require("./lib/files");
-
 /**
  * App Variables
  */
 
+const index_routes = require("./routes/index");
+// const auth_routes = require("./routes/auth");
+const user_routes = require("./routes/user");
+const api_routes = require("./routes/api");
 const app = express();
-const port = process.env.PORT || "8000";
-
 
 /**
  *  App Configuration
@@ -46,29 +45,19 @@ app.use("/js/fancytree", express.static(path.join(__dirname, "node_modules/jquer
  * Routes Definitions
  */
 
-// HTML routes
-app.get("/", (req, res) => {
-  res.render("index", { title: "Home" });
-});
+// handle / , which is either dashboard or login page
+app.use("/", index_routes);
 
-app.get("/edit", (req, res) => {
-  res.render("edit", { title: "Edit" });
-});
+// When we implement auth, here will live /login, /logout
+// app.use("/", auth_routes);
 
-app.get("/help", (req, res) => {
-  res.render("help", { title: "Help" });
-});
+// handle pages requiring login
+app.use("/", user_routes);
 
-// API routes
-app.get("/api/sites", (req, res) => {
-  res.json(site.load_sites());
-});
+// handle API routes (login required)
+app.use("/", api_routes);
 
-app.get("/api/files/:site/:file", (req, res) => {
-  res.json(files.load_file(req.params.site, req.params.file));
-});
-
-// Error routes
+// Error routes (can't be under routes/ for some reason?)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

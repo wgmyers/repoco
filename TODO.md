@@ -4,7 +4,7 @@
 2. DONE Basic data structure outline
 3. Edit page integrating file tree and MD editor for markdown w/ load/save file
 4. Add support for plaintext and csv editors
-5. Code tidy - .env, bin/www, routes/, logging, flash errors, simple tests etc
+5. Code tidy - logging, flash errors, simple tests etc
 6. Git integration
 7. User login
 8. Actual Test suite
@@ -21,6 +21,8 @@
 
 ### DONE
 
+* Move routes from app.js to routes/foo.js
+* Install dotenv, start app with bin/www
 * Hide jekyll markdown file header if generator is 'jekyll'
 * Clicking on file in filetree loads it in editor
 * Add api route to load file
