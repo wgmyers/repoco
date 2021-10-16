@@ -10,6 +10,11 @@ const express = require("express");
 const path = require("path");
 const favicon = require("serve-favicon");
 const logger = require("morgan");
+const flash = require("connect-flash");
+// const mongoose = require("mongoose");
+const session = require("express-session");
+// const passport = require("passport");
+// const LocalStrategy = require("passport-local").Strategy;
 
 /**
  * App Variables
@@ -50,6 +55,20 @@ app.use("/js/jquery", express.static(path.join(__dirname, "node_modules/jquery/d
 // Fancytree
 app.use("/css/fancytree", express.static(path.join(__dirname, "node_modules/jquery.fancytree/dist")));
 app.use("/js/fancytree", express.static(path.join(__dirname, "node_modules/jquery.fancytree/dist")));
+
+/**
+ * Session configuration
+ * FIXME - use proper memory store before pushing to live
+ */
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+
+/* Use flash messages */
+app.use(flash());
 
 /**
  * Routes Definitions

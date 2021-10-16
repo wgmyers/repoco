@@ -41,6 +41,7 @@
 
 ## Issues
 
+* Missing files not handled consistently depending on path presence
 * Hiding Jekyll headers makes sense, but a way to optionally edit parts of them might be nice
 
 ## Favicon
