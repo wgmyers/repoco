@@ -14,7 +14,6 @@
 
 ### DOING
 
-* Hide jekyll markdown file header optionally
 * Support for multiple config files
 * Mark edited files dirty and make user confirm if they try and load a different file
 * Implement save file button (plus restore any hidden content such as jekyll headers)
@@ -22,6 +21,7 @@
 
 ### DONE
 
+* Hide jekyll markdown file header if generator is 'jekyll'
 * Clicking on file in filetree loads it in editor
 * Add api route to load file
 * Load filetree content from config
@@ -153,6 +153,7 @@ files:
   config:
     - '/path/to/nav.yml'
     - 'config.yml'
+generator: "poop"
 ```
 
 Basically we have 'files' as a top level thing and then arbitrary names
@@ -169,7 +170,9 @@ MAIN DESIGN GOAL at the moment.
 Later we will add a 'git' top level item to configure git settings, such as
 local or remote repo etc.
 
-We may need to add other stuff too.
+There is a 'generator' top level item which gives hints to the app as to how to
+process files. Eg Jekyll markdown contains a YAML header which we need to handle
+specially. Other generators may have other special requirements. Who knows?
 
 
 ## Scaffolding notes
