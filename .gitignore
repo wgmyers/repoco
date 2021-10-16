@@ -2,3 +2,4 @@ node_modules/
 **/empty.js
 repos/
 .env
+assets/

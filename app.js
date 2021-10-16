@@ -8,6 +8,8 @@
 
 const express = require("express");
 const path = require("path");
+const favicon = require("serve-favicon");
+const logger = require("morgan");
 
 /**
  * App Variables
@@ -23,9 +25,17 @@ const app = express();
  *  App Configuration
  */
 
+/* Use pug */
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
+/* Use favicon middleware */
+app.use(favicon(__dirname + "/public/favicon.ico"));
+
+/* Logging */
+app.use(logger("dev"));
+
+/* Public files */
 app.use(express.static(path.join(__dirname, "public")));
 
 // Use local versions of things so we don't depend on external CDN

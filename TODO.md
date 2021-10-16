@@ -4,7 +4,7 @@
 2. DONE Basic data structure outline
 3. Edit page integrating file tree and MD editor for markdown w/ load/save file
 4. Add support for plaintext and csv editors
-5. Code tidy - logging, flash errors, simple tests etc
+5. Code tidy - flash errors, simple tests etc
 6. Git integration
 7. User login
 8. Actual Test suite
@@ -21,6 +21,7 @@
 
 ### DONE
 
+* Add morgan for logging and serve-favicon for favicon
 * Move routes from app.js to routes/foo.js
 * Install dotenv, start app with bin/www
 * Hide jekyll markdown file header if generator is 'jekyll'
@@ -41,6 +42,10 @@
 ## Issues
 
 * Hiding Jekyll headers makes sense, but a way to optionally edit parts of them might be nice
+
+## Favicon
+
+From favicon.io, using Marck Script font, fg \#FFA, bg \#222
 
 ## Edit page notes
 
