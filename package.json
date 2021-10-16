@@ -2,9 +2,9 @@
   "name": "repoco",
   "version": "1.0.0",
   "description": "A minimalist headless CMS with local git repo support",
-  "main": "app.js",
+  "main": "bin/www",
   "scripts": {
-    "dev": "nodemon ./app.js",
+    "dev": "nodemon bin/www",
     "scss": "node-sass --watch scss -o public/css",
     "lint": "eslint *.js lib/*.js public/js/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.1.1",
+    "dotenv": "^10.0.0",
     "easymde": "^2.15.0",
     "express": "^4.17.1",
     "jquery": "^3.6.0",

@@ -112,10 +112,4 @@ app.use((err, req, res, _next) => {
   });
 });
 
-/**
- * Server Activation
- */
-
-app.listen(port, () => {
-  console.log(`Listening to requests on http://localhost:${port}`);
-});
+module.exports = app;

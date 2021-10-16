@@ -36,6 +36,10 @@
 
 # NOTES
 
+## Issues
+
+* Hiding Jekyll headers makes sense, but a way to optionally edit parts of them might be nice
+
 ## Edit page notes
 
 For markdown editing: EasyMDE.
