@@ -3,3 +3,4 @@ node_modules/
 repos/
 .env
 assets/
+.nyc_output
