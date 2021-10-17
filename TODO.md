@@ -2,9 +2,9 @@
 
 1. DONE Basic node/express scaffolding
 2. DONE Basic data structure outline
-3. Edit page integrating file tree and MD editor for markdown w/ load/save file
-4. Add support for plaintext and csv editors
-5. Code tidy - simple tests etc
+3. DONE Code tidy - logging, .env, favicon, routes outside app.js, simple tests etc
+4. Edit page integrating file tree and MD editor for markdown w/ load/save file
+5. Add support for plaintext and csv editors
 6. Git integration
 7. User login
 8. Actual Test suite
@@ -21,6 +21,8 @@
 
 ### DONE
 
+* Add basic integration test
+* Add mocha, chai, supertest and nyc
 * Add connect-flash and express-session
 * Add morgan for logging and serve-favicon for favicon
 * Move routes from app.js to routes/foo.js
