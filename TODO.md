@@ -15,12 +15,13 @@
 ### DOING
 
 * Implement save file button (plus restore any hidden content such as jekyll headers)
-* Implement confirmation dialog if user tries to load a different file or hit revert
+* Add filename in top banner in case we back out of new file load and tree no longer in sync with editor
 * Implement publish button (implies git) - should maybe go on dashboard?
 * Support for multiple config files
 
 ### DONE
 
+* Add modal dialog confirmation if file load attempted while current file has changes
 * Add modal dialog Are You Sure Y/N for revert button
 * Implement revert button action to reload
 * Implement dirty flag and toggle save/revert buttons if set

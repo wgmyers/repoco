@@ -84,6 +84,7 @@ function handle_revert_click() {
   modal_ok.addEventListener("click", () => {
     load_file(editor_vars.filename, editor_vars.generator);
     modal.hide();
+    modal.dispose();
   });
   modal.show(); // show it
 }
@@ -150,7 +151,23 @@ async function load_file(filename, generator) {
 }
 
 function load_file_event(event) {
-  load_file(event.detail.file, event.detail.generator);
+  if (editor_vars.dirty) {
+    const modal_element = document.getElementById("modal-editor")
+    const modal = bootstrap.Modal.getOrCreateInstance(modal_element) // Returns a Bootstrap modal instance
+    const modal_title = document.getElementById("modal-title");
+    const modal_text = document.getElementById("modal-text");
+    const modal_ok = document.getElementById("modal-ok");
+    modal_title.innerHTML = "Confirm Load New File";
+    modal_text.innerHTML = "Are you sure? All unsaved changes to current file will be lost.";
+    modal_ok.addEventListener("click", () => {
+      load_file(event.detail.file, event.detail.generator);
+      modal.hide();
+      modal.dispose();
+    });
+    modal.show(); // show it
+  } else {
+    load_file(event.detail.file, event.detail.generator);
+  }
 }
 
 // Catch event emitted by filetree
