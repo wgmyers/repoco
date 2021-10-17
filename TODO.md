@@ -5,7 +5,7 @@
 3. DONE Code tidy - logging, .env, favicon, routes outside app.js, simple tests etc
 4. Edit page integrating file tree and MD editor for markdown w/ load/save file
 5. Add support for plaintext and csv editors
-6. Git integration
+6. Git integration - publish / mark edited but unpublished files
 7. User login
 8. Actual Test suite
 9. Deploy!
@@ -21,6 +21,7 @@
 
 ### DONE
 
+* Add modal dialog Are You Sure Y/N for revert button
 * Implement revert button action to reload
 * Implement dirty flag and toggle save/revert buttons if set
 * Add save / revert buttons to edit page

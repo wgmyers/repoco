@@ -69,13 +69,23 @@ function disable_buttons() {
 // Handlers for save and revert buttons.
 // Save calls save file
 // Revert calls load file
-// FIXME: these should first call an 'Are You Sure Y/N' modal dialog
 function handle_save_click() {
   save_file(editor_vars.filename, editor_vars.generator);
 }
 
 function handle_revert_click() {
-  load_file(editor_vars.filename, editor_vars.generator);
+  const modal_element = document.getElementById("modal-editor")
+  const modal = bootstrap.Modal.getOrCreateInstance(modal_element) // Returns a Bootstrap modal instance
+  const modal_title = document.getElementById("modal-title");
+  const modal_text = document.getElementById("modal-text");
+  const modal_ok = document.getElementById("modal-ok");
+  modal_title.innerHTML = "Confirm Revert To Saved";
+  modal_text.innerHTML = "Are you sure? All changes since last save will be lost.";
+  modal_ok.addEventListener("click", () => {
+    load_file(editor_vars.filename, editor_vars.generator);
+    modal.hide();
+  });
+  modal.show(); // show it
 }
 
 // Default editor contents
