@@ -7,8 +7,9 @@
 5. Add support for plaintext and csv editors
 6. Git integration - publish / mark edited but unpublished files
 7. User login
-8. Actual Test suite
-9. Deploy!
+8. Security audit
+9. Actual Test suite
+10. Deploy!
 
 ## TASKS
 
@@ -52,6 +53,25 @@
 * Need express-session solution for production deployment
 * Missing files not handled consistently depending on path presence
 * Hiding Jekyll headers makes sense, but a way to optionally edit parts of them might be nice
+
+## Security audit
+
+None of the below can be implemented until we have user auth.
+
+All the below MUST be implemented when we do.
+
+* On load file: double check user actually has access to that file
+* On save file: double check user has write access to that file
+* IE, in re above, avoid situation where any logged in user can read / write any
+file accessible by some other user.
+* Belt and braces: require config files to be 0400 and refuse to read them if
+not. This stops a situation where a user finds a way to write to their own config
+file and put a bunch of ../../../../ nonsense in there, giving permission to
+write arbitrary files on the system.
+* Also, implement hard ban on symlinks. Refuse to edit any file that is a symlink.
+* Maybe ban paths in config specified filenames entirely and implement path
+traversal using some other mechanism in the config file, to avoid possibility of
+arbitrary files being readable/writable
 
 ## Favicon
 
