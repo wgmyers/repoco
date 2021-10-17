@@ -113,6 +113,7 @@ async function save_file(filename, generator) {
   alert("FIXME: implement save file");
   // First we prepare a JSON payload
   // Next we call the API with it
+  // See https://stackoverflow.com/questions/29775797/fetch-post-json-data#29823632
   // If all well, reset save and revert buttons and flags
   // If not, display an error message
 }
