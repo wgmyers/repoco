@@ -21,6 +21,7 @@
 
 ### DONE
 
+* Add save / revert buttons to edit page
 * Add basic integration test
 * Add mocha, chai, supertest and nyc
 * Add connect-flash and express-session
