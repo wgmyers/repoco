@@ -15,12 +15,14 @@
 ### DOING
 
 * Implement save file button (plus restore any hidden content such as jekyll headers)
-* Mark edited files dirty and make user confirm if they try and load a different file
-* Implement publish button (implies git)
+* Implement confirmation dialog if user tries to load a different file or hit revert
+* Implement publish button (implies git) - should maybe go on dashboard?
 * Support for multiple config files
 
 ### DONE
 
+* Implement revert button action to reload
+* Implement dirty flag and toggle save/revert buttons if set
 * Add save / revert buttons to edit page
 * Add basic integration test
 * Add mocha, chai, supertest and nyc
