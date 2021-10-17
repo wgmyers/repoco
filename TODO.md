@@ -4,7 +4,7 @@
 2. DONE Basic data structure outline
 3. Edit page integrating file tree and MD editor for markdown w/ load/save file
 4. Add support for plaintext and csv editors
-5. Code tidy - flash errors, simple tests etc
+5. Code tidy - simple tests etc
 6. Git integration
 7. User login
 8. Actual Test suite
@@ -21,6 +21,7 @@
 
 ### DONE
 
+* Add connect-flash and express-session
 * Add morgan for logging and serve-favicon for favicon
 * Move routes from app.js to routes/foo.js
 * Install dotenv, start app with bin/www
@@ -41,6 +42,7 @@
 
 ## Issues
 
+* Need express-session solution for production deployment
 * Missing files not handled consistently depending on path presence
 * Hiding Jekyll headers makes sense, but a way to optionally edit parts of them might be nice
 
