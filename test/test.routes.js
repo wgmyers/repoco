@@ -23,6 +23,20 @@ describe("Test routes", () => {
         .expect(200, done);
     });
 
+    it("edit page works", done => {
+      agent
+        .get("/edit")
+        .expect("Content-Type", /html/)
+        .expect(200, done);
+    });
+
+    it("help page works", done => {
+      agent
+        .get("/help")
+        .expect("Content-Type", /html/)
+        .expect(200, done);
+    });
+
   });
 
 });
