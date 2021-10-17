@@ -14,6 +14,12 @@ block layout-content
         .col-md-3
           include filetree.pug
         .col-md-9
-          h1 Editor
-          textarea
+          .row
+            .col-md-9
+              h1 Editor
+            .col-md-3.text-end.align-self-center
+              button.btn.btn-secondary(type=button disabled=true) Revert
+              button.btn.btn-secondary.mx-2(type=button disabled=true) Save
+          .row
+            textarea
   
