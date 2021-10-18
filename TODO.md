@@ -3,7 +3,7 @@
 1. DONE Basic node/express scaffolding
 2. DONE Basic data structure outline
 3. DONE Code tidy - logging, .env, favicon, routes outside app.js, simple tests etc
-4. Edit page integrating file tree and MD editor for markdown w/ load/save file
+4. DONE Edit page integrating file tree and MD editor for markdown w/ load/save file
 5. Add support for plaintext and csv editors
 6. Git integration - publish / mark edited but unpublished files
 7. User login
@@ -15,13 +15,13 @@
 
 ### DOING
 
-* Implement save file button (plus restore any hidden content such as jekyll headers)
 * Add filename in top banner in case we back out of new file load and tree no longer in sync with editor
 * Implement publish button (implies git) - should maybe go on dashboard?
 * Support for multiple config files
 
 ### DONE
 
+* Save file implemented
 * Add modal dialog confirmation if file load attempted while current file has changes
 * Add modal dialog Are You Sure Y/N for revert button
 * Implement revert button action to reload
@@ -50,6 +50,7 @@
 
 ## Issues
 
+* Load / save errors should pop up flash warning
 * Need express-session solution for production deployment
 * Missing files not handled consistently depending on path presence
 * Hiding Jekyll headers makes sense, but a way to optionally edit parts of them might be nice
