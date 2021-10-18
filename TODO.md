@@ -15,9 +15,18 @@
 
 ### DOING
 
-* Add filename in top banner in case we back out of new file load and tree no longer in sync with editor
-* Implement publish button (implies git) - should maybe go on dashboard?
+Git:
+* Make local repo an actual repo so we can test our local git commands
+* Implement function that returns list of files modified but not yet committed
+* Implement publish button/s (aka commit all changes, lives on dashboard)
+* Implement method of auto-deploying on git push in a repo
+
+Config:
 * Support for multiple config files
+
+Editor
+* Add filename in top banner in case we back out of new file load and tree no longer in sync with editor
+* Handle multiple editors and have 'No File Loaded' msg when no file loaded, not an empty editor
 
 ### DONE
 
@@ -54,6 +63,80 @@
 * Need express-session solution for production deployment
 * Missing files not handled consistently depending on path presence
 * Hiding Jekyll headers makes sense, but a way to optionally edit parts of them might be nice
+
+## Git integration notes
+
+We should ensure this is modular, with an abstraction layer over a specific
+git-local library, so support for github etc can be easily added later on.
+
+For local git: https://www.npmjs.com/package/simple-git looks pretty good.
+
+### Git commands
+
+We do not need or wish to implement the whole of git. We do not even want to
+muck about with cloning the repo. That can be done by hand on a per-site basis.
+At least initially.
+
+What we do want is the following:
+
+* git pull - on site load, to make sure we are up-to-date w/ local repo
+* git commit; git push - on hitting Publish buttons
+* git status - on displaying filetree and dashboard to show unpushed stuff
+
+### Git Pull
+
+There must be some mechanism to check upstream for changes and pull them.
+
+### Git Commit / Push
+
+We definitely don't want to commit without pushing because our target user is
+non-technical and doesn't need to know that the 'publish' process is actually
+a two-step thing. It's bad enough that deploying to prod after deploying to test
+will automatically pick up all unreverted changes pushed to test, but I think
+we can live with that. ("If you don't like the changes in test, edit and publish
+to test again. Only when happy publish to live.") Yes, we could technically
+do auto-revert-file somehow, but this is a pain. Yes will probably be motivated
+to add it in at a later date, but Here Be Dragons and there may well be reason
+not to (how do I unrevert my accidental revert questions etc).
+
+We'll need to set up hooks on the remote git repo so that it will optionally
+1) do nothing, 2) deploy to prod, 3) deploy to test.
+
+This can be implemented using the --push-option option to git push, which can
+be picked up by the post-receive hook.
+
+Docs on post-receive: https://www.git-scm.com/docs/githooks#post-receive
+
+Docs on --push-option: https://git-scm.com/docs/git-push
+
+So, IIUC, we can have a post-receive hook that looks like:
+
+```
+switch(push-option) {
+  case: 'prod'
+    run-production-deploy-script
+  case: 'test'
+    run-test-deploy-script
+  default:
+    // do nothing
+}
+```
+
+and we _can_ have both 'Publish live' and 'Publish test' buttons, which will
+do one of:
+
+`git push origin master --push-option='prod'`
+
+or
+
+`git push origin master --push-option='test'`
+
+respectively.
+
+### Git Status
+
+Could be that `git status -s` is my friend - just gives a list of files that
+are modified but not yet committed.
 
 ## Security audit
 
@@ -147,11 +230,6 @@ Steps:
 
 Just use passport-local-mongoose for this. Perfectly reasonable use case for
 the db since we'll be needing to store a bunch of other per-user info.
-
-## Git integration notes
-
-We should ensure this is modular, with an abstraction layer over a specific
-git-local library, so support for github etc can be easily added later on.
 
 ## Data structure notes
 
