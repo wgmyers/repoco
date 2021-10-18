@@ -110,23 +110,50 @@ function process_jekyll_md(filename, fileconts) {
 
 // save_file
 async function save_file(filename, generator) {
-  alert("FIXME: implement save file");
-  // First we prepare a JSON payload
+  let text;
+
+  // First we prepare a simple JSON payload, restoring Jekyll headers if needed
+  switch (generator) {
+    case "jekyll":
+      text = jekyll_headers[filename] + "---\n\n" + easyMDE.value();
+      break;
+    default:
+      text = easyMDE.value();
+  }
+  const body = JSON.stringify({ contents: text });
+
   // Next we call the API with it
   // See https://stackoverflow.com/questions/29775797/fetch-post-json-data#29823632
+  const response = await fetch(`/api/files/${filename}`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: body
+  });
+  const json= await response.json();
   // If all well, reset save and revert buttons and flags
-  // If not, display an error message
+  if (json.status == "ok") {
+    editor_vars.dirty = false;
+    disable_buttons();
+  } else {
+    // If not, display an error message
+    console.error(`Could not save ${filename}`);
+    // FIXME: display alert to user here
+  }
+
 }
 
 // load_file
 // Custom file loader
 // See https://javascript.info/fetch
 async function load_file(filename, generator) {
-  let response = await fetch(`/api/files/${filename}`);
+  const response = await fetch(`/api/files/${filename}`);
 
   if (response.ok) { // if HTTP-status is 200-299
     // get the response body (the method explained below)
-    let json = await response.json();
+    const json = await response.json();
     if (json.status == "ok") {
       switch(generator) {
         case "jekyll":

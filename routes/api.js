@@ -19,4 +19,8 @@ router.get("/api/files/:site/:file", (req, res) => {
   res.json(files.load_file(req.params.site, req.params.file));
 });
 
+router.post("/api/files/:site/:file", (req, res) => {
+  res.json(files.save_file(req.params.site, req.params.file, req.body));
+})
+
 module.exports = router;

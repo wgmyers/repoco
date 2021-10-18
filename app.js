@@ -70,6 +70,9 @@ app.use(session({
 /* Use flash messages */
 app.use(flash());
 
+/* Parse JSON POST request properly */
+app.use(express.json());
+
 /**
  * Routes Definitions
  */
