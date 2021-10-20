@@ -17,6 +17,7 @@
 
 Git:
 * Make local repo an actual repo so we can test our local git commands
+* Design dashboard page with status info and publish buttons (poss Umami integration?)
 * Implement function that returns list of files modified but not yet committed
 * Implement publish button/s (aka commit all changes, lives on dashboard)
 * Implement method of auto-deploying on git push in a repo
