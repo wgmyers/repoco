@@ -15,12 +15,13 @@
 
 ### DOING
 
+Auto-deploy:
+* Implement method of auto-deploying on git push in a repo
+
 Git:
 * Design dashboard page with status info and publish buttons (poss Umami integration?)
 * Config publish buttons via config file (extra git push option, view URL etc)
-* Implement function that returns list of files modified but not yet committed
 * Implement publish button/s (aka commit all changes, lives on dashboard)
-* Implement method of auto-deploying on git push in a repo
 
 Config:
 * Add git config section
@@ -34,6 +35,7 @@ Editor
 
 ### DONE
 
+* Implement function that returns list of files modified but not yet committed
 * Support for multiple config files
 * Make local repo an actual repo so we can test our local git commands
 * Save file implemented
@@ -70,7 +72,7 @@ Editor
 * Need express-session solution for production deployment
 * Missing files not handled consistently depending on path presence
 * Hiding Jekyll headers makes sense, but a way to optionally edit parts of them might be nice
-* FIXED npm audit complaining about node-sass - moved to sass
+* FIXED npm audit complaining about node-sass - moved to dart-sass
 
 ## Git testing notes
 
@@ -78,7 +80,7 @@ Editor
 `repos/` contains our working copy of the repo
 
 We are using a cut-down version of the actual vmyers.com repo for now, so the
-config file will have to amended for live.
+config file will have to be amended for live.
 
 We should also add another repo (example or some such) and BE VERY CAREFUL when
 we come to push Repoco to github that we are not pushing anything we shouldn't.
