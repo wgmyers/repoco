@@ -64,6 +64,7 @@ Editor
 
 ## Issues
 
+* Load error triggers dirty file flag. Really annoying.
 * Load / save errors should pop up flash warning
 * Need express-session solution for production deployment
 * Missing files not handled consistently depending on path presence
