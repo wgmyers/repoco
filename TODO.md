@@ -16,8 +16,8 @@
 ### DOING
 
 Git:
-* Make local repo an actual repo so we can test our local git commands
 * Design dashboard page with status info and publish buttons (poss Umami integration?)
+* Config publish buttons via config file (extra git push option, view URL etc)
 * Implement function that returns list of files modified but not yet committed
 * Implement publish button/s (aka commit all changes, lives on dashboard)
 * Implement method of auto-deploying on git push in a repo
@@ -26,11 +26,13 @@ Config:
 * Support for multiple config files
 
 Editor
+* Have 'No File Loaded' msg when no file loaded, not an empty editor
 * Add filename in top banner in case we back out of new file load and tree no longer in sync with editor
-* Handle multiple editors and have 'No File Loaded' msg when no file loaded, not an empty editor
+* Handle multiple editors (csv editor, code editor)
 
 ### DONE
 
+* Make local repo an actual repo so we can test our local git commands
 * Save file implemented
 * Add modal dialog confirmation if file load attempted while current file has changes
 * Add modal dialog Are You Sure Y/N for revert button
@@ -64,6 +66,20 @@ Editor
 * Need express-session solution for production deployment
 * Missing files not handled consistently depending on path presence
 * Hiding Jekyll headers makes sense, but a way to optionally edit parts of them might be nice
+
+## Git testing notes
+
+`assets/testrepos` contains our test local bare repos
+`repos/` contains our working copy of the repo
+
+We are using a cut-down version of the actual vmyers.com repo for now, so the
+config file will have to amended for live.
+
+We should also add another repo (example or some such) and BE VERY CAREFUL when
+we come to push Repoco to github that we are not pushing anything we shouldn't.
+
+Neither `assets/` nor `repos/` are being tracked in Repoco repo though, so we
+should be ok.
 
 ## Git integration notes
 
