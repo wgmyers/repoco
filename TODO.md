@@ -27,13 +27,14 @@ Config:
 * Lose `pages` section - just replicate filetree under `files`
 
 Editor
-* Support for multiple config files
+* Support arbitrary filetrees defined under files in config
 * Have 'No File Loaded' msg when no file loaded, not an empty editor
 * Add filename in top banner in case we back out of new file load and tree no longer in sync with editor
 * Handle multiple editors (csv editor, code editor)
 
 ### DONE
 
+* Support for multiple config files
 * Make local repo an actual repo so we can test our local git commands
 * Save file implemented
 * Add modal dialog confirmation if file load attempted while current file has changes
