@@ -23,6 +23,13 @@ describe("Test routes", () => {
         .expect(200, done);
     });
 
+    it("dashaboard page works", done => {
+      agent
+        .get("/dashboard")
+        .expect("Content-Type", /html/)
+        .expect(200, done);
+    });
+
     it("edit page works", done => {
       agent
         .get("/edit")
