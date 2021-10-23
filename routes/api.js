@@ -24,8 +24,9 @@ router.post("/api/files/:site/:file", (req, res) => {
   res.json(files.save_file(req.params.site, req.params.file, req.body));
 })
 
-router.get("/api/changes", (req, res) => {
-  res.json(git.load_changes());
+router.get("/api/changes", async (req, res) => {
+  const changes = await git.load_changes();
+  res.json(changes);
 });
 
 module.exports = router;
