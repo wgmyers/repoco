@@ -159,15 +159,15 @@ async function load_file(filename, generator) {
         case "jekyll":
           const body = process_jekyll_md(filename, json.contents);
           easyMDE.value(body);
-          editor_vars.loaded = true;
-          editor_vars.dirty = false;
-          editor_vars.filename = filename;
-          editor_vars.generator = generator;
-          disable_buttons();
           break;
         default:
           easyMDE.value(json.contents);
       }
+      editor_vars.loaded = true;
+      editor_vars.dirty = false;
+      editor_vars.filename = filename;
+      editor_vars.generator = generator;
+      disable_buttons();
 
     } else {
       easyMDE.value(json.message);
