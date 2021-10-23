@@ -23,10 +23,11 @@ Git:
 * Implement method of auto-deploying on git push in a repo
 
 Config:
-* Support for multiple config files
+* Add git config section
 * Lose `pages` section - just replicate filetree under `files`
 
 Editor
+* Support for multiple config files
 * Have 'No File Loaded' msg when no file loaded, not an empty editor
 * Add filename in top banner in case we back out of new file load and tree no longer in sync with editor
 * Handle multiple editors (csv editor, code editor)
