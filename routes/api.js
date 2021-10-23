@@ -11,8 +11,8 @@ const site = require("../lib/site");
 const files = require("../lib/files");
 
 // API routes
-router.get("/api/sites", (req, res) => {
-  res.json(site.load_sites());
+router.get("/api/filetrees", (req, res) => {
+  res.json(site.load_filetrees());
 });
 
 router.get("/api/files/:site/:file", (req, res) => {

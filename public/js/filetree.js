@@ -24,7 +24,7 @@ $(function() {  // on page load
   $("#tree").fancytree({
     extensions: ["edit", "filter"],
     source: {
-      url: "/api/sites",
+      url: "/api/filetrees",
       cache: false
     },
 
