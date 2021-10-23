@@ -29,12 +29,6 @@ function make_list(items) {
 
 async function make_list_group() {
   const list = document.getElementById("sitelist");
-  const items = [
-    { name: "Peep", files: 20 },
-    { name: "Poop", files: 0 },
-    { name: "Parp", files: 1 }
-  ];
-
   const response = await fetch(`/api/changes`);
 
   if (response.ok) { // if HTTP-status is 200-299
