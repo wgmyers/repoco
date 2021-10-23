@@ -70,6 +70,7 @@ Editor
 * Need express-session solution for production deployment
 * Missing files not handled consistently depending on path presence
 * Hiding Jekyll headers makes sense, but a way to optionally edit parts of them might be nice
+* FIXED npm audit complaining about node-sass - moved to sass
 
 ## Git testing notes
 
@@ -323,3 +324,15 @@ jQuery. So, to remove it or not? Let's leave it for now, but maybe lose it later
 
 * DONE Basic scaffolding
 * DONE Basic layout of pages, w/ navbar
+
+## Sass notes
+
+node-sass deprecated, we use dart-sass now.
+
+Steps:
+
+1) `npm uninstall --save-dev node-sass`
+2) `npm install --save-dev sass`
+3) Change scss target in package.json to `"scss": "sass --watch scss:public/css",`
+
+Now npm audit stops complaining.
