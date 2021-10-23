@@ -5,7 +5,7 @@
   "main": "bin/www",
   "scripts": {
     "dev": "nodemon bin/www",
-    "scss": "node-sass --watch scss -o public/css",
+    "scss": "sass --watch scss:public/css",
     "lint": "eslint *.js lib/*.js public/js/*.js",
     "test": "mocha",
     "coverage": "nyc npm run test"
@@ -17,9 +17,9 @@
     "chai": "^4.3.4",
     "eslint": "^7.32.0",
     "mocha": "^9.1.3",
-    "node-sass": "^6.0.1",
     "nodemon": "^2.0.13",
     "nyc": "^15.1.0",
+    "sass": "^1.43.3",
     "supertest": "^6.1.6"
   },
   "dependencies": {
