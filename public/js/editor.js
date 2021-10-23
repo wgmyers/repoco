@@ -1,13 +1,13 @@
 // editor.js
 
-/*global EasyMDE */
+/*global EasyMDE,bootstrap */
 
 const editor_vars = {
   loaded: false,
   dirty: false,
   filename: undefined,
   generator: undefined
-}
+};
 
 // Create a markdown editor with (mostly) default settings
 // FIXME: sort settings out
@@ -74,8 +74,8 @@ function handle_save_click() {
 }
 
 function handle_revert_click() {
-  const modal_element = document.getElementById("modal-editor")
-  const modal = bootstrap.Modal.getOrCreateInstance(modal_element) // Returns a Bootstrap modal instance
+  const modal_element = document.getElementById("modal-editor");
+  const modal = bootstrap.Modal.getOrCreateInstance(modal_element); // Returns a Bootstrap modal instance
   const modal_title = document.getElementById("modal-title");
   const modal_text = document.getElementById("modal-text");
   const modal_ok = document.getElementById("modal-ok");
@@ -114,21 +114,21 @@ async function save_file(filename, generator) {
 
   // First we prepare a simple JSON payload, restoring Jekyll headers if needed
   switch (generator) {
-    case "jekyll":
-      text = jekyll_headers[filename] + "---\n\n" + easyMDE.value();
-      break;
-    default:
-      text = easyMDE.value();
+  case "jekyll":
+    text = jekyll_headers[filename] + "---\n\n" + easyMDE.value();
+    break;
+  default:
+    text = easyMDE.value();
   }
   const body = JSON.stringify({ contents: text });
 
   // Next we call the API with it
   // See https://stackoverflow.com/questions/29775797/fetch-post-json-data#29823632
   const response = await fetch(`/api/files/${filename}`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      "Accept": "application/json",
+      "Content-Type": "application/json"
     },
     body: body
   });
@@ -156,12 +156,11 @@ async function load_file(filename, generator) {
     const json = await response.json();
     if (json.status == "ok") {
       switch(generator) {
-        case "jekyll":
-          const body = process_jekyll_md(filename, json.contents);
-          easyMDE.value(body);
-          break;
-        default:
-          easyMDE.value(json.contents);
+      case "jekyll":
+        easyMDE.value(process_jekyll_md(filename, json.contents));
+        break;
+      default:
+        easyMDE.value(json.contents);
       }
       editor_vars.loaded = true;
       editor_vars.dirty = false;
@@ -180,8 +179,8 @@ async function load_file(filename, generator) {
 
 function load_file_event(event) {
   if (editor_vars.dirty) {
-    const modal_element = document.getElementById("modal-editor")
-    const modal = bootstrap.Modal.getOrCreateInstance(modal_element) // Returns a Bootstrap modal instance
+    const modal_element = document.getElementById("modal-editor");
+    const modal = bootstrap.Modal.getOrCreateInstance(modal_element); // Returns a Bootstrap modal instance
     const modal_title = document.getElementById("modal-title");
     const modal_text = document.getElementById("modal-text");
     const modal_ok = document.getElementById("modal-ok");
