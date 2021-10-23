@@ -24,6 +24,7 @@ Git:
 
 Config:
 * Support for multiple config files
+* Lose `pages` section - just replicate filetree under `files`
 
 Editor
 * Have 'No File Loaded' msg when no file loaded, not an empty editor
