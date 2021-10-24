@@ -5,7 +5,7 @@
 3. DONE Code tidy - logging, .env, favicon, routes outside app.js, simple tests etc
 4. DONE Edit page integrating file tree and MD editor for markdown w/ load/save file
 5. Add support for plaintext and csv editors
-6. Git integration - publish / mark edited but unpublished files
+6. DONE Git integration - publish / mark edited but unpublished files
 7. User login
 8. Security audit
 9. Actual Test suite
@@ -17,9 +17,6 @@
 
 Auto-deploy:
 * Implement method of auto-deploying on git push in a repo
-
-Git:
-* Implement publish (push), update (pull) and revert (reset)
 
 Config:
 * Lose `pages` section - just replicate editable portion of filetree under `files`
@@ -33,6 +30,7 @@ Editor
 
 ### DONE
 
+* Git backend implemented
 * Git integration front-end implemented
 * Add git config section
 * Dashboard site select LH menu implemented
@@ -70,6 +68,7 @@ Editor
 
 ## Issues
 
+* Much testing / error checking on git integration needed
 * Dashboard button toggles should be disabled if there are no changes. Or should they?
 * Load error triggers dirty file flag. Really annoying.
 * Load / save errors should pop up flash warning
@@ -83,6 +82,16 @@ Editor
 * Add Umami / stats integration
 * Add create / delete file
 * Add support for Jekyll blog posts w/ draft and preview
+
+## Git snowflake configuration
+
+Push options:
+
+Not supported by default.
+
+Run `git config receive.advertisePushOptions true` in each remote.
+
+See https://stackoverflow.com/questions/45400553/the-receiving-end-does-not-support-push-options#45400809
 
 ## Git testing notes
 
