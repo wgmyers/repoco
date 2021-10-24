@@ -19,16 +19,10 @@ Auto-deploy:
 * Implement method of auto-deploying on git push in a repo
 
 Git:
-* Config publish buttons via config file (extra git push option, view URL etc)
-* Implement publish button/s (aka commit all changes, lives on dashboard)
+* Implement publish (push), update (pull) and revert (reset)
 
 Config:
 * Lose `pages` section - just replicate editable portion of filetree under `files`
-
-Dashboard:
-* Implement Update button (does git pull, flash message gives result)
-* Implement publish buttons (git push with push option from config)
-* Implement reset button (git reset with correct option)
 
 Editor
 * Mark unpublished changed files in filetree
@@ -39,6 +33,7 @@ Editor
 
 ### DONE
 
+* Git integration front-end implemented
 * Add git config section
 * Dashboard site select LH menu implemented
 * Dashboard enable toggle switches implemented

@@ -147,18 +147,25 @@ function get_selected_site() {
 // Displays reponse as alert
 async function call_api(call, target = undefined) {
   let api_call;
+  let ok_msg;
   const site = get_selected_site();
   if (target) {
     api_call = `/api/${call}/${site}/${target}`
+    ok_msg = `Success! You have ${call}ed ${site} to ${target}`;
   } else {
     api_call = `/api/${call}/${site}`;
+    ok_msg = `Success! You have ${call}ed ${site}`;
   }
   const response = await fetch(api_call);
   if (response.ok) {
     const json = await response.json();
     if (json.status == "ok") {
       // API call succeeded.
-      // FIXME: Now update the page
+      display_alert("info", ok_msg);
+      // Update LH menu and reselect current site
+      make_list_group().then(() => {
+        select_site(site);
+      });
     } else {
       // Bugger
       display_alert("danger", `Error: ${json.error}`);
