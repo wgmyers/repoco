@@ -16,4 +16,13 @@ files:
     - '_data/videos.csv'
   config:
     - '_config.yml'
-generator: "jekyll"
+generator: 'jekyll'
+git:
+  type: 'local'
+  targets:
+    live:
+      push-option: "prod"
+      url: "https://www.vmyers.com/"
+    test:
+      push-option: "test"
+      url: "https://www.vmyers.com/test/"

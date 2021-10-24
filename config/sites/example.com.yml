@@ -8,3 +8,12 @@ files:
   notes:
     - 'fixme.txt'
 generator: "banana"
+git:
+  type: 'local'
+  targets:
+    live:
+      push-option: "prod"
+      url: "https://www.example.com/"
+    test:
+      push-option: "test"
+      url: "https://test.example.com/"
