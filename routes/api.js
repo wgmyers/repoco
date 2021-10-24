@@ -25,22 +25,22 @@ router.post("/api/files/:site/:file", (req, res) => {
 })
 
 router.get("/api/changes", async (req, res) => {
-  const changes = await git.load_changes();
+  const changes = await git.get_changes();
   res.json(changes);
 });
 
 router.get("/api/publish/:site/:target", async (req, res) => {
-  const result = await git.publish(req.params.site, req.params.target);
+  const result = await git.do_publish(req.params.site, req.params.target);
   res.json(result);
 });
 
 router.get("/api/update/:site", async (req, res) => {
-  const result = await git.update(req.params.site);
+  const result = await git.do_update(req.params.site);
   res.json(result);
 });
 
 router.get("/api/revert/:site", async (req, res) => {
-  const result = await git.revert(req.params.site);
+  const result = await git.do_revert(req.params.site);
   res.json(result);
 });
 
