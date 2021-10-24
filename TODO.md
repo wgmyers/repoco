@@ -4,12 +4,13 @@
 2. DONE Basic data structure outline
 3. DONE Code tidy - logging, .env, favicon, routes outside app.js, simple tests etc
 4. DONE Edit page integrating file tree and MD editor for markdown w/ load/save file
-5. Add support for plaintext and csv editors
-6. DONE Git integration - publish / mark edited but unpublished files
-7. User login
-8. Security audit
-9. Actual Test suite
-10. Deploy!
+5. DONE Git integration - publish / mark edited but unpublished files
+6. User login
+7. Security audit and code cleanup
+8. Proper test suite with reasonable coverage
+9. Deploy!
+10. Push to Github, register repoco.org, build documentation site etc
+11. Add support for plaintext and csv editors, other phase 2 features
 
 ## TASKS
 
@@ -21,12 +22,15 @@ Auto-deploy:
 Config:
 * Lose `pages` section - just replicate editable portion of filetree under `files`
 
-Editor
+Editor:
 * Mark unpublished changed files in filetree
 * Support arbitrary filetrees defined under files in config
 * Have 'No File Loaded' msg when no file loaded, not an empty editor
 * Add filename in top banner in case we back out of new file load and tree no longer in sync with editor
 * Handle multiple editors (csv editor, code editor)
+
+Help page:
+* Have one
 
 ### DONE
 
@@ -68,6 +72,7 @@ Editor
 
 ## Issues
 
+* Git push should grab user details from user
 * Much testing / error checking on git integration needed
 * Dashboard button toggles should be disabled if there are no changes. Or should they?
 * Load error triggers dirty file flag. Really annoying.
@@ -79,6 +84,8 @@ Editor
 
 ## Future Ideas
 
+* Internationalise
+* Accessiblity audit and fixes
 * Add Umami / stats integration
 * Add create / delete file
 * Add support for Jekyll blog posts w/ draft and preview
