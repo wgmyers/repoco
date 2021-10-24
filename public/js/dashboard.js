@@ -89,6 +89,8 @@ function select_site(site) {
   const site_list = document.getElementById("site-list");
   const header = document.getElementById("selected-site-header");
   const changed_files = document.getElementById("changed-files-list");
+  const live_link = document.getElementById("publish-live-link");
+  const test_link = document.getElementById("publish-test-link");
 
   // Construct list of changed files
   let file_list
@@ -102,6 +104,13 @@ function select_site(site) {
   header.innerHTML = site;
   changed_files.innerHTML = `Changed files: ${file_list}`;
 
+  // Update live and test site links
+  // FIXME: we ought not assume we can derive the links from site name like this
+  // Instead we need to read the config files and get them from there.
+  // BUT this will do for now.
+  live_link.setAttribute("href", `https://www.${site}/`);
+  test_link.setAttribute("href", `https://www.${site}/test/`);
+
   // Set correct list item active
   for (const item of site_list.children) {
     if (item.id == site) {
@@ -114,6 +123,8 @@ function select_site(site) {
   }
 }
 
+// handle_select_site
+// Event handler for LH menu clicks
 function handle_select_site(event) {
   select_site(this.id);
 }
