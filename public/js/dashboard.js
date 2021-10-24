@@ -2,40 +2,54 @@
 
 // Client-side code for the dashboard
 
+// A place to squirrel away the status of each site
+const sites_status = {}
+
 // make_list
 // Take a list of items each of form:
 // { name: NAME, files: NUMBER }
 // Create our list group and return it
+// Also populate sites_status.
+// FIXME: poor separation of concerns.
 function make_list(items) {
-  const list_group = document.createElement("ul");
+  const list_group = document.getElementById("site-list");
   list_group.classList.add("list-group");
   for (const it of items) {
-    const item = document.createElement("li");
-    item.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+    sites_status[it.name] = { active: false, files: it.files }
+    const item = document.createElement("a");
+    item.setAttribute("href", "#");
+    item.setAttribute("id", it.name);
+    item.classList.add("list-group-item", "list-group-item-action", "d-flex", "justify-content-between", "align-items-center");
     item.innerHTML = it.name;
     const badge = document.createElement("span");
-    if (it.files > 0) {
+    const num_files = it.files.length
+    if (num_files > 0) {
       badge.classList.add("badge", "bg-warning", "rounded-pill");
-      badge.innerHTML = it.files + (it.files > 1 ? " changes" : " change");
+      badge.innerHTML = num_files + (num_files > 1 ? " changes" : " change");
     } else {
       badge.classList.add("badge", "bg-info", "rounded-pill");
       badge.innerHTML = "Up to date";
     }
     item.appendChild(badge);
+    item.addEventListener("click", handle_select_site, this);
     list_group.appendChild(item);
   }
-  return list_group;
 }
 
+// make_list_group
+// FIXME: poorly named function.
+// Calls API to get latest changes for all available sites
+// If ok, calls make_list to create the LH menu
+// This function (also poorly named) also keeps a copy of the API result
 async function make_list_group() {
-  const list = document.getElementById("sitelist");
+  const list = document.getElementById("site-list");
   const response = await fetch("/api/changes");
 
   if (response.ok) { // if HTTP-status is 200-299
     // get the response body (the method explained below)
     const json = await response.json();
     if (json.status == "ok") {
-      list.appendChild(make_list(json.changes));
+      make_list(json.changes);
     } else  {
       // JSON reports error
       const err_msg = document.createElement("div");
@@ -66,8 +80,60 @@ function handle_toggle(event) {
   }
 }
 
-// Construct LH menu
-window.onload = make_list_group();
+// select site
+// Mark a site as active in sites_status
+// Update dashboard to display site name, list of changed files
+// Update LH menu to mark correct site active
+// Also update live and publish links
+function select_site(site) {
+  const site_list = document.getElementById("site-list");
+  const header = document.getElementById("selected-site-header");
+  const changed_files = document.getElementById("changed-files-list");
+
+  // Construct list of changed files
+  let file_list
+  if(sites_status[site].files.length > 0) {
+    file_list = sites_status[site].files.join(", ");
+  } else {
+    file_list = "None"
+  }
+
+  // Update display
+  header.innerHTML = site;
+  changed_files.innerHTML = `Changed files: ${file_list}`;
+
+  // Set correct list item active
+  for (const item of site_list.children) {
+    if (item.id == site) {
+      item.classList.add("active");
+      sites_status[site].active = true;
+    } else {
+      item.classList.remove("active");
+      sites_status[site].active = false;
+    }
+  }
+}
+
+function handle_select_site(event) {
+  select_site(this.id);
+}
+
+// make_dashboard
+// First make the LH menu
+// Then, if possible, select the first site on it
+function make_dashboard() {
+  // make_list_group makes an async API call so we must wait
+  make_list_group().then(() => {
+    // Select first site in sites, if we have any
+    if(Object.keys(sites_status).length > 0) {
+      select_site(Object.keys(sites_status)[0]);
+    }
+
+  });
+}
+
+// Build page
+window.onload = make_dashboard();
 
 // Event handlers for enable-toggle switches
 const toggles = document.querySelectorAll(".enable-toggle");

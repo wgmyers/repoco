@@ -8,7 +8,8 @@ block layout-content
     .container
       .row
         .col-lg-3
-          include sites.pug
+          h1 Sites
+          div(id="site-list")
         .col-lg-9
           .row
             .col-md-9
@@ -16,7 +17,8 @@ block layout-content
             .col-md-3.text-end.align-self-center
               button.btn.btn-secondary.mx-2(type=button disabled=true id="status-update") Update
           .row
-            h2.text-center(id="selected-site-header") vmyers.com
+            h2.text-center(id="selected-site-header") No Site Selected
+            p(id="changed-files-list").text-center Changed files: None
             .row.row-cols-1.row-cols-lg-3.g-4
               .col
                 .card.border-success
@@ -25,7 +27,7 @@ block layout-content
                     button.btn.btn-success.m-5.p-3(type="button" disabled=true id="publish-live-btn") Publish Live
                     p Make your changes live
                     p
-                      a(href="https://www.vmyers.com/" id="publish-live-link") View live site
+                      a(href="#" id="publish-live-link") View live site
                   .card-footer
                     .form-check.form-switch
                       input.form-check-input.enable-toggle(type="checkbox" id="publish-live-check")
@@ -37,7 +39,7 @@ block layout-content
                       button.btn.btn-warning.m-5.p-3(type="button" disabled=true id="publish-test-btn") Publish Test
                       p Publish changes only to test
                       p
-                        a(href="https://www.vmyers.com/test/" id="publish-test-link") View test site
+                        a(href="#" id="publish-test-link") View test site
                     .card-footer
                       .form-check.form-switch
                         input.form-check-input.enable-toggle(type="checkbox" id="publish-test-check")

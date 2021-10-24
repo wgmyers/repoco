@@ -34,6 +34,8 @@ Editor
 
 ### DONE
 
+* Dashboard site select LH menu implemented
+* Dashboard enable toggle switches implemented
 * Design dashboard page with status info and publish buttons
 * Implement function that returns list of files modified but not yet committed
 * Support for multiple config files
@@ -82,8 +84,8 @@ Editor
 
 ## Dashboard notes:
 
-* Implement enable switches
-* Implement site selection from LH menu
+* DONE Implement enable switches
+* DONE Implement site selection from LH menu
 * Implement Update button (does git pull, flash message gives result)
 * Implement publish buttons (git push with push option from config)
 * Implement reset button (git reset with correct option)
