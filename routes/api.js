@@ -29,4 +29,19 @@ router.get("/api/changes", async (req, res) => {
   res.json(changes);
 });
 
+router.get("/api/publish/:site/:target", (req, res) => {
+  const result = await git.publish(req.params.site, req.params.target);
+  res.json(result);
+});
+
+router.get("/api/update/:site", (req, res) => {
+  const result = await git.update(req.params.site);
+  res.json(result);
+});
+
+router.get("/api/revert/:site", (req, res) => {
+  const result = await git.revert(req.params.site);
+  res.json(result);
+});
+
 module.exports = router;

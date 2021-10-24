@@ -140,12 +140,12 @@ function handle_publish(event) {
 
 function handle_update(event) {
   console.log("FIXME: handle_update not implemented");
-    console.log(this.id);
+  console.log(this.id);
 }
 
 function handle_revert(event) {
   console.log("FIXME: handle_revert not implemented");
-    console.log(this.id);
+  console.log(this.id);
 }
 
 // Main
