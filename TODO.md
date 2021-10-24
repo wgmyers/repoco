@@ -19,7 +19,6 @@ Auto-deploy:
 * Implement method of auto-deploying on git push in a repo
 
 Git:
-* Design dashboard page with status info and publish buttons (poss Umami integration?)
 * Config publish buttons via config file (extra git push option, view URL etc)
 * Implement publish button/s (aka commit all changes, lives on dashboard)
 
@@ -35,6 +34,7 @@ Editor
 
 ### DONE
 
+* Design dashboard page with status info and publish buttons
 * Implement function that returns list of files modified but not yet committed
 * Support for multiple config files
 * Make local repo an actual repo so we can test our local git commands
@@ -73,6 +73,12 @@ Editor
 * Missing files not handled consistently depending on path presence
 * Hiding Jekyll headers makes sense, but a way to optionally edit parts of them might be nice
 * FIXED npm audit complaining about node-sass - moved to dart-sass
+
+## Future Ideas
+
+* Add Umami / stats integration
+* Add create / delete file
+* Add support for Jekyll blog posts w/ draft and preview
 
 ## Git testing notes
 
