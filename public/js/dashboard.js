@@ -111,6 +111,26 @@ function select_site(site) {
   }
 }
 
+//<div class="alert alert-warning alert-dismissible fade show" role="alert">
+//  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+//  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+//</div>
+
+function display_alert(type, msg) {
+  const alert_holder = document.getElementById("alert-holder");
+  const alert = document.createElement("div");
+  alert.classList.add("alert", `alert-${type}`, "alert-dismissible", "fade", "show");
+  alert.setAttribute("role", "alert");
+  const button = document.createElement("button");
+  button.classList.add("btn-close");
+  button.setAttribute("type", "button");
+  button.setAttribute("data-bs-dismiss", "alert");
+  button.setAttribute("aria-label", "Close");
+  alert.innerHTML = msg;
+  alert.appendChild(button);
+  alert_holder.appendChild(alert);
+}
+
 // Event handlers
 
 // handle_toggle
@@ -134,18 +154,15 @@ function handle_select_site(event) {
 }
 
 function handle_publish(event) {
-  console.log("FIXME: handle_publish not implemented");
-  console.log(this.id);
+  display_alert("danger", `FIXME: handle_publish not implemented from ${this.id}`);
 }
 
 function handle_update(event) {
-  console.log("FIXME: handle_update not implemented");
-  console.log(this.id);
+  display_alert("warning", `FIXME: handle_publish not implemented from ${this.id}`);
 }
 
 function handle_revert(event) {
-  console.log("FIXME: handle_revert not implemented");
-  console.log(this.id);
+  display_alert("dark", `FIXME: handle_publish not implemented from ${this.id}`);
 }
 
 // Main
