@@ -9,7 +9,7 @@
 7. Security audit and code cleanup
 8. Proper test suite with reasonable coverage
 9. Deploy!
-10. Push to Github, register repoco.org, build documentation site etc
+10. Make Github repo public, register repoco.org, build documentation site etc
 11. Add support for plaintext and csv editors, other phase 2 features
 
 ## TASKS
@@ -34,6 +34,7 @@ Help page:
 
 ### DONE
 
+* Pushed to Github. Private repo for now though.
 * Git backend implemented
 * Git integration front-end implemented
 * Add git config section
