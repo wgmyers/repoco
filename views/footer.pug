@@ -1,6 +1,12 @@
 - const version = process.env.npm_package_version
 
 footer.footer.mt-auto.py-3.bg-light
-  .container.text-center
-    span.text-muted.fw-light.fs-6 Repoco version #{version} - (c) 2021 - 
-      a(href="https://www.yutani.org/") Wayne Myers
+  .row.row-cols-3.w-100
+    .col
+    .col
+      .container.text-center
+        span.text-muted.fw-light.fs-6 (c) 2021 
+          a(href="https://www.yutani.org/") Yutani
+    .col
+      .container.text-end
+        span.text-muted.fw-light-fs-6 v#{version}
