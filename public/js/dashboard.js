@@ -111,11 +111,10 @@ function select_site(site) {
   }
 }
 
-//<div class="alert alert-warning alert-dismissible fade show" role="alert">
-//  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-//  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-//</div>
-
+// display_alert
+// See https://getbootstrap.com/docs/5.0/components/alerts/#dismissing
+// I'm not sure this is the easiest way to do this nor the most elegant, but
+// it works, so fine.
 function display_alert(type, msg) {
   const alert_holder = document.getElementById("alert-holder");
   const alert = document.createElement("div");
@@ -129,6 +128,45 @@ function display_alert(type, msg) {
   alert.innerHTML = msg;
   alert.appendChild(button);
   alert_holder.appendChild(alert);
+}
+
+function get_selected_site() {
+  let result;
+  for (const key of Object.keys(sites_status)) {
+    if (sites_status[key].active == true) {
+      result = key;
+      break;
+    }
+  }
+  return result;
+}
+
+// call_api
+// Takes an API call and optional target as parameter
+// Calls the API publish command with current site, if publish, target
+// Displays reponse as alert
+async function call_api(call, target = undefined) {
+  let api_call;
+  const site = get_selected_site();
+  if (target) {
+    api_call = `/api/${call}/${site}/${target}`
+  } else {
+    api_call = `/api/${call}/${site}`;
+  }
+  const response = await fetch(api_call);
+  if (response.ok) {
+    const json = await response.json();
+    if (json.status == "ok") {
+      // API call succeeded.
+      // FIXME: Now update the page
+    } else {
+      // Bugger
+      display_alert("danger", `Error: ${json.error}`);
+    }
+  } else {
+    // Fetch failed
+    display_alert("danger", `Error: API call ${api_call} failed`);
+  }
 }
 
 // Event handlers
@@ -153,16 +191,18 @@ function handle_select_site(event) {
   select_site(this.id);
 }
 
+// Handlers for git interface buttons
 function handle_publish(event) {
-  display_alert("danger", `FIXME: handle_publish not implemented from ${this.id}`);
+  const target = this.id.slice(8, 12);
+  call_api("publish", target);
 }
 
 function handle_update(event) {
-  display_alert("warning", `FIXME: handle_publish not implemented from ${this.id}`);
+  call_api("update");
 }
 
 function handle_revert(event) {
-  display_alert("dark", `FIXME: handle_publish not implemented from ${this.id}`);
+  call_api("revert");
 }
 
 // Main
