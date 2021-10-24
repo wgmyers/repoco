@@ -90,6 +90,7 @@ Help page:
 * Add Umami / stats integration
 * Add create / delete file
 * Add support for Jekyll blog posts w/ draft and preview
+* Support non local repos eg Github etc
 
 ## Git snowflake configuration
 
