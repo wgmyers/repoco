@@ -24,9 +24,15 @@ Git:
 
 Config:
 * Add git config section
-* Lose `pages` section - just replicate filetree under `files`
+* Lose `pages` section - just replicate editable portion of filetree under `files`
+
+Dashboard:
+* Implement Update button (does git pull, flash message gives result)
+* Implement publish buttons (git push with push option from config)
+* Implement reset button (git reset with correct option)
 
 Editor
+* Mark unpublished changed files in filetree
 * Support arbitrary filetrees defined under files in config
 * Have 'No File Loaded' msg when no file loaded, not an empty editor
 * Add filename in top banner in case we back out of new file load and tree no longer in sync with editor
@@ -69,6 +75,7 @@ Editor
 
 ## Issues
 
+* Dashboard button toggles should be disabled if there are no changes. Or should they?
 * Load error triggers dirty file flag. Really annoying.
 * Load / save errors should pop up flash warning
 * Need express-session solution for production deployment
@@ -81,14 +88,6 @@ Editor
 * Add Umami / stats integration
 * Add create / delete file
 * Add support for Jekyll blog posts w/ draft and preview
-
-## Dashboard notes:
-
-* DONE Implement enable switches
-* DONE Implement site selection from LH menu
-* Implement Update button (does git pull, flash message gives result)
-* Implement publish buttons (git push with push option from config)
-* Implement reset button (git reset with correct option)
 
 ## Git testing notes
 
