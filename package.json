@@ -2,6 +2,7 @@
   "name": "repoco",
   "version": "0.1.1",
   "description": "A minimalist headless CMS with local git repo support",
+  "repository": "github:wgmyers/repoco",
   "main": "bin/www",
   "scripts": {
     "dev": "nodemon bin/www",
