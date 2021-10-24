@@ -7,15 +7,46 @@ block layout-content
   main.flex-shrink-0
     .container
       .row
-        .col-md-3
+        .col-lg-3
           include sites.pug
-        .col-md-9
+        .col-lg-9
           .row
             .col-md-9
-              h1 Status
+              h1 Controls
             .col-md-3.text-end.align-self-center
               button.btn.btn-secondary.mx-2(type=button disabled=true id="status-update") Update
           .row
-            p This is where the publish buttons go
+            h2.text-center vmyers.com
+            .row.row-cols-1.row-cols-lg-3.g-4
+              .col
+                .card.border-success
+                  h5.card-header Publish To Live
+                  .card-body.text-center
+                    button.btn.btn-success.m-5.p-3(type="button" disabled=true id="publish-live-btn") Publish Live
+                    p Make your changes live
+                  .card-footer
+                    .form-check.form-switch
+                      input.form-check-input(type="checkbox" id="publish-live-check")
+                      label.form-check-label(for="publish-live-check") Enable
+              .col
+                .card.border-warning
+                    h5.card-header Publish To Test
+                    .card-body.text-center
+                      button.btn.btn-warning.m-5.p-3(type="button" disabled=true id="publish-test-btn") Publish Test
+                      p Publish changes only to test
+                    .card-footer
+                      .form-check.form-switch
+                        input.form-check-input(type="checkbox" id="publish-test-check")
+                        label.form-check-label(for="publish-test-check") Enable
+              .col
+                .card.border-danger
+                  h5.card-header Revert Changes
+                  .card-body.text-center
+                    button.btn.btn-danger.m-5.p-3(type="button" disabled=true id="revert-btn") Revert Changes
+                    p Undo all unpublished changes
+                  .card-footer
+                    .form-check.form-switch
+                      input.form-check-input(type="checkbox" id="revert-check")
+                      label.form-check-label(for="publish-live-check") Enable
   
   
