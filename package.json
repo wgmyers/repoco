@@ -3,6 +3,11 @@
   "version": "0.1.1",
   "description": "A minimalist headless CMS with local git repo support",
   "repository": "github:wgmyers/repoco",
+  "author": {
+    "name": "Wayne Myers",
+    "email": "wgm@yutani.org",
+    "url": "https://www.yutani.org"
+  },
   "main": "bin/www",
   "scripts": {
     "dev": "nodemon bin/www",
