@@ -3,7 +3,7 @@
 // Client-side code for the dashboard
 
 // A place to squirrel away the status of each site
-const sites_status = {}
+const sites_status = {};
 
 // make_list
 // Take a list of items each of form:
@@ -16,14 +16,14 @@ function make_list(items) {
   list_group.innerHTML = ""; // clear out any existing children
   list_group.classList.add("list-group");
   for (const it of items) {
-    sites_status[it.name] = { active: false, files: it.files }
+    sites_status[it.name] = { active: false, files: it.files };
     const item = document.createElement("a");
     item.setAttribute("href", "#");
     item.setAttribute("id", it.name);
     item.classList.add("list-group-item", "list-group-item-action", "d-flex", "justify-content-between", "align-items-center");
     item.innerHTML = it.name;
     const badge = document.createElement("span");
-    const num_files = it.files.length
+    const num_files = it.files.length;
     if (num_files > 0) {
       badge.classList.add("badge", "bg-warning", "rounded-pill");
       badge.innerHTML = num_files + (num_files > 1 ? " changes" : " change");
@@ -82,11 +82,11 @@ function select_site(site) {
   const test_link = document.getElementById("publish-test-link");
 
   // Construct list of changed files
-  let file_list
+  let file_list;
   if(sites_status[site].files.length > 0) {
     file_list = sites_status[site].files.join(", ");
   } else {
-    file_list = "None"
+    file_list = "None";
   }
 
   // Update display
@@ -151,7 +151,7 @@ async function call_api(call, target = undefined) {
   let ok_msg;
   const site = get_selected_site();
   if (target) {
-    api_call = `/api/${call}/${site}/${target}`
+    api_call = `/api/${call}/${site}/${target}`;
     ok_msg = `Success! You have ${call}ed ${site} to ${target}`;
   } else {
     api_call = `/api/${call}/${site}`;
@@ -189,7 +189,7 @@ async function call_api(call, target = undefined) {
 
 // handle_toggle
 // Event handler for enabler toggles
-function handle_toggle(event) {
+function handle_toggle() {
   // Get the relevant button
   const btn = document.getElementById(this.id.replace("check", "btn"));
   if (this.checked) {
@@ -203,21 +203,21 @@ function handle_toggle(event) {
 
 // handle_select_site
 // Event handler for LH menu clicks
-function handle_select_site(event) {
+function handle_select_site() {
   select_site(this.id);
 }
 
 // Handlers for git interface buttons
-function handle_publish(event) {
+function handle_publish() {
   const target = this.id.slice(8, 12);
   call_api("publish", target);
 }
 
-function handle_update(event) {
+function handle_update() {
   call_api("update");
 }
 
-function handle_revert(event) {
+function handle_revert() {
   call_api("revert");
 }
 
@@ -242,17 +242,17 @@ window.onload = make_dashboard();
 
 // Event handlers for enable-toggle switches
 const toggles = document.querySelectorAll(".enable-toggle");
-toggles.forEach(tog => tog.addEventListener('click', handle_toggle));
+toggles.forEach(tog => tog.addEventListener("click", handle_toggle));
 
 // Event handlers for dashboard buttons
 const publish_live = document.getElementById("publish-live-btn");
-publish_live.addEventListener('click', handle_publish);
+publish_live.addEventListener("click", handle_publish);
 
 const publish_test = document.getElementById("publish-test-btn");
-publish_test.addEventListener('click', handle_publish);
+publish_test.addEventListener("click", handle_publish);
 
 const revert = document.getElementById("revert-btn");
-revert.addEventListener('click', handle_revert);
+revert.addEventListener("click", handle_revert);
 
 const update = document.getElementById("update-btn");
-update.addEventListener('click', handle_update);
+update.addEventListener("click", handle_update);
