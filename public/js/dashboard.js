@@ -31,7 +31,7 @@ function make_list(items) {
       badge.innerHTML = "Up to date";
     }
     item.appendChild(badge);
-    item.addEventListener("click", handle_select_site, this);
+    item.addEventListener("click", handle_select_site);
     list_group.appendChild(item);
   }
 }
@@ -66,19 +66,7 @@ async function make_list_group() {
   }
 }
 
-// handle_toggle
-// Event handler for enabler toggles
-function handle_toggle(event) {
-  // Get the relevant button
-  const btn = document.getElementById(this.id.replace("check", "btn"));
-  if (this.checked) {
-    // Enable the button
-    btn.removeAttribute("disabled");
-  } else {
-    // Disable the button
-    btn.setAttribute("disabled", true);
-  }
-}
+
 
 // select site
 // Mark a site as active in sites_status
@@ -123,11 +111,44 @@ function select_site(site) {
   }
 }
 
+// Event handlers
+
+// handle_toggle
+// Event handler for enabler toggles
+function handle_toggle(event) {
+  // Get the relevant button
+  const btn = document.getElementById(this.id.replace("check", "btn"));
+  if (this.checked) {
+    // Enable the button
+    btn.removeAttribute("disabled");
+  } else {
+    // Disable the button
+    btn.setAttribute("disabled", true);
+  }
+}
+
 // handle_select_site
 // Event handler for LH menu clicks
 function handle_select_site(event) {
   select_site(this.id);
 }
+
+function handle_publish(event) {
+  console.log("FIXME: handle_publish not implemented");
+  console.log(this.id);
+}
+
+function handle_update(event) {
+  console.log("FIXME: handle_update not implemented");
+    console.log(this.id);
+}
+
+function handle_revert(event) {
+  console.log("FIXME: handle_revert not implemented");
+    console.log(this.id);
+}
+
+// Main
 
 // make_dashboard
 // First make the LH menu
@@ -148,4 +169,17 @@ window.onload = make_dashboard();
 
 // Event handlers for enable-toggle switches
 const toggles = document.querySelectorAll(".enable-toggle");
-toggles.forEach(tog => tog.addEventListener('click', handle_toggle, this));
+toggles.forEach(tog => tog.addEventListener('click', handle_toggle));
+
+// Event handlers for dashboard buttons
+const publish_live = document.getElementById("publish-live-btn");
+publish_live.addEventListener('click', handle_publish);
+
+const publish_test = document.getElementById("publish-test-btn");
+publish_test.addEventListener('click', handle_publish);
+
+const revert = document.getElementById("revert-btn");
+revert.addEventListener('click', handle_revert);
+
+const update = document.getElementById("update-btn");
+update.addEventListener('click', handle_update);
