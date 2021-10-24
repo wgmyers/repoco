@@ -24,6 +24,8 @@ block layout-content
                   .card-body.text-center
                     button.btn.btn-success.m-5.p-3(type="button" disabled=true id="publish-live-btn") Publish Live
                     p Make your changes live
+                    p
+                      a(href="https://www.vmyers.com/" id="publish-live-link") View live site
                   .card-footer
                     .form-check.form-switch
                       input.form-check-input(type="checkbox" id="publish-live-check")
@@ -34,12 +36,14 @@ block layout-content
                     .card-body.text-center
                       button.btn.btn-warning.m-5.p-3(type="button" disabled=true id="publish-test-btn") Publish Test
                       p Publish changes only to test
+                      p
+                        a(href="https://www.vmyers.com/test/" id="publish-test-link") View test site
                     .card-footer
                       .form-check.form-switch
                         input.form-check-input(type="checkbox" id="publish-test-check")
                         label.form-check-label(for="publish-test-check") Enable
               .col
-                .card.border-danger
+                .card.border-danger.h-100
                   h5.card-header Revert Changes
                   .card-body.text-center
                     button.btn.btn-danger.m-5.p-3(type="button" disabled=true id="revert-btn") Revert Changes
