@@ -23,7 +23,6 @@ Git:
 * Implement publish button/s (aka commit all changes, lives on dashboard)
 
 Config:
-* Add git config section
 * Lose `pages` section - just replicate editable portion of filetree under `files`
 
 Dashboard:
@@ -40,6 +39,7 @@ Editor
 
 ### DONE
 
+* Add git config section
 * Dashboard site select LH menu implemented
 * Dashboard enable toggle switches implemented
 * Design dashboard page with status info and publish buttons
