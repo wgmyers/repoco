@@ -80,6 +80,14 @@ Editor
 * Add create / delete file
 * Add support for Jekyll blog posts w/ draft and preview
 
+## Dashboard notes:
+
+* Implement enable switches
+* Implement site selection from LH menu
+* Implement Update button (does git pull, flash message gives result)
+* Implement publish buttons (git push with push option from config)
+* Implement reset button (git reset with correct option)
+
 ## Git testing notes
 
 `assets/testrepos` contains our test local bare repos

@@ -52,4 +52,23 @@ async function make_list_group() {
   }
 }
 
+// handle_toggle
+// Event handler for enabler toggles
+function handle_toggle(event) {
+  // Get the relevant button
+  const btn = document.getElementById(this.id.replace("check", "btn"));
+  if (this.checked) {
+    // Enable the button
+    btn.removeAttribute("disabled");
+  } else {
+    // Disable the button
+    btn.setAttribute("disabled", true);
+  }
+}
+
+// Construct LH menu
 window.onload = make_list_group();
+
+// Event handlers for enable-toggle switches
+const toggles = document.querySelectorAll(".enable-toggle");
+toggles.forEach(tog => tog.addEventListener('click', handle_toggle, this));
