@@ -1,6 +1,6 @@
 {
   "name": "repoco",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A minimalist headless CMS with local git repo support",
   "main": "bin/www",
   "scripts": {
