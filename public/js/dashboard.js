@@ -13,6 +13,7 @@ const sites_status = {}
 // FIXME: poor separation of concerns.
 function make_list(items) {
   const list_group = document.getElementById("site-list");
+  list_group.innerHTML = ""; // clear out any existing children
   list_group.classList.add("list-group");
   for (const it of items) {
     sites_status[it.name] = { active: false, files: it.files }
@@ -103,10 +104,10 @@ function select_site(site) {
   for (const item of site_list.children) {
     if (item.id == site) {
       item.classList.add("active");
-      sites_status[site].active = true;
+      sites_status[item.id].active = true;
     } else {
       item.classList.remove("active");
-      sites_status[site].active = false;
+      sites_status[item.id].active = false;
     }
   }
 }
@@ -156,24 +157,32 @@ async function call_api(call, target = undefined) {
     api_call = `/api/${call}/${site}`;
     ok_msg = `Success! You have ${call}ed ${site}`;
   }
-  const response = await fetch(api_call);
-  if (response.ok) {
-    const json = await response.json();
-    if (json.status == "ok") {
-      // API call succeeded.
-      display_alert("info", ok_msg);
-      // Update LH menu and reselect current site
-      make_list_group().then(() => {
-        select_site(site);
-      });
+  try {
+    const response = await fetch(api_call);
+    if (response.ok) {
+      const json = await response.json();
+      if (json.status == "ok") {
+        // API call succeeded. Update message if we got one
+        if(json.message) {
+          ok_msg = json.message;
+        }
+        display_alert("info", ok_msg);
+        // Update LH menu and reselect current site
+        make_list_group().then(() => {
+          select_site(site);
+        });
+      } else {
+        // Bugger
+        display_alert("danger", `Error: ${json.error}`);
+      }
     } else {
-      // Bugger
-      display_alert("danger", `Error: ${json.error}`);
+      // Fetch failed
+      display_alert("danger", `Error: API call ${api_call} failed`);
     }
-  } else {
-    // Fetch failed
-    display_alert("danger", `Error: API call ${api_call} failed`);
+  } catch {
+    display_alert("danger", `Error: Could not call ${api_call}`);
   }
+
 }
 
 // Event handlers
