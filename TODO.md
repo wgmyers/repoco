@@ -6,7 +6,7 @@
 4. DONE Edit page integrating file tree and MD editor for markdown w/ load/save file
 5. DONE Git integration - publish / mark edited but unpublished files
 6. User login
-7. Security audit and code cleanup
+7. Security audit and code cleanup - include proper session handling
 8. Proper test suite with reasonable coverage
 9. Deploy!
 10. Make Github repo public, register repoco.org, build documentation site etc
@@ -15,6 +15,27 @@
 ## TASKS
 
 ### DOING
+
+Authentication:
+* Add mongoose, passport, passport-local, passport-local-mongoose
+* Add Users.js to new tl models directory from bandmin
+* Modify Users.js from bandmin version so it is more useful for this use-case
+  - users have a list of sites they can edit
+  - how to set user status? separate flags for 'admin' and 'active' or a single
+    user type that is either 'admin', 'active' or 'disabled' ? Does it matter?
+  - maybe add a 'settings' field we can populate later?
+* Add passport and mongoose code from bandmin
+* Do we need to create the repoco and repoco_test dbs manually or are they autogenned? I forget.
+* Add routes/auth.js with login and logout routes
+* Add create users script that creates 'wayne' and 'val' users - DO NOT COMMIT THIS,
+  but do commit an example version of it with different credentials
+* Make it so / displays a login page if no user is found - this page also needs
+  to clobber the exiting top banner nav so all you can do is log in
+* Make it so all existing pages only display if a user is found AND only display relevant sites
+* Make it so all api routes only respond if a user is found AND has access to that site
+* Add logout to top banner nav
+* Add a settings page where you can change eg password and email (?)
+* Add password reset mechanism (requires Eric to divulge email sending secrets)
 
 Auto-deploy:
 * Implement method of auto-deploying on git push in a repo
