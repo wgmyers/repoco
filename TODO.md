@@ -17,7 +17,7 @@
 ### DOING
 
 Authentication:
-* Add mongoose, passport, passport-local, passport-local-mongoose
+
 * Add Users.js to new tl models directory from bandmin
 * Modify Users.js from bandmin version so it is more useful for this use-case
   - users have a list of sites they can edit
@@ -55,6 +55,7 @@ Help page:
 
 ### DONE
 
+* Add mongoose, passport, passport-local, passport-local-mongoose
 * Pushed to Github. Private repo for now though.
 * Git backend implemented
 * Git integration front-end implemented
