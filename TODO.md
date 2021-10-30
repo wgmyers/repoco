@@ -18,12 +18,6 @@
 
 Authentication:
 
-* Add Users.js to new tl models directory from bandmin
-* Modify Users.js from bandmin version so it is more useful for this use-case
-  - users have a list of sites they can edit
-  - how to set user status? separate flags for 'admin' and 'active' or a single
-    user type that is either 'admin', 'active' or 'disabled' ? Does it matter?
-  - maybe add a 'settings' field we can populate later?
 * Add passport and mongoose code from bandmin
 * Do we need to create the repoco and repoco_test dbs manually or are they autogenned? I forget.
 * Add routes/auth.js with login and logout routes
@@ -55,6 +49,7 @@ Help page:
 
 ### DONE
 
+* Add suitable Users.js model
 * Add mongoose, passport, passport-local, passport-local-mongoose
 * Pushed to Github. Private repo for now though.
 * Git backend implemented

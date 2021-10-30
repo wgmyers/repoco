@@ -11,17 +11,17 @@ const path = require("path");
 const favicon = require("serve-favicon");
 const logger = require("morgan");
 const flash = require("connect-flash");
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const session = require("express-session");
-// const passport = require("passport");
-// const LocalStrategy = require("passport-local").Strategy;
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 
 /**
  * App Variables
  */
 
 const index_routes = require("./routes/index");
-// const auth_routes = require("./routes/auth");
+const auth_routes = require("./routes/auth");
 const user_routes = require("./routes/user");
 const api_routes = require("./routes/api");
 const app = express();
@@ -81,7 +81,7 @@ app.use(express.json());
 app.use("/", index_routes);
 
 // When we implement auth, here will live /login, /logout
-// app.use("/", auth_routes);
+app.use("/", auth_routes);
 
 // handle pages requiring login
 app.use("/", user_routes);
