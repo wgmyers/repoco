@@ -18,9 +18,6 @@
 
 Authentication:
 
-* Add passport and mongoose code from bandmin
-* Do we need to create the repoco and repoco_test dbs manually or are they autogenned? I forget.
-* Add routes/auth.js with login and logout routes
 * Add create users script that creates 'wayne' and 'val' users - DO NOT COMMIT THIS,
   but do commit an example version of it with different credentials
 * Make it so / displays a login page if no user is found - this page also needs
@@ -49,6 +46,9 @@ Help page:
 
 ### DONE
 
+* Manually create repoco and repoco_test db users
+* Add routes/auth.js with login and logout routes
+* Add passport and mongoose code from bandmin
 * Add suitable Users.js model
 * Add mongoose, passport, passport-local, passport-local-mongoose
 * Pushed to Github. Private repo for now though.
@@ -87,6 +87,23 @@ Help page:
 * Set up node/express scaffolding
 
 # NOTES
+
+## DB
+
+The 'repoco' user needs to be set up (also the repoco_test user) manually.
+
+The following commands in Mongo shell does this:
+
+```
+> use database
+> db.createUser({
+  user: "username",
+  pwd: "password",
+  roles:[{
+    role: "readWrite",
+    db:"dbname"}]
+})
+```
 
 ## Issues
 

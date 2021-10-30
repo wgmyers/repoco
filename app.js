@@ -89,14 +89,17 @@ passport.deserializeUser(User.deserializeUser());
 
 // See https://mongoosejs.com/docs/deprecations.html
 // also https://www.freecodecamp.org/news/mongodb-mongoose-node-tutorial/
+// NB: Not sure why commented out options won't work any more.
+// FIXME: Find out.
 mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@localhost/${process.env.DB_NAME}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false
+//  useCreateIndex: true,
+//  useFindAndModify: false
 }, function(err) {
   if (err) {
     console.error("Could not connect to mongodb on localhost - please check mongodb is running.");
+    console.dir(err);
   }
 });
 
