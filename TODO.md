@@ -73,6 +73,9 @@ Help page:
 
 ## Issues
 
+* After publishing to test, dashboard says 'up to date', but we have changes
+not yet made live. This might seem confusing to users. We should track changes
+published to test but not to live and report them on the dashboard. But how?
 * Git push should grab user details from user
 * Much testing / error checking on git integration needed
 * Dashboard button toggles should be disabled if there are no changes. Or should they?
