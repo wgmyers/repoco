@@ -74,6 +74,33 @@ app.use(flash());
 app.use(express.json());
 
 /**
+ * Passport configuration
+ */
+app.use(passport.initialize());
+app.use(passport.session());
+const User = require("./models/Users");
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+/**
+ * Database connection
+ */
+
+// See https://mongoosejs.com/docs/deprecations.html
+// also https://www.freecodecamp.org/news/mongodb-mongoose-node-tutorial/
+mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@localhost/${process.env.DB_NAME}`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+}, function(err) {
+  if (err) {
+    console.error("Could not connect to mongodb on localhost - please check mongodb is running.");
+  }
+});
+
+/**
  * Routes Definitions
  */
 
