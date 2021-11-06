@@ -2,9 +2,30 @@ extends layout
 
 block layout-content
   main.flex-shrink-0
-    .container
-      h1 Repoco
-      p If logged in, this page should redirect to the dashboard.
-      p If not logged in, this page should provide a log in form.
+    .container.vh-100
+      .row.h-25.align-items-center.justify-content-center
+        .col-auto
+          h1 Login
+      .row.h-50.align-items-center
+        .col-lg-4
+        .col-lg-4
+          form(action="/login" method="post")
+            .row.justify-content-center.py-2
+              label.col-lg-3.col-form-label(for="username") ID
+              .col-lg-9
+                input.form-control(type="text" id="username" name="username" placeholder="Username or email")
+            .row.justify-content-center.py-2
+              label.col-lg-3.col-form-label(for="password") Password
+              .col-lg-9
+                input.form-control(type="password" id="password" name="password" placeholder="********")
+            .row.justify-content-center.py-2
+              .col-auto
+                .form-check
+                  input.form-check-input(type="checkbox" id="remember")
+                  label.form-check-label(for="remember") Remember Me
+            .row.justify-content-center.py-2
+              .col-auto
+                button.btn.btn-primary(type="submit") Log In
+        .col-lg-4
   
   
