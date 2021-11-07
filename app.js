@@ -20,6 +20,7 @@ const LocalStrategy = require("passport-local").Strategy;
  * Local Modules
  */
 const admin = require("./lib/admin");
+const secrets = require("./lib/secrets");
 
 /**
  * App Variables
@@ -68,7 +69,7 @@ app.use("/js/fancytree", express.static(path.join(__dirname, "node_modules/jquer
  */
 
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: secrets.secrets.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }));
@@ -97,7 +98,7 @@ passport.deserializeUser(User.deserializeUser());
 // also https://www.freecodecamp.org/news/mongodb-mongoose-node-tutorial/
 // NB: Not sure why commented out options won't work any more.
 // FIXME: Find out.
-mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@localhost/${process.env.DB_NAME}`, {
+mongoose.connect(`mongodb://${secrets.secrets.DB_USER}:${secrets.secrets.DB_PASSWORD}@localhost/${secrets.secrets.DB_NAME}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 //  useCreateIndex: true,
