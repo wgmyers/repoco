@@ -3,10 +3,28 @@ extends layout
 block layout-content
   main.flex-shrink-0
     .container.vh-100
-      .row.h-25.align-items-center.justify-content-center
+      .row.align-items-center.justify-content-center
         .col-auto
           h1 Admin Page
-      .row.h-50.align-items-center
+      .row.justify-content-center
+        .col-auto
+          h2 Users
+      .row
+        table.table
+          thead
+            tr
+              th(scope="col") Username
+              th(scope="col") Email
+              th(scope="col") Level
+              th(scope="col") Sites
+          tbody
+            tr
+              each val in ["Poop", "poop@poop.com", "regular", ""]
+                td= val
+      .row.justify-content-center
+        .col-auto
+          h2 Add User
+      .row.align-items-center
         .col-lg-4
         .col-lg-4
           form(action="/register" method="post")
