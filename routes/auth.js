@@ -13,10 +13,6 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 /* Login and logout */
 
-router.get("/login", (req, res) => {
-  res.render("login", { user: req.user, title: "Login", message: req.flash("error") });
-});
-
 router.post("/login", urlencodedParser, passport.authenticate("local", {
   successRedirect: "/",
   failureRedirect: "/",
