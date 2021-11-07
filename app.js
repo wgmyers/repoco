@@ -28,6 +28,7 @@ const admin = require("./lib/admin");
 const index_routes = require("./routes/index");
 const auth_routes = require("./routes/auth");
 const user_routes = require("./routes/user");
+const admin_routes = require("./routes/admin");
 const api_routes = require("./routes/api");
 const app = express();
 
@@ -128,6 +129,9 @@ app.use("/", auth_routes);
 
 // handle pages requiring login
 app.use("/", user_routes);
+
+// handle admin page/s
+app.use("/", admin_routes);
 
 // handle API routes (login required)
 app.use("/", api_routes);

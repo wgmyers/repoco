@@ -18,8 +18,8 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/login", urlencodedParser, passport.authenticate("local", {
-  successRedirect: "/home",
-  failureRedirect: "/login",
+  successRedirect: "/",
+  failureRedirect: "/",
   failureFlash: true
 }));
 

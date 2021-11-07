@@ -18,8 +18,6 @@
 
 Authentication:
 
-* On startup, check to see if there is an admin user, and if not, create one
-  using credentials in .env
 * / only displays a login page if no user is found - otherwise it redirects to
   either /dashboard or /admin
 * /admin page only displays if logged in as admin user
@@ -47,6 +45,7 @@ Help page:
 
 ### DONE
 
+* Create admin user from .env if none found on startup
 * / displays login page
 * Manually create repoco and repoco_test db users
 * Add routes/auth.js with login and logout routes

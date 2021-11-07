@@ -1,0 +1,30 @@
+extends layout
+
+block layout-content
+  main.flex-shrink-0
+    .container.vh-100
+      .row.h-25.align-items-center.justify-content-center
+        .col-auto
+          h1 Admin Page
+      .row.h-50.align-items-center
+        .col-lg-4
+        .col-lg-4
+          form(action="/register" method="post")
+            .row.justify-content-center.py-2
+              label.col-lg-3.col-form-label(for="username") Username
+              .col-lg-9
+                input.form-control(type="text" id="username" name="username" placeholder="Username")
+            .row.justify-content-center.py-2
+              label.col-lg-3.col-form-label(for="email") Email
+              .col-lg-9
+                input.form-control(type="text" id="email" name="email" placeholder="ploni@shmoni.com")
+            .row.justify-content-center.py-2
+              label.col-lg-3.col-form-label(for="password") Password
+              .col-lg-9
+                input.form-control(type="password" id="password" name="password" placeholder="********")
+            .row.justify-content-center.py-2
+              .col-auto
+                button.btn.btn-primary(type="submit") Create User
+        .col-lg-4
+  
+  
