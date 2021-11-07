@@ -18,13 +18,11 @@
 
 Authentication:
 
-* / only displays a login page if no user is found - otherwise it redirects to
-  either /dashboard or /admin
-* /admin page only displays if logged in as admin user
+* Admin page allows add / delete user
+* Admimn page allows edit user
 * Make it so all existing pages only display if a regular user is found AND only display relevant sites
 * Make it so all api routes only respond if a regular user is found AND has access to that site
-* Add logout to top banner nav
-* Add a settings page where you can change eg password and email (?)
+* Add a user settings page where you can change eg password and email (?)
 * Add password reset mechanism (requires Eric to divulge email sending secrets)
 
 Auto-deploy:
@@ -45,6 +43,11 @@ Help page:
 
 ### DONE
 
+* Display users on admin page
+* Keep DB credentials and default admin settings in .secrets not .env
+* Logout works and redirects to /
+* User pages only display for logged in regular users
+* Admin page only displays for logged in admin
 * Create admin user from .env if none found on startup
 * / displays login page
 * Manually create repoco and repoco_test db users
@@ -98,7 +101,7 @@ settings (change password, enable/disable, add/remove site permissions and other
 settings).
 
 There can only be one admin user, it is created by default, using settings
-found in .env - DEFAULT_ADMIN_USER and DEFAULT_ADMIN_PWD. When we come to have
+found in .secrets - DEFAULT_ADMIN_USER and DEFAULT_ADMIN_PWD. When we come to have
 installation instructions, we will not provide values for these: in this way there
 is no single set of default admin credentials - it is up to installers to put
 something sensible here.
@@ -119,6 +122,8 @@ The following commands in Mongo shell does this:
     db:"dbname"}]
 })
 ```
+
+DB credentials live in .secrets and not .env
 
 ## Issues
 
