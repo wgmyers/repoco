@@ -12,7 +12,7 @@ router.get("/admin", async (req, res, next) => {
     res.redirect("/");
   } else if (req.user.level == "admin") {
     const users = await admin.get_users();
-    res.render("admin", { title: "Admin", user: req.user, users: users });
+    res.render("admin", { title: "Admin", user: req.user, users: users, message: req.flash("error") });
   } else {
     const err = new Error("Forbidden");
     err.status = 403;
