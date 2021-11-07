@@ -17,6 +17,11 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
 /**
+ * Local Modules
+ */
+const admin = require("./lib/admin");
+
+/**
  * App Variables
  */
 
@@ -96,10 +101,19 @@ mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@lo
   useUnifiedTopology: true,
 //  useCreateIndex: true,
 //  useFindAndModify: false
-}, function(err) {
+}, async function(err) {
   if (err) {
     console.error("Could not connect to mongodb on localhost - please check mongodb is running.");
     console.dir(err);
+    // FIXME: shut down if we have no db
+  } else {
+    try {
+      const admin_check = await admin.check_admin_exists();
+      console.log("Admin check succeeded!");
+    } catch (err) {
+      console.error("Could not check for admin!");
+      // FIXME: shut down if we can't check for admin
+    }
   }
 });
 

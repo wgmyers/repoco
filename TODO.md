@@ -18,12 +18,13 @@
 
 Authentication:
 
-* Add create users script that creates 'wayne' and 'val' users - DO NOT COMMIT THIS,
-  but do commit an example version of it with different credentials
-* Make it so / displays a login page if no user is found - this page also needs
-  to clobber the exiting top banner nav so all you can do is log in
-* Make it so all existing pages only display if a user is found AND only display relevant sites
-* Make it so all api routes only respond if a user is found AND has access to that site
+* On startup, check to see if there is an admin user, and if not, create one
+  using credentials in .env
+* / only displays a login page if no user is found - otherwise it redirects to
+  either /dashboard or /admin
+* /admin page only displays if logged in as admin user
+* Make it so all existing pages only display if a regular user is found AND only display relevant sites
+* Make it so all api routes only respond if a regular user is found AND has access to that site
 * Add logout to top banner nav
 * Add a settings page where you can change eg password and email (?)
 * Add password reset mechanism (requires Eric to divulge email sending secrets)
@@ -46,6 +47,7 @@ Help page:
 
 ### DONE
 
+* / displays login page
 * Manually create repoco and repoco_test db users
 * Add routes/auth.js with login and logout routes
 * Add passport and mongoose code from bandmin
@@ -87,6 +89,20 @@ Help page:
 * Set up node/express scaffolding
 
 # NOTES
+
+## Authentication
+
+We need an admin user (who can add users and alter their permissions) and one
+or more regular users. The admin user is /not/ a super-user; all they can do
+is manage the user DB: adding and removing regular users and able to alter their
+settings (change password, enable/disable, add/remove site permissions and other
+settings).
+
+There can only be one admin user, it is created by default, using settings
+found in .env - DEFAULT_ADMIN_USER and DEFAULT_ADMIN_PWD. When we come to have
+installation instructions, we will not provide values for these: in this way there
+is no single set of default admin credentials - it is up to installers to put
+something sensible here.
 
 ## DB
 
