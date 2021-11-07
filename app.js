@@ -109,9 +109,8 @@ mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@lo
   } else {
     try {
       const admin_check = await admin.check_admin_exists();
-      console.log("Admin check succeeded!");
     } catch (err) {
-      console.error("Could not check for admin!");
+      console.error("Admin user check failed");
       // FIXME: shut down if we can't check for admin
     }
   }
