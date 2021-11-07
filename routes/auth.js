@@ -19,6 +19,31 @@ router.post("/login", urlencodedParser, passport.authenticate("local", {
   failureFlash: true
 }));
 
+router.post("/register", urlencodedParser, (req, res, next) => {
+  if (!req.user) {
+    res.redirect("/");
+  } else if (req.user.level == "admin") {
+    User.register(new User({
+      username: req.body.username,
+      email: req.body.email,
+      level: "regular",
+      sites: []
+    }), req.body.password, (err, user) => {
+      if (err) {
+        console.log(`Error: ${err.message} with user:`);
+        console.dir(user);
+        req.flash("error", err.message);
+        res.redirect("/admin");
+      }
+    });
+  } else {
+    const err = new Error("Forbidden");
+    err.status = 403;
+    next(err);
+  }
+
+});
+
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
