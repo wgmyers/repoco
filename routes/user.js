@@ -1,6 +1,6 @@
 /* user.js */
 
-/* Handle HTML routes only available to logged in users */
+/* Handle HTML routes only available to logged in regular users */
 
 const express = require("express");
 const router = express.Router();
