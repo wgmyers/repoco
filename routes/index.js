@@ -21,7 +21,7 @@ router.get("/", (req, res, next) => {
       next(err);
     }
   } else {
-    res.render("index", { title: "Login" });
+    res.render("index", { title: "Login", message: req.flash("error") });
   }
 });
 

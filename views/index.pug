@@ -3,8 +3,13 @@ extends layout
 block layout-content
   main.flex-shrink-0
     .container.vh-100
+      if message != ""
+        .row
+          .col-12
+            .alert.alert-danger.alert-dismissible.fade.show(role="alert") <strong>Error:</strong> #{message}
+              button.btn-close(type="button" data-bs-dismiss="alert" aria-label="Close")  
       .row.h-25.align-items-center.justify-content-center
-        .col-auto
+        .col-auto.align-self-center
           h1 Login
       .row.h-50.align-items-center
         .col-lg-4
