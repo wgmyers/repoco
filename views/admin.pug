@@ -10,7 +10,7 @@ block layout-content
         .col-auto
           h2 Users
       .row
-        table.table
+        table.table.table-striped.table-hover
           thead
             tr
               th(scope="col") Username
@@ -18,9 +18,10 @@ block layout-content
               th(scope="col") Level
               th(scope="col") Sites
           tbody
-            tr
-              each val in ["Poop", "poop@poop.com", "regular", ""]
-                td= val
+            each user in users
+              tr
+                each val in user
+                  td= val
       .row.justify-content-center
         .col-auto
           h2 Add User
