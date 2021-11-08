@@ -18,7 +18,7 @@
 
 Authentication:
 
-* Admin page allows add / delete user
+* Admin page allows delete user
 * Admimn page allows edit user
 * Make it so all existing pages only display if a regular user is found AND only display relevant sites
 * Make it so all api routes only respond if a regular user is found AND has access to that site
@@ -43,6 +43,10 @@ Help page:
 
 ### DONE
 
+* Display flash info on successful registration
+* Allow user registration
+* Display flash error on failed registration
+* Display flash error on failed login
 * Display users on admin page
 * Keep DB credentials and default admin settings in .secrets not .env
 * Logout works and redirects to /

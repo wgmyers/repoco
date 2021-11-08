@@ -3,11 +3,20 @@ extends layout
 block layout-content
   main.flex-shrink-0
     .container.vh-100
-      if message != ""
-        .row
-          .col-12
-            .alert.alert-danger.alert-dismissible.fade.show(role="alert") <strong>Error:</strong> #{message}
-              button.btn-close(type="button" data-bs-dismiss="alert" aria-label="Close")  
+      if messages
+        each message_arr, type in messages
+          if type == "error"
+            each message in message_arr
+              .row
+                .col-12
+                  .alert.alert-danger.alert-dismissible.fade.show(role="alert") <strong>Error:</strong> #{message}
+                    button.btn-close(type="button" data-bs-dismiss="alert" aria-label="Close")
+          if type == "info"
+            each message in message_arr
+              .row
+                .col-12
+                  .alert.alert-info.alert-dismissible.fade.show(role="alert") #{message}
+                    button.btn-close(type="button" data-bs-dismiss="alert" aria-label="Close")
       .row.align-items-center.justify-content-center
         .col-auto
           h1 Admin Page               
@@ -33,7 +42,7 @@ block layout-content
       .row.align-items-center
         .col-lg-4
         .col-lg-4
-          form(action="/register" method="post")
+          form(action="/adduser" method="post")
             .row.justify-content-center.py-2
               label.col-lg-3.col-form-label(for="username") Username
               .col-lg-9
