@@ -5,8 +5,8 @@ header
       button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
         span.navbar-toggler-icon
       .collapse.navbar-collapse(id="navbarSupportedContent")
-        ul.navbar-nav.mx-auto.mb-2.mb-lg-0
-          if user
+        if user
+          ul.navbar-nav.mx-auto.mb-2.mb-lg-0
             if user.level == "regular"
               li.nav-item(id="nav-dashboard")
                 a.nav-link(href="/dashboard") Dashboard
@@ -14,8 +14,10 @@ header
                 a.nav-link(href="/edit") Editor
               li.nav-item(id="nav-help")
                 a.nav-link(href="/help") Help
-            else
+            if user.level == "admin"
               li.nav-item(id="nav-admin")
                 a.nav-link(href="/admin") Admin
             li.nav-item(id="nav-logout")
               a.nav-link(href="/logout") Log Out
+          - var name = user.username[0].toUpperCase() + user.username.slice(1);
+          span.navbar-text.align-self-end Logged in as '#{name}'
