@@ -43,6 +43,7 @@ Help page:
 
 ### DONE
 
+* Display current user in RH of nav
 * Display flash info on successful registration
 * Allow user registration
 * Display flash error on failed registration
