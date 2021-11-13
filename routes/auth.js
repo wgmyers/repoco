@@ -7,6 +7,7 @@ const passport = require("passport");
 const bodyParser = require("body-parser");
 const User = require("../models/Users");
 const router = express.Router();
+const auth = require("../lib/auth");
 
 // create application/x-www-form-urlencoded parser
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -22,7 +23,7 @@ router.post("/login", urlencodedParser, passport.authenticate("local", {
 router.post("/adduser", urlencodedParser, (req, res, next) => {
   if (!req.user) {
     res.redirect("/");
-  } else if (req.user.level == "admin") {
+  } else if (auth.is_admin(req.user)) {
     User.register(new User({
       username: req.body.username,
       email: req.body.email,

@@ -6,11 +6,12 @@ const express = require("express");
 const router = express.Router();
 
 const admin = require("../lib/admin");
+const auth = require("../lib/auth");
 
 router.get("/admin", async (req, res, next) => {
   if (!req.user) {
     res.redirect("/");
-  } else if (req.user.level == "admin") {
+  } else if (auth.is_admin(req.user)) {
     const users = await admin.get_users();
     res.render("admin", { title: "Admin", user: req.user, users: users, messages: req.flash() });
   } else {

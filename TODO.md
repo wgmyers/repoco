@@ -19,7 +19,7 @@
 Authentication:
 
 * Admin page allows delete user
-* Admimn page allows edit user
+* Admin page allows edit user, ie add/remove allowed sites
 * Make it so all existing pages only display if a regular user is found AND only display relevant sites
 * Make it so all api routes only respond if a regular user is found AND has access to that site
 * Add a user settings page where you can change eg password and email (?)
@@ -43,6 +43,7 @@ Help page:
 
 ### DONE
 
+* API routes now check user permissions
 * Display current user in RH of nav
 * Display flash info on successful registration
 * Allow user registration

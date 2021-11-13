@@ -4,6 +4,7 @@
 
 const express = require("express");
 const router = express.Router();
+const auth = require("../lib/auth");
 
 // Admin user gets admin page
 // Regular user gets dashboard
@@ -11,9 +12,9 @@ const router = express.Router();
 // Otherwise display login page
 router.get("/", (req, res, next) => {
   if (req.user) {
-    if(req.user.level == "admin") {
+    if(auth.is_admin(req.user)) {
       res.redirect("/admin");
-    } else if (req.user.level == "regular") {
+    } else if (auth.is_regular(req.user)) {
       res.redirect("/dashboard");
     } else {
       const err = new Error("Forbidden");
