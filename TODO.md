@@ -32,6 +32,7 @@ Config:
 * Lose `pages` section - just replicate editable portion of filetree under `files`
 
 Editor:
+* File load errors should come up as flash alerts
 * Mark unpublished changed files in filetree
 * Support arbitrary filetrees defined under files in config
 * Have 'No File Loaded' msg when no file loaded, not an empty editor
@@ -43,6 +44,7 @@ Help page:
 
 ### DONE
 
+* All routes now check user perms via lib/auth.js
 * API routes now check user permissions
 * Display current user in RH of nav
 * Display flash info on successful registration

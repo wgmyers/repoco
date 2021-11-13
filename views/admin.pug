@@ -1,5 +1,8 @@
 extends layout
 
+block append scripts
+  script(src="/js/admin.js")
+
 block layout-content
   main.flex-shrink-0
     .container.vh-100
@@ -24,7 +27,7 @@ block layout-content
         .col-auto
           h2 Users
       .row
-        table.table.table-striped.table-hover
+        table.table.table-striped.table-hover(id="user-table")
           thead
             tr
               th(scope="col") Username
@@ -33,7 +36,7 @@ block layout-content
               th(scope="col") Sites
           tbody
             each user in users
-              tr
+              tr(data-bs-toggle="modal" data-bs-target="#modal-admin")
                 each val in user
                   td= val
       .row.justify-content-center
@@ -59,5 +62,15 @@ block layout-content
               .col-auto
                 button.btn.btn-primary(type="submit") Create User
         .col-lg-4
-  
-  
+          
+    .modal(tabindex="-1" id="modal-admin")
+      .modal-dialog.modal-dialog-centered
+        .modal-content
+          .modal-header
+            h5.modal-title(id="modal-title") Admin Modal
+            button.btn-close(type=button data-bs-dismiss="modal" aria-label="Close")
+          .modal-body
+            p(id="modal-text") Hello! I am an admin modal
+          .modal-footer
+            button.btn.btn-secondary(type=button data-bs-dismiss="modal" id="modal-cancel") Cancel
+            button.btn.btn-primary(type=button id="modal-ok") Ok  
