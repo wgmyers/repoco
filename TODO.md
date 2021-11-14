@@ -23,7 +23,6 @@ Testing:
 * Unit tests
 
 Security:
-* Fix file access issue
 * See notes below (way below)
 
 User settings:
@@ -52,6 +51,7 @@ Help page:
 
 ### DONE
 
+* File access locked down to list of files in config
 * Simple route testing works again
 * Disable login for users marked inactive
 * API routes only respond to allowed sites  files
@@ -278,15 +278,18 @@ None of the below can be implemented until we have user auth.
 
 All the below MUST be implemented when we do.
 
-* On load file: double check user actually has access to that file
-* On save file: double check user has write access to that file
-* IE, in re above, avoid situation where any logged in user can read / write any
+* DONE On load file: double check user actually has access to that file
+* DONE On save file: double check user has write access to that file
+* DONE IE, in re above, avoid situation where any logged in user can read / write any
 file accessible by some other user.
+* DONE Also, implement hard ban on symlinks. Refuse to edit any file that is a symlink.
+
+Not sure about the following, tbh.
+
 * Belt and braces: require config files to be 0400 and refuse to read them if
 not. This stops a situation where a user finds a way to write to their own config
 file and put a bunch of ../../../../ nonsense in there, giving permission to
 write arbitrary files on the system.
-* Also, implement hard ban on symlinks. Refuse to edit any file that is a symlink.
 * Maybe ban paths in config specified filenames entirely and implement path
 traversal using some other mechanism in the config file, to avoid possibility of
 arbitrary files being readable/writable
