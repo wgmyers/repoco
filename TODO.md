@@ -16,6 +16,12 @@
 
 ### DOING
 
+Testing:
+* Ensure we shut down gracefully so we don't need mocha --exit
+* Test login as admin
+* Test login as user
+* Unit tests
+
 Security:
 * See notes below (way below)
 
@@ -45,6 +51,7 @@ Help page:
 
 ### DONE
 
+* Simple route testing works again
 * Disable login for users marked inactive
 * API routes only respond to allowed sites  files
 * User pages only display allowed sites / files
