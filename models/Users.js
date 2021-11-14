@@ -43,6 +43,17 @@ const User = new Schema(
   },
 );
 
-User.plugin(passportLocalMongoose);
+// Only allow active users to authenticate
+// See https://github.com/saintedlama/passport-local-mongoose#examples-1
+User.plugin(passportLocalMongoose, {
+  // Set usernameUnique to false to avoid a mongodb index on the username column!
+  usernameUnique: false,
+
+  findByUsername: function(model, queryParameters) {
+    // Add additional query parameter - AND condition - active: true
+    queryParameters.active = true;
+    return model.findOne(queryParameters);
+  }
+});
 
 module.exports = mongoose.model("User", User);
