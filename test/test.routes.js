@@ -14,7 +14,7 @@ describe("Test routes", () => {
 
   const agent = request.agent(app);
 
-  describe("Open page routes", () => {
+  describe("Routes w/ no user", () => {
 
     it("index route works", done => {
       agent
@@ -23,25 +23,39 @@ describe("Test routes", () => {
         .expect(200, done);
     });
 
-    it("dashaboard page works", done => {
+    it("dashboard page redirects to /", done => {
       agent
         .get("/dashboard")
-        .expect("Content-Type", /html/)
-        .expect(200, done);
+        .expect("Content-Type", /text/)
+        .expect("Location", "/", done);
     });
 
-    it("edit page works", done => {
+    it("edit page redirects to /", done => {
       agent
         .get("/edit")
-        .expect("Content-Type", /html/)
-        .expect(200, done);
+        .expect("Content-Type", /text/)
+        .expect("Location", "/", done);
     });
 
-    it("help page works", done => {
+    it("help page redirects to /", done => {
       agent
         .get("/help")
+        .expect("Content-Type", /text/)
+        .expect("Location","/", done);
+    });
+
+    it("admin page redirects to /", done => {
+      agent
+        .get("/admin")
+        .expect("Content-Type", /text/)
+        .expect("Location","/", done);
+    });
+
+    it("unknown page gives 404", done => {
+      agent
+        .get("/poop")
         .expect("Content-Type", /html/)
-        .expect(200, done);
+        .expect(404, done);
     });
 
   });

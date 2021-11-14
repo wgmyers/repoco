@@ -13,7 +13,7 @@
     "dev": "nodemon bin/www",
     "scss": "sass --watch scss:public/css",
     "lint": "eslint *.js lib/*.js public/js/*.js",
-    "test": "mocha",
+    "test": "mocha --exit",
     "coverage": "nyc npm run test"
   },
   "keywords": [],
