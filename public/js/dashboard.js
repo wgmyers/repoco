@@ -113,25 +113,6 @@ function select_site(site) {
   }
 }
 
-// display_alert
-// See https://getbootstrap.com/docs/5.0/components/alerts/#dismissing
-// I'm not sure this is the easiest way to do this nor the most elegant, but
-// it works, so fine.
-function display_alert(type, msg) {
-  const alert_holder = document.getElementById("alert-holder");
-  const alert = document.createElement("div");
-  alert.classList.add("alert", `alert-${type}`, "alert-dismissible", "fade", "show");
-  alert.setAttribute("role", "alert");
-  const button = document.createElement("button");
-  button.classList.add("btn-close");
-  button.setAttribute("type", "button");
-  button.setAttribute("data-bs-dismiss", "alert");
-  button.setAttribute("aria-label", "Close");
-  alert.innerHTML = msg;
-  alert.appendChild(button);
-  alert_holder.appendChild(alert);
-}
-
 function get_selected_site() {
   let result;
   for (const key of Object.keys(sites_status)) {
@@ -167,21 +148,21 @@ async function call_api(call, target = undefined) {
         if(json.message) {
           ok_msg = json.message;
         }
-        display_alert("info", ok_msg);
+        mk_alert("alert-holder", "info", ok_msg);
         // Update LH menu and reselect current site
         make_list_group().then(() => {
           select_site(site);
         });
       } else {
         // Bugger
-        display_alert("danger", `Error: ${json.error}`);
+        mk_alert("alert-holder", "danger", `Error: ${json.error}`);
       }
     } else {
       // Fetch failed
-      display_alert("danger", `Error: API call ${api_call} failed`);
+      mk_alert("alert-holder", "danger", `Error: API call ${api_call} failed`);
     }
   } catch {
-    display_alert("danger", `Error: Could not call ${api_call}`);
+    mk_alert("alert-holder", "danger", `Error: Could not call ${api_call}`);
   }
 
 }

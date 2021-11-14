@@ -140,15 +140,26 @@ async function save_file(filename, generator) {
   } else {
     // If not, display an error message
     console.error(`Could not save ${filename}`);
-    // FIXME: display alert to user here
+    mk_alert("alert-holder", "danger", `Could not save ${filename}`);
   }
 
+}
+
+function looks_dodgy(file) {
+  if (file.match(/\//) || file.match(/\%2f/i) {
+    return true;
+  };
+  return false;
 }
 
 // load_file
 // Custom file loader
 // See https://javascript.info/fetch
 async function load_file(filename, generator) {
+  if (looks_dodgy(filename)) {
+    mk_alert("alert-holder","danger", `Could not load ${filename}`);
+    return;
+  }
   const response = await fetch(`/api/files/${filename}`);
 
   if (response.ok) { // if HTTP-status is 200-299
@@ -169,11 +180,12 @@ async function load_file(filename, generator) {
       disable_buttons();
 
     } else {
-      easyMDE.value(json.message);
+      mk_alert("alert-holder", "danger", json.message);
+      // easyMDE.value(json.message);
     }
   } else {
-    // FIXME: No.
-    alert("HTTP-Error: " + response.status);
+    // FIXME: This should not happen
+    mk_alert("alert-holder", "danger", "HTTP-Error: " + response.status);
   }
 }
 
