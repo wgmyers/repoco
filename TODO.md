@@ -51,6 +51,8 @@ Help page:
 
 ### DONE
 
+* Editor now pops up alerts on error
+* More hardening of file access
 * File access locked down to list of files in config
 * Simple route testing works again
 * Disable login for users marked inactive
@@ -283,25 +285,22 @@ All the below MUST be implemented when we do.
 * DONE IE, in re above, avoid situation where any logged in user can read / write any
 file accessible by some other user.
 * DONE Also, implement hard ban on symlinks. Refuse to edit any file that is a symlink.
-* Ban the string '../' anyway
+* DONE Ban the string '../' both client and serverside; also ban %2f clientside.
+* DONE Maybe ban paths in config specified filenames entirely and implement path
+traversal using some other mechanism in the config file, to avoid possibility of
+arbitrary files being readable/writable
 
 Not sure about the following, tbh.
 
-With the first, if a user is writing to their own config file, we already have
-bigger problems: making life harder for admins with little obvious benefit is
-not what we want.
-
-The second can be avoided by not having paths in files at all, and will
-disappear when we have a proper filetree implemented in cfg. Currently paths
-don't seem to work anyway.
+If a user is writing to their own config file, we already have bigger problems:
+making life harder for admins with little obvious benefit is not what we want.
+At that point they could equally just rewrite the server code.
 
 * Belt and braces: require config files to be 0400 and refuse to read them if
 not. This stops a situation where a user finds a way to write to their own config
 file and put a bunch of ../../../../ nonsense in there, giving permission to
 write arbitrary files on the system.
-* Maybe ban paths in config specified filenames entirely and implement path
-traversal using some other mechanism in the config file, to avoid possibility of
-arbitrary files being readable/writable
+
 
 ## Favicon
 
