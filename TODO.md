@@ -17,13 +17,14 @@
 ### DOING
 
 Testing:
-* Ensure we shut down gracefully so we don't need mocha --exit
 * Test login as admin
 * Test login as user
 * Unit tests
 
-Security:
-* See notes below (way below)
+Get-Deploy-Ready
+* Graceful shutdown (should obviate mocha --exit)
+* PM2 config
+* Proper session handler
 
 User settings:
 * Add a user settings page where you can change eg password and email (?)
@@ -39,7 +40,6 @@ Config:
 * Lose `pages` section - just replicate editable portion of filetree under `files`
 
 Editor:
-* File load errors should come up as flash alerts
 * Mark unpublished changed files in filetree
 * Support arbitrary filetrees defined under files in config
 * Have 'No File Loaded' msg when no file loaded, not an empty editor
