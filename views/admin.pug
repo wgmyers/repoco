@@ -36,7 +36,11 @@ block layout-content
               th(scope="col") Sites
           tbody
             each user in users
-              tr(data-bs-toggle="modal" data-bs-target="#modal-admin")
+              - var username = user['username']
+              - var email = user['email']
+              - var level = user['level']
+              - var sites = user['sites'].join("|")
+              tr(data-bs-toggle="modal" data-bs-target="#modal-admin" data-bs-username=username data-bs-email=email data-bs-level=level data-bs-sites=sites)
                 each val in user
                   td= val
       .row.justify-content-center
