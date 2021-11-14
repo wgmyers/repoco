@@ -21,7 +21,10 @@ Security:
 
 User settings:
 * Add a user settings page where you can change eg password and email (?)
-* Add password reset mechanism (requires Eric to divulge email sending secrets)
+
+Authentication:
+* Implement 'Remember Me'
+* Add password reset mechanism
 
 Auto-deploy:
 * Implement method of auto-deploying on git push in a repo
