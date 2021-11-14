@@ -69,6 +69,9 @@ router.post("/updateuser/:user", urlencodedParser, (req, res, next) => {
   if (!req.user) {
     res.redirect("/");
   } else if (auth.is_admin(req.user)) {
+
+    console.dir(req.body);
+
     // The active checkbox seems to return active: "on" if it is checked
     // It returns nothing at all if unchecked.
     // QUERY: ORLY?

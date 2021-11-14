@@ -75,7 +75,7 @@ block layout-content
           form(action="#" method="post" id="modal-update-form")
             .modal-header
               h5.modal-title(id="modal-title") Admin Modal
-              button.btn-close(type=button data-bs-dismiss="modal" aria-label="Close")
+              button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
             .modal-body
               p(id="modal-text") Hello! I am an admin modal
               .row.py-2
@@ -85,6 +85,13 @@ block layout-content
               .row.py-2
                 .col-8
                   h6 Sites
+                  .list-group
+                    each site in sites
+                      - var id = "site-" + site 
+                      label.list-group-item
+                        input.form-check-input.me-1(type="checkbox" value="" id=id)
+                        .
+                          #{site}                  
                 .col-4
                   .row.py-2
                     .col
