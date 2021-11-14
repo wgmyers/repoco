@@ -1,5 +1,7 @@
 // alert.js
 
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "mk_alert" }]*/
+
 // Construct an alert
 function mk_alert(holder_id, type, message) {
   // Get the holding div

@@ -2,6 +2,8 @@
 
 // Client-side code for the dashboard
 
+/*global mk_alert */
+
 // A place to squirrel away the status of each site
 const sites_status = {};
 

@@ -1,6 +1,6 @@
 // editor.js
 
-/*global EasyMDE,bootstrap */
+/*global EasyMDE,bootstrap,mk_alert */
 
 const editor_vars = {
   loaded: false,
@@ -147,9 +147,9 @@ async function save_file(filename, generator) {
 }
 
 function looks_dodgy(file) {
-  if (file.match(/\.\.\//) || file.match(/\%2f/i)) {
+  if (file.match(/\.\.\//) || file.match(/%2f/i)) {
     return true;
-  };
+  }
   return false;
 }
 
