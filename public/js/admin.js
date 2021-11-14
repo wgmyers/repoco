@@ -14,6 +14,7 @@ function populate_modal(event) {
   const username = row.getAttribute("data-bs-username");
   const email = row.getAttribute("data-bs-email");
   const level = row.getAttribute("data-bs-level");
+  const active = row.getAttribute("data-bs-active");
   const sites = row.getAttribute("data-bs-sites").split("|");
 
   // Modal title
@@ -27,6 +28,14 @@ function populate_modal(event) {
   // Email textbox
   const modal_email = document.getElementById("modal-email");
   modal_email.value = email;
+
+  // Active toggle
+  const modal_active = document.getElementById("modal-active");
+  if (active == "Yes") {
+    modal_active.checked = true;
+  } else {
+    modal_active.checked = false;
+  }
 
   // Delete user button
   const modal_delete_user = document.getElementById("modal-delete-user-btn");

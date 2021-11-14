@@ -43,6 +43,7 @@ Help page:
 
 ### DONE
 
+* Admin page shows whether user is active
 * Admin page allows delete user, will not delete admin user
 * All routes now check user perms via lib/auth.js
 * API routes now check user permissions
