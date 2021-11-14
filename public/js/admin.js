@@ -28,6 +28,17 @@ function populate_modal(event) {
   const modal_email = document.getElementById("modal-email");
   modal_email.value = email;
 
+  // Delete user button
+  const modal_delete_user = document.getElementById("modal-delete-user-btn");
+  modal_delete_user.setAttribute("disabled", true); // Always start disabled
+  modal_delete_user.addEventListener("click", () => {
+    // Do stuff here
+    console.log("I am in the delete user button click handler");
+  });
+  // Delete user toggle should be unchecked on start
+  const modal_delete_user_toggle = document.getElementById("modal-delete-user-check");
+  modal_delete_user_toggle.checked = false;
+
   // Ok button
   const modal_ok = document.getElementById("modal-ok");
   modal_ok.addEventListener("click", () => {
@@ -36,6 +47,24 @@ function populate_modal(event) {
     modal.hide();
   });
 }
+
+// handle_toggle
+// Event handler for enabler toggles
+function handle_toggle() {
+  // Get the relevant button
+  const btn = document.getElementById(this.id.replace("check", "btn"));
+  if (this.checked) {
+    // Enable the button
+    btn.removeAttribute("disabled");
+  } else {
+    // Disable the button
+    btn.setAttribute("disabled", true);
+  }
+}
+
+// Event handlers for enable-toggle switches
+const toggles = document.querySelectorAll(".enable-toggle");
+toggles.forEach(tog => tog.addEventListener("click", handle_toggle));
 
 // Event handler to bring up modal on table row click
 // Table rows contain data-bs-* elements as required to set this up
