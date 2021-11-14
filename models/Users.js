@@ -21,9 +21,6 @@ const User = new Schema(
       type: Boolean,
       default: false
     },
-    password: {
-      type: String
-    },
     level: {
       type: String,
       enum: ["admin", "regular"],
