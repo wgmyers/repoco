@@ -77,13 +77,20 @@ router.post("/updateuser/:user", urlencodedParser, (req, res, next) => {
     // QUERY: ORLY?
     const active = (req.body.active && req.body.active == "on") ? true : false;
 
+    // Extract site list from form data
+    const sites = [];
+    Object.keys(req.body)
+      .filter(k => k.match(/^site-/))
+      .forEach(k => sites.push(k.slice(5,)));
+
     User.findOneAndUpdate({
       username: req.params.user,
       level: 'regular',
     },
     {
       email: req.body.email,
-      active: active
+      active: active,
+      sites: sites
     }, (err, result) => {
       if (err) {
         console.error(err);
