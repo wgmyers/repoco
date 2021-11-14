@@ -157,7 +157,6 @@ if (app.get("env") === "development") {
     if (errcode == 500) {
       errmsg = "Internal server error";
     }
-    console.log(err);
     res.status(errcode);
     res.render("error", {
       message: errcode + ": " + errmsg,
