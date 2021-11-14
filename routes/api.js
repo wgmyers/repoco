@@ -38,7 +38,7 @@ router.post("/api/files/:site/:file", (req, res) => {
 
 router.get("/api/changes", async (req, res) => {
   if (auth.is_regular(req.user)) {
-    const changes = await git.get_changes();
+    const changes = await git.get_changes(req.user.sites);
     res.json(changes);
   } else {
     res.json(auth.not_authorised());
