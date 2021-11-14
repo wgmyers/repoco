@@ -75,6 +75,22 @@ block layout-content
             button.btn-close(type=button data-bs-dismiss="modal" aria-label="Close")
           .modal-body
             p(id="modal-text") Hello! I am an admin modal
+            .row.py-2
+              label.col-lg-3.col-form-label(for="modal-email") Email
+              .col-lg-9
+                input.form-control(type="text" id="modal-email" name="modal-email")
+            .row.py-2
+              .col-8
+                h6 Sites
+              .col-4
+                .row
+                  .col
+                    button.btn.btn-danger.float-end(type=button id="modal-delete-user" disabled=true) Delete User
+                .row
+                  .col
+                    .form-check.form-switch.float-end
+                      input.form-check-input.enable-toggle(type="checkbox" id="delete-user-check")
+                      label.form-check-label(for="delete-user-check") Enable
           .modal-footer
             button.btn.btn-secondary(type=button data-bs-dismiss="modal" id="modal-cancel") Cancel
             button.btn.btn-primary(type=button id="modal-ok") Ok  

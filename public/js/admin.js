@@ -22,7 +22,11 @@ function populate_modal(event) {
 
   // Modal body
   const modal_text = document.getElementById("modal-text");
-  modal_text.innerHTML = `User ${username} has email ${email} and is level '${level}'`;
+  modal_text.innerHTML = `User ${username} is level '${level}'`;
+
+  // Email textbox
+  const modal_email = document.getElementById("modal-email");
+  modal_email.value = email;
 
   // Ok button
   const modal_ok = document.getElementById("modal-ok");
