@@ -39,6 +39,10 @@ function populate_modal(event) {
   site_checks.forEach(check => check.checked = false);
   // Now check only the ones we want checked
   for (const site of sites) {
+    // Skip empty sites created by empty site list
+    if (site == "") {
+      continue;
+    }
     const site_checkbox = document.getElementById(`site-${site}`);
     site_checkbox.checked = true;
   }
