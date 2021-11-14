@@ -19,6 +19,7 @@
 Authentication:
 
 * Admin page allows edit user, ie add/remove allowed sites
+* Disable login for users marked inactive
 * Make it so all existing pages only display if a regular user is found AND only display relevant sites
 * Make it so all api routes only respond if a regular user is found AND has access to that site
 * Add a user settings page where you can change eg password and email (?)
@@ -43,6 +44,7 @@ Help page:
 
 ### DONE
 
+* Update user implemented
 * Admin page shows whether user is active
 * Admin page allows delete user, will not delete admin user
 * All routes now check user perms via lib/auth.js
@@ -136,6 +138,7 @@ DB credentials live in .secrets and not .env
 
 ## Issues
 
+* User email not validated at all
 * After publishing to test, dashboard says 'up to date', but we have changes
 not yet made live. This might seem confusing to users. We should track changes
 published to test but not to live and report them on the dashboard. But how?

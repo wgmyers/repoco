@@ -13,6 +13,7 @@ const bodyParser = require("body-parser");
 const User = require("../models/Users");
 
 const admin = require("../lib/admin");
+const sites = require("../lib/site");
 const auth = require("../lib/auth");
 
 // create application/x-www-form-urlencoded parser
@@ -22,8 +23,15 @@ router.get("/admin", async (req, res, next) => {
   if (!req.user) {
     res.redirect("/");
   } else if (auth.is_admin(req.user)) {
-    const users = await admin.get_users();
-    res.render("admin", { title: "Admin", user: req.user, users: users, messages: req.flash() });
+    try {
+      const sites_available = sites.get_sites();
+      const users = await admin.get_users();
+      res.render("admin", { title: "Admin", user: req.user, users: users, sites: sites_available, messages: req.flash() });
+    } catch (err) {
+      const error = new Error(err);
+      error.status = 500;
+      next(error);
+    }
   } else {
     const err = new Error("Forbidden");
     err.status = 403;
