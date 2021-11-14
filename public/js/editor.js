@@ -137,6 +137,7 @@ async function save_file(filename, generator) {
   if (json.status == "ok") {
     editor_vars.dirty = false;
     disable_buttons();
+    mk_alert("alert-holder", "info", `Saved ${filename} ok`);
   } else {
     // If not, display an error message
     console.error(`Could not save ${filename}`);
@@ -146,7 +147,7 @@ async function save_file(filename, generator) {
 }
 
 function looks_dodgy(file) {
-  if (file.match(/\//) || file.match(/\%2f/i) {
+  if (file.match(/\.\.\//) || file.match(/\%2f/i)) {
     return true;
   };
   return false;
