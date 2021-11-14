@@ -21,7 +21,7 @@ router.get("/api/filetrees", (req, res) => {
 });
 
 router.get("/api/files/:site/:file", (req, res) => {
-  if (auth.site_allowed(req.user, req.params.site)) {
+  if (auth.file_allowed(req.user, req.params.site, req.params.file)) {
     res.json(files.load_file(req.params.site, req.params.file));
   } else {
     res.json(auth.not_authorised());
@@ -29,7 +29,7 @@ router.get("/api/files/:site/:file", (req, res) => {
 });
 
 router.post("/api/files/:site/:file", (req, res) => {
-  if (auth.site_allowed(req.user, req.params.site)) {
+  if (auth.file_allowed(req.user, req.params.site, req.params.file)) {
     res.json(files.save_file(req.params.site, req.params.file, req.body));
   } else {
     res.json(auth.not_authorised());

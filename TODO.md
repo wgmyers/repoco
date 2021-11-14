@@ -23,6 +23,7 @@ Testing:
 * Unit tests
 
 Security:
+* Fix file access issue
 * See notes below (way below)
 
 User settings:
