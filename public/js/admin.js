@@ -2,12 +2,12 @@
 
 // Client-side stuff for the admin user editor
 
-// click_user_event
+// populate_modal
 // Bring up the modal in which we edit our user details
 function populate_modal(event) {
   // Get the modal itself
-  const modal_element = document.getElementById("modal-admin");     // This is just the DOM element
-  const modal = bootstrap.Modal.getOrCreateInstance(modal_element); // This is the actual BS modal instance
+  //const modal_element = document.getElementById("modal-admin");     // This is just the DOM element
+  //const modal = bootstrap.Modal.getOrCreateInstance(modal_element); // This is the actual BS modal instance
 
   // Get data out of the row we were clicked from
   const row = event.relatedTarget;
@@ -67,20 +67,13 @@ function populate_modal(event) {
   // Disable delete user toggle for admin user
   // Make sure it is enabled for other users though.
   switch (level) {
-    case "admin":
-      modal_delete_user_toggle.setAttribute("disabled", true);
-      break;
-    default:
-      modal_delete_user_toggle.removeAttribute("disabled");
+  case "admin":
+    modal_delete_user_toggle.setAttribute("disabled", true);
+    break;
+  default:
+    modal_delete_user_toggle.removeAttribute("disabled");
   }
 
-  // Ok button
-  //const modal_ok = document.getElementById("modal-ok");
-  //modal_ok.addEventListener("click", () => {
-    // Do stuff here
-  //  console.log("I am in the ok button click handler");
-  //  modal.hide();
-  //});
 }
 
 // handle_toggle
@@ -96,7 +89,7 @@ function handle_toggle() {
   } else {
     // Disable the delete button and enable update
     delete_btn.setAttribute("disabled", true);
-    update_btn(removeAttribute("disabled"));
+    update_btn.removeAttribute("disabled");
   }
 }
 
