@@ -236,9 +236,11 @@ function make_dashboard() {
     if(Object.keys(sites_status).length > 0) {
       select_site(Object.keys(sites_status)[0]);
     } else {
-      // We have no sites. Disable all the toggles
+      // We have no sites. Disable all the toggles + update button
       const toggles = document.querySelectorAll(".enable-toggle");
       toggles.forEach(tog => tog.setAttribute("disabled", true));
+      const update_btn = document.getElementById("update-btn");
+      update_btn.setAttribute("disabled", true);
     }
 
   });
