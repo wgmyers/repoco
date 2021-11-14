@@ -61,10 +61,31 @@ router.post("/updateuser/:user", urlencodedParser, (req, res, next) => {
   if (!req.user) {
     res.redirect("/");
   } else if (auth.is_admin(req.user)) {
-    // Update user here
-    console.log("In update user with:");
-    console.dir(req.body);
-    res.redirect("/admin");
+    // The active checkbox seems to return active: "on" if it is checked
+    // It returns nothing at all if unchecked.
+    // QUERY: ORLY?
+    const active = (req.body.active && req.body.active == "on") ? true : false;
+
+    User.findOneAndUpdate({
+      username: req.params.user,
+      level: 'regular',
+    },
+    {
+      email: req.body.email,
+      active: active
+    }, (err, result) => {
+      if (err) {
+        console.error(err);
+        req.flash("error", `Could not update user '${req.params.user}'`);
+      } else {
+        if (result) {
+          req.flash("info", `User '${req.params.user}' updated`);
+        } else {
+          req.flash("error", `Did not update user '${req.params.user}'`);
+        }
+      }
+      res.redirect("/admin");
+    });
   } else {
     const err = new Error("Forbidden");
     err.status = 403;
@@ -82,14 +103,14 @@ router.get("/deluser/:user", (req, res, next) => {
     User.findOneAndDelete({ username: req.params.user, level: 'regular' }, (err, result) => {
       if (err) {
         console.error(err);
-        req.flash("error", `Could not delete user ${req.params.user}`);
+        req.flash("error", `Could not delete user '${req.params.user}'`);
       } else {
         if (result) {
-          req.flash("info", `User '${req.params.user} deleted.'`);
+          req.flash("info", `User '${req.params.user}' deleted.`);
         } else {
           // Finding none is not an error according to Mongoose - if we get
           // here we tried to delete the admin user and didn't.
-          req.flash("error", `Did not delete user ${req.params.user}`);
+          req.flash("error", `Did not delete user '${req.params.user}'`);
         }
       }
       res.redirect("/admin");
