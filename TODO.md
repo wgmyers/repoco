@@ -5,7 +5,7 @@
 3. DONE Code tidy - logging, .env, favicon, routes outside app.js, simple tests etc
 4. DONE Edit page integrating file tree and MD editor for markdown w/ load/save file
 5. DONE Git integration - publish / mark edited but unpublished files
-6. User login
+6. DONE User login
 7. Security audit and code cleanup - include proper session handling
 8. Proper test suite with reasonable coverage
 9. Deploy!
@@ -18,8 +18,6 @@
 
 Authentication:
 
-* Make it so all existing pages only display if a regular user is found AND only display relevant sites
-* Make it so all api routes only respond if a regular user is found AND has access to that site
 * Disable login for users marked inactive
 * Add a user settings page where you can change eg password and email (?)
 * Add password reset mechanism (requires Eric to divulge email sending secrets)
@@ -43,6 +41,8 @@ Help page:
 
 ### DONE
 
+* API routes only respond to allowed sites  files
+* User pages only display allowed sites / files
 * User site edit enable/disable implemented
 * Update user implemented
 * Admin page shows whether user is active
