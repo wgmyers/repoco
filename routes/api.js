@@ -14,7 +14,7 @@ const auth = require("../lib/auth");
 
 router.get("/api/filetrees", (req, res) => {
   if (auth.is_regular(req.user)) {
-    res.json(site.load_filetrees());
+    res.json(site.load_filetrees(req.user.sites));
   } else {
     res.json(auth.not_authorised());
   }
