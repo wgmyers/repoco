@@ -89,7 +89,7 @@ block layout-content
                     each site in sites
                       - var id = "site-" + site 
                       label.list-group-item
-                        input.form-check-input.me-1(type="checkbox" id=id name=id)
+                        input.form-check-input.me-1.site-check(type="checkbox" id=id name=id)
                         .
                           #{site}                  
                 .col-4

@@ -33,6 +33,16 @@ function populate_modal(event) {
   const modal_email = document.getElementById("modal-email");
   modal_email.value = email;
 
+  // Sites
+  // First uncheck them all
+  const site_checks = document.querySelectorAll(".site-check");
+  site_checks.forEach(check => check.checked = false);
+  // Now check only the ones we want checked
+  for (const site of sites) {
+    const site_checkbox = document.getElementById(`site-${site}`);
+    site_checkbox.checked = true;
+  }
+
   // Active toggle
   const modal_active = document.getElementById("modal-active");
   if (active == "Yes") {
