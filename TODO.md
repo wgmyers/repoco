@@ -377,6 +377,8 @@ keep those configs in the DB instead and read-write them from there, but doing
 so implies an actual admin user and an admin interface. And I don't want to
 build that yet, and possibly don't want to build it at all.
 
+UPDATE (after two straight weekends building admin interface): Hah
+
 So, YAML config files it is.
 
 Something like the following for foo.com:
