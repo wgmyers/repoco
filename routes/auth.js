@@ -12,7 +12,7 @@ const auth = require("../lib/auth");
 // create application/x-www-form-urlencoded parser
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-/* Login and logout */
+/* Login, add/delete user, and logout */
 
 router.post("/login", urlencodedParser, passport.authenticate("local", {
   successRedirect: "/",
@@ -45,6 +45,28 @@ router.post("/adduser", urlencodedParser, (req, res, next) => {
     next(err);
   }
 
+});
+
+router.get("/deluser/:user", (req, res, next) => {
+  if(!req.user) {
+    res.redirect("/");
+  } else if (auth.is_admin(req.user)) {
+    // Try to delete the user
+    // Report back with flash message either way
+    User.findOneAndDelete({ username: req.params.user }, (err, result) => {
+      if (err) {
+        console.error(err);
+        req.flash("error", `Could not delete user ${req.params.user}`);
+      } else {
+        req.flash("info", `User '${req.params.user} deleted.'`);
+      }
+      res.redirect("/admin");
+    });
+  } else {
+    const err = new Error("Forbidden");
+    err.status = 403;
+    next(err);
+  }
 });
 
 router.get("/logout", (req, res) => {

@@ -32,8 +32,7 @@ function populate_modal(event) {
   const modal_delete_user = document.getElementById("modal-delete-user-btn");
   modal_delete_user.setAttribute("disabled", true); // Always start disabled
   modal_delete_user.addEventListener("click", () => {
-    // Do stuff here
-    console.log("I am in the delete user button click handler");
+    window.location.href=`/deluser/${username}`;
   });
   // Delete user toggle should be unchecked on start
   const modal_delete_user_toggle = document.getElementById("modal-delete-user-check");
