@@ -16,9 +16,10 @@
 
 ### DOING
 
-Authentication:
+Security:
+* See notes below (way below)
 
-* Disable login for users marked inactive
+User settings:
 * Add a user settings page where you can change eg password and email (?)
 * Add password reset mechanism (requires Eric to divulge email sending secrets)
 
@@ -41,6 +42,7 @@ Help page:
 
 ### DONE
 
+* Disable login for users marked inactive
 * API routes only respond to allowed sites  files
 * User pages only display allowed sites / files
 * User site edit enable/disable implemented
