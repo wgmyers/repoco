@@ -72,7 +72,7 @@ block layout-content
     .modal(tabindex="-1" id="modal-admin")
       .modal-dialog.modal-dialog-centered
         .modal-content
-          form(action="/updateuser" method="post" id="modal-update-form")
+          form(action="#" method="post" id="modal-update-form")
             .modal-header
               h5.modal-title(id="modal-title") Admin Modal
               button.btn-close(type=button data-bs-dismiss="modal" aria-label="Close")
@@ -81,7 +81,7 @@ block layout-content
               .row.py-2
                 label.col-lg-3.col-form-label(for="modal-email") Email
                 .col-lg-9
-                  input.form-control(type="text" id="modal-email" name="modal-email")
+                  input.form-control(type="text" id="modal-email" name="email")
               .row.py-2
                 .col-8
                   h6 Sites
@@ -89,16 +89,16 @@ block layout-content
                   .row.py-2
                     .col
                       .form-check.form-switch.float-end
-                        input.form-check-input(type="checkbox" id="modal-active")
+                        input.form-check-input(type="checkbox" id="modal-active" name="active")
                         label.form-check-label(for="modal-active") Active
                   .row.py-2
                     .col
-                      button.btn.btn-danger.float-end(type=button id="modal-delete-user-btn" disabled=true) Delete User
+                      button.btn.btn-danger.float-end(type="button" id="modal-delete-user-btn" disabled=true) Delete User
                   .row
                     .col
                       .form-check.form-switch.float-end
                         input.form-check-input.enable-toggle(type="checkbox" id="modal-delete-user-check")
                         label.form-check-label(for="modal-delete-user-check") Enable
             .modal-footer
-              button.btn.btn-secondary(type=button data-bs-dismiss="modal" id="modal-cancel") Cancel
-              button.btn.btn-primary(type="submit") Update  
+              button.btn.btn-secondary(type="button" data-bs-dismiss="modal" id="modal-cancel-btn") Cancel
+              button.btn.btn-primary(type="submit" id="modal-update-btn" form="modal-update-form") Update  

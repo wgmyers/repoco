@@ -18,8 +18,8 @@ function populate_modal(event) {
   const sites = row.getAttribute("data-bs-sites").split("|");
 
   // Update form action
-  const form_element = document.getElementById("modal-update-form");
-  form_element.setAttribute("action", `/updateuser/${username}`);
+  const update_form = document.getElementById("modal-update-form");
+  update_form.setAttribute("action", `/updateuser/${username}`);
 
   // Modal title
   const modal_title = document.getElementById("modal-title");
@@ -73,19 +73,22 @@ function populate_modal(event) {
 // Event handler for enabler toggles
 function handle_toggle() {
   // Get the relevant button
-  const btn = document.getElementById(this.id.replace("check", "btn"));
+  const delete_btn = document.getElementById("modal-delete-user-btn");
+  const update_btn = document.getElementById("modal-update-btn");
   if (this.checked) {
-    // Enable the button
-    btn.removeAttribute("disabled");
+    // Enable the delete button and disable update
+    delete_btn.removeAttribute("disabled");
+    update_btn.setAttribute("disabled",true);
   } else {
-    // Disable the button
-    btn.setAttribute("disabled", true);
+    // Disable the delete button and enable update
+    delete_btn.setAttribute("disabled", true);
+    update_btn(removeAttribute("disabled"));
   }
 }
 
-// Event handlers for enable-toggle switches
-const toggles = document.querySelectorAll(".enable-toggle");
-toggles.forEach(tog => tog.addEventListener("click", handle_toggle));
+// Event handler for delete user button toggle
+const toggle = document.getElementById("modal-delete-user-check");
+toggle.addEventListener("click", handle_toggle);
 
 // Event handler to bring up modal on table row click
 // Table rows contain data-bs-* elements as required to set this up

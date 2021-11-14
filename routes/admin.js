@@ -87,6 +87,8 @@ router.get("/deluser/:user", (req, res, next) => {
         if (result) {
           req.flash("info", `User '${req.params.user} deleted.'`);
         } else {
+          // Finding none is not an error according to Mongoose - if we get
+          // here we tried to delete the admin user and didn't.
           req.flash("error", `Did not delete user ${req.params.user}`);
         }
       }
