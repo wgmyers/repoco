@@ -17,6 +17,10 @@ function populate_modal(event) {
   const active = row.getAttribute("data-bs-active");
   const sites = row.getAttribute("data-bs-sites").split("|");
 
+  // Update form action
+  const form_element = document.getElementById("modal-update-form");
+  form_element.setAttribute("action", `/updateuser/${username}`);
+
   // Modal title
   const modal_title = document.getElementById("modal-title");
   modal_title.innerHTML = `Editing '${username}'`;
@@ -57,12 +61,12 @@ function populate_modal(event) {
   }
 
   // Ok button
-  const modal_ok = document.getElementById("modal-ok");
-  modal_ok.addEventListener("click", () => {
+  //const modal_ok = document.getElementById("modal-ok");
+  //modal_ok.addEventListener("click", () => {
     // Do stuff here
-    console.log("I am in the ok button click handler");
-    modal.hide();
-  });
+  //  console.log("I am in the ok button click handler");
+  //  modal.hide();
+  //});
 }
 
 // handle_toggle
