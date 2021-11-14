@@ -283,8 +283,17 @@ All the below MUST be implemented when we do.
 * DONE IE, in re above, avoid situation where any logged in user can read / write any
 file accessible by some other user.
 * DONE Also, implement hard ban on symlinks. Refuse to edit any file that is a symlink.
+* Ban the string '../' anyway
 
 Not sure about the following, tbh.
+
+With the first, if a user is writing to their own config file, we already have
+bigger problems: making life harder for admins with little obvious benefit is
+not what we want.
+
+The second can be avoided by not having paths in files at all, and will
+disappear when we have a proper filetree implemented in cfg. Currently paths
+don't seem to work anyway.
 
 * Belt and braces: require config files to be 0400 and refuse to read them if
 not. This stops a situation where a user finds a way to write to their own config
