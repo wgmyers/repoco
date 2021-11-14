@@ -18,10 +18,9 @@
 
 Authentication:
 
-* Admin page allows edit user, ie add/remove allowed sites
-* Disable login for users marked inactive
 * Make it so all existing pages only display if a regular user is found AND only display relevant sites
 * Make it so all api routes only respond if a regular user is found AND has access to that site
+* Disable login for users marked inactive
 * Add a user settings page where you can change eg password and email (?)
 * Add password reset mechanism (requires Eric to divulge email sending secrets)
 
@@ -44,6 +43,7 @@ Help page:
 
 ### DONE
 
+* User site edit enable/disable implemented
 * Update user implemented
 * Admin page shows whether user is active
 * Admin page allows delete user, will not delete admin user
