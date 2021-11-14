@@ -22,7 +22,7 @@ function populate_modal(event) {
 
   // Modal body
   const modal_text = document.getElementById("modal-text");
-  modal_text.innerHTML = `User ${username} is level '${level}'`;
+  modal_text.innerHTML = `User level: '${level}'`;
 
   // Email textbox
   const modal_email = document.getElementById("modal-email");
@@ -37,6 +37,15 @@ function populate_modal(event) {
   // Delete user toggle should be unchecked on start
   const modal_delete_user_toggle = document.getElementById("modal-delete-user-check");
   modal_delete_user_toggle.checked = false;
+  // Disable delete user toggle for admin user
+  // Make sure it is enabled for other users though.
+  switch (level) {
+    case "admin":
+      modal_delete_user_toggle.setAttribute("disabled", true);
+      break;
+    default:
+      modal_delete_user_toggle.removeAttribute("disabled");
+  }
 
   // Ok button
   const modal_ok = document.getElementById("modal-ok");
