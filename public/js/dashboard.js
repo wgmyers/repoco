@@ -40,6 +40,7 @@ function make_list(items) {
 // make_list_group
 // FIXME: poorly named function.
 // Calls API to get latest changes for all available sites
+// This implicitly enforces the site perms.
 // If ok, calls make_list to create the LH menu
 // This function (also poorly named) also keeps a copy of the API result
 async function make_list_group() {
@@ -221,6 +222,8 @@ function handle_revert() {
   call_api("revert");
 }
 
+
+
 // Main
 
 // make_dashboard
@@ -232,6 +235,10 @@ function make_dashboard() {
     // Select first site in sites, if we have any
     if(Object.keys(sites_status).length > 0) {
       select_site(Object.keys(sites_status)[0]);
+    } else {
+      // We have no sites. Disable all the toggles
+      const toggles = document.querySelectorAll(".enable-toggle");
+      toggles.forEach(tog => tog.setAttribute("disabled", true));
     }
 
   });
