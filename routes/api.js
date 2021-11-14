@@ -68,7 +68,7 @@ router.get("/api/revert/:site", async (req, res) => {
     const result = await git.do_revert(req.params.site);
     res.json(result);
   } else {
-    req.json(auth.not_authorised());
+    res.json(auth.not_authorised());
   }
 });
 
