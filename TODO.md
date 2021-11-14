@@ -18,7 +18,6 @@
 
 Authentication:
 
-* Admin page allows delete user
 * Admin page allows edit user, ie add/remove allowed sites
 * Make it so all existing pages only display if a regular user is found AND only display relevant sites
 * Make it so all api routes only respond if a regular user is found AND has access to that site
@@ -44,6 +43,7 @@ Help page:
 
 ### DONE
 
+* Admin page allows delete user, will not delete admin user
 * All routes now check user perms via lib/auth.js
 * API routes now check user permissions
 * Display current user in RH of nav

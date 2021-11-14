@@ -53,12 +53,17 @@ router.get("/deluser/:user", (req, res, next) => {
   } else if (auth.is_admin(req.user)) {
     // Try to delete the user
     // Report back with flash message either way
-    User.findOneAndDelete({ username: req.params.user }, (err, result) => {
+    // NB: Specify a regular user here to make it so we cannot delete the admin user
+    User.findOneAndDelete({ username: req.params.user, level: 'regular' }, (err, result) => {
       if (err) {
         console.error(err);
         req.flash("error", `Could not delete user ${req.params.user}`);
       } else {
-        req.flash("info", `User '${req.params.user} deleted.'`);
+        if (result) {
+          req.flash("info", `User '${req.params.user} deleted.'`);
+        } else {
+          req.flash("error", `Did not delete user ${req.params.user}`);
+        }
       }
       res.redirect("/admin");
     });
