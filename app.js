@@ -180,4 +180,11 @@ app.use((err, req, res, _next) => {
   });
 });
 
+// Graceful app cleanup
+process.once("SIGINT", () => {
+  mongoose.connection.close(function () {
+    console.log('Mongoose connection disconnected');
+  });
+});
+
 module.exports = app;

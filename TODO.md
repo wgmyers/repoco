@@ -20,9 +20,9 @@ Testing:
 * Test login as admin
 * Test login as user
 * Unit tests
+* mocha --exit issue (?)
 
 Get-Deploy-Ready
-* Graceful shutdown (should obviate mocha --exit)
 * PM2 config
 * Proper session handler
 
@@ -51,6 +51,7 @@ Help page:
 
 ### DONE
 
+* Graceful exit on SIGINT - we explicitly close mongoose connection and server
 * Editor now pops up alerts on error
 * More hardening of file access
 * File access locked down to list of files in config
