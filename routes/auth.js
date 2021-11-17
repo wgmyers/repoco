@@ -10,7 +10,7 @@ const router = express.Router();
 // create application/x-www-form-urlencoded parser
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-/* Login, add/update/delete user, and logout */
+/* Login and logout */
 
 router.post("/login", urlencodedParser, passport.authenticate("local", {
   successRedirect: "/",
