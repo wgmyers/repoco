@@ -8,11 +8,34 @@
 require("dotenv").config();
 
 const request = require("supertest");
-const app = require("../app");
+const mongoose = require("mongoose");
+const secrets = require("../lib/secrets");
+
+
+// Tweak setup for tests
+secrets.secrets.DB_USER = secrets.secrets.TEST_DB_USER;
+secrets.secrets.DB_PASSWORD = secrets.secrets.TEST_DB_PASSWORD;
+secrets.secrets.DB_NAME = secrets.secrets.TEST_DB_NAME;
+secrets.secrets.DEFAULT_ADMIN_USER = "test_admin";
+secrets.secrets.DEFAULT_ADMIN_EMAIL = "noreply@example.com";
+secrets.secrets.DEFAULT_ADMIN_PWD = "poop";
+
 
 describe("Test routes", () => {
+  let agent;
 
-  const agent = request.agent(app);
+  before(() => {
+    const app = require("../app");
+    agent = request.agent(app);
+  })
+
+  after(async (done) => {
+    //await mongoose.connection.db.dropDatabase();
+    mongoose.connection.close(function () {
+      console.log('Mongoose connection disconnected');
+    });
+    done();
+  })
 
   describe("Routes w/ no user", () => {
 
