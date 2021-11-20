@@ -13,6 +13,7 @@ const logger = require("morgan");
 const flash = require("connect-flash");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const MemoryStore = require('memorystore')(session)
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
@@ -65,10 +66,14 @@ app.use("/js/fancytree", express.static(path.join(__dirname, "node_modules/jquer
 
 /**
  * Session configuration
- * FIXME - use proper memory store before pushing to live
+ * FIXME - ensure we are using sensible settings
  */
 
 app.use(session({
+  cookie: { maxAge: 86400000 },
+  store: new MemoryStore({
+    checkPeriod: 86400000 // prune expired entries every 24h
+  }),
   secret: secrets.secrets.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
