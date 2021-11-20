@@ -25,6 +25,7 @@
     "nodemon": "^2.0.15",
     "nyc": "^15.1.0",
     "sass": "^1.43.4",
+    "should": "^13.2.3",
     "supertest": "^6.1.6"
   },
   "dependencies": {
