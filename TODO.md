@@ -17,7 +17,6 @@
 ### DOING
 
 Testing:
-* Test login as admin
 * Test login as user
 * Unit tests
 * mocha --exit issue (?)
@@ -50,6 +49,7 @@ Help page:
 
 ### DONE
 
+* Basic admin tests implemented
 * Proper memory store for session handler
 * Graceful exit on SIGINT - we explicitly close mongoose connection and server
 * Editor now pops up alerts on error
