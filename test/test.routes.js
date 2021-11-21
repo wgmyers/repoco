@@ -33,11 +33,11 @@ describe("Test routes", () => {
 
   before(async () => {
     agent = request.agent(app);
-    // NB: it takes a second to create the default admin user
+    // NB: it takes half a second or so to create the default admin user
     // Without a fake sleep function, the admin login tests execute before
     // the user is created, and therefore fail. So we use a fake sleep
     // function to avoid this.
-    await sleep(1000);
+    await sleep(500);
   });
 
   describe("HTML Routes w/ no user", () => {
