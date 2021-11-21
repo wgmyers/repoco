@@ -165,8 +165,6 @@ DB credentials live in .secrets and not .env
 
 ## Issues
 
-* Navigating away from editor page loses all unsaved changes and does not reload
-same file on return
 * User email not validated at all
 * After publishing to test, dashboard says 'up to date', but we have changes
 not yet made live. This might seem confusing to users. We should track changes
@@ -176,6 +174,7 @@ published to test but not to live and report them on the dashboard. But how?
 * Dashboard button toggles should be disabled if there are no changes. Or should they?
 * Missing files not handled consistently depending on path presence
 * Hiding Jekyll headers makes sense, but a way to optionally edit parts of them might be nice
+* FIXED Navigating away from editor page loses all unsaved changes
 * FIXED Need express-session solution for production deployment
 * FIXED Load error triggers dirty file flag. Really annoying.
 * FIXED Load / save errors should pop up flash warning

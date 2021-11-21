@@ -210,5 +210,18 @@ function load_file_event(event) {
   }
 }
 
+// FIXME: why not use our own much nicer modal?
+function leave_page_event(event) {
+  if(editor_vars.dirty) {
+    //following two lines will cause the browser to ask the user if they
+    //want to leave. The text of this dialog is controlled by the browser.
+    event.preventDefault(); //per the standard
+    event.returnValue = ''; //required for Chrome
+  }
+}
+
+// Catch attempt to leave page so we can check for unsaved data
+window.addEventListener('beforeunload', leave_page_event);
+
 // Catch event emitted by filetree
 document.addEventListener("load_file", load_file_event, false);
