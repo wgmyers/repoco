@@ -24,7 +24,6 @@ Testing:
 
 Get-Deploy-Ready
 * PM2 config
-* Proper session handler
 
 User settings:
 * Add a user settings page where you can change eg password and email (?)
@@ -51,6 +50,7 @@ Help page:
 
 ### DONE
 
+* Proper memory store for session handler
 * Graceful exit on SIGINT - we explicitly close mongoose connection and server
 * Editor now pops up alerts on error
 * More hardening of file access
