@@ -7,6 +7,7 @@
 // Set up test environment
 require("dotenv").config();
 
+const expect = require('chai').expect;
 const request = require("supertest");
 const mongoose = require("mongoose");
 const secrets = require("../lib/secrets");
@@ -16,26 +17,28 @@ const secrets = require("../lib/secrets");
 secrets.secrets.DB_USER = secrets.secrets.TEST_DB_USER;
 secrets.secrets.DB_PASSWORD = secrets.secrets.TEST_DB_PASSWORD;
 secrets.secrets.DB_NAME = secrets.secrets.TEST_DB_NAME;
-secrets.secrets.DEFAULT_ADMIN_USER = "test_admin";
+secrets.secrets.DEFAULT_ADMIN_USER = "admin";
 secrets.secrets.DEFAULT_ADMIN_EMAIL = "noreply@example.com";
 secrets.secrets.DEFAULT_ADMIN_PWD = "poop";
 
+const app = require("../app");
+
+// See https://appdividend.com/2020/07/31/javascript-sleep-how-to-make-your-functions-sleep/
+const sleep = milliseconds => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
 
 describe("Test routes", () => {
   let agent;
 
-  before(() => {
-    const app = require("../app");
+  before(async () => {
     agent = request.agent(app);
-  })
-
-  after(async (done) => {
-    //await mongoose.connection.db.dropDatabase();
-    mongoose.connection.close(function () {
-      console.log('Mongoose connection disconnected');
-    });
-    done();
-  })
+    // NB: it takes a second to create the default admin user
+    // Without a fake sleep function, the admin login tests execute before
+    // the user is created, and therefore fail. So we use a fake sleep
+    // function to avoid this.
+    await sleep(1000);
+  });
 
   describe("Routes w/ no user", () => {
 
@@ -79,6 +82,56 @@ describe("Test routes", () => {
         .get("/poop")
         .expect("Content-Type", /html/)
         .expect(404, done);
+    });
+
+  });
+
+  describe("Admin user routes", () => {
+
+    const admin_creds = {
+      username: secrets.secrets.DEFAULT_ADMIN_USER,
+      password: secrets.secrets.DEFAULT_ADMIN_PWD
+    }
+
+    it("admin login works", done => {
+      agent
+        .post("/login")
+        .redirects(5)
+        .type("form")
+        .send(admin_creds)
+        .expect("Content-Type", /html/)
+        .expect(res => {
+          //console.dir(res);
+          if (!res.text.match(/Admin/)) {
+            throw new Error("Did not redirect to admin page");
+          }
+        })
+        .expect(200, done)
+    });
+
+    it("admin route works logged in as admin", done => {
+      agent
+        .get("/admin")
+        .expect("Content-Type", /html/)
+        .expect(res => {
+          if (!res.text.match(/Admin/)) {
+            throw new Error("Admin page did not load");
+          }
+        })
+        .expect(200, done);
+    });
+
+    it("admin logout works", done => {
+      agent
+        .get("/logout")
+        .redirects(5)
+        .expect("Content-Type", /html/)
+        .expect(res => {
+          if (!res.text.match(/Login/)) {
+            throw new Error("Unexpected res.text in /logout");
+          }
+        })
+        .expect(200, done);
     });
 
   });
