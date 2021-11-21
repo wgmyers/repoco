@@ -197,7 +197,6 @@ describe("Test routes", () => {
     before(async () => {
 
       // Log in as admin
-      console.log("Logging in as admin");
       agent
         .post("/login")
         .redirects(2)
@@ -209,9 +208,10 @@ describe("Test routes", () => {
             throw new Error("Could not log in as admin");
           }
         });
+      // NB: POST /adduser below will fail unless we wait a bit here
       await sleep(500);
+
       // Create test user
-      console.log("Adding test user");
       agent
         .post("/adduser")
         .redirects(2)
@@ -228,8 +228,8 @@ describe("Test routes", () => {
             throw new Error("Could not create test user");
           }
         });
+
       // Log out
-      console.log("Logging out admin");
       agent
         .get("/logout")
         .redirects(2)
@@ -239,7 +239,8 @@ describe("Test routes", () => {
             throw new Error("Could not log out admin");
           }
         });
-      console.log("Waiting for user creation");
+
+      // NB: wait again otherwise POST /login won't work in first user test
       await sleep(500);
     });
 
@@ -253,6 +254,19 @@ describe("Test routes", () => {
         .expect(res => {
           if (!res.text.match(/Controls/)) {
             throw new Error("Did not redirect to dashboard page");
+          }
+        })
+        .expect(200, done);
+    });
+
+    it("regular user logout works", done => {
+      agent
+        .get("/logout")
+        .redirects(2)
+        .expect("Content-Type", /html/)
+        .expect(res => {
+          if (!res.text.match(/Login/)) {
+            throw new Error("Unexpected res.text in /logout");
           }
         })
         .expect(200, done);
