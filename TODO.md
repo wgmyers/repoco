@@ -165,6 +165,7 @@ DB credentials live in .secrets and not .env
 
 ## Issues
 
+* Filetree loads font-awesome from CDN, not locally :(
 * User email not validated at all
 * After publishing to test, dashboard says 'up to date', but we have changes
 not yet made live. This might seem confusing to users. We should track changes
