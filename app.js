@@ -13,7 +13,7 @@ const logger = require("morgan");
 const flash = require("connect-flash");
 const mongoose = require("mongoose");
 const session = require("express-session");
-const MemoryStore = require('memorystore')(session)
+const MemoryStore = require("memorystore")(session);
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
@@ -189,7 +189,7 @@ app.use((err, req, res, _next) => {
 // Graceful app cleanup
 process.once("SIGINT", () => {
   mongoose.connection.close(function () {
-    console.log('Mongoose connection disconnected');
+    console.log("Mongoose connection disconnected");
   });
 });
 
