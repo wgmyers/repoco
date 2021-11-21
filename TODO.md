@@ -120,6 +120,7 @@ Config:
 * Lose `pages` section - just replicate editable portion of filetree under `files`
 
 Editor:
+* Navigating away from editor page does not reload a loaded file on return
 * Mark unpublished changed files in filetree
 * Support arbitrary filetrees defined under files in config
 * Have 'No File Loaded' msg when no file loaded, not an empty editor
@@ -164,11 +165,13 @@ DB credentials live in .secrets and not .env
 
 ## Issues
 
+* Navigating away from editor page loses all unsaved changes and does not reload
+same file on return
 * User email not validated at all
 * After publishing to test, dashboard says 'up to date', but we have changes
 not yet made live. This might seem confusing to users. We should track changes
 published to test but not to live and report them on the dashboard. But how?
-* Git push should grab user details from user
+* Git push should grab user details from user - see do_publish in git.js
 * Much testing / error checking on git integration needed
 * Dashboard button toggles should be disabled if there are no changes. Or should they?
 * Missing files not handled consistently depending on path presence
