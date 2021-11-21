@@ -408,13 +408,96 @@ describe("Test routes", () => {
         .expect(200, done);
     });
 
-    it("/api/filetrees works as regular user", done => {
+    it("Filetree API call works as regular user", done => {
       agent
         .get("/api/filetrees")
         .expect("Content-Type", /json/)
         .expect(res => {
           if (res.body.status != "ok") {
-            throw new Error("/api/filetrees call failed");
+            throw new Error("Filetree API call failed");
+          }
+        })
+        .expect(200, done);
+    });
+
+    let testfile;
+
+    it("File load API call should work as regular user", done => {
+      agent
+        .get("/api/files/example.com/index.md")
+        .expect("Content-Type", /json/)
+        .expect(res => {
+          testfile = res.body.contents;
+          if (res.body.status != "ok") {
+            throw new Error("File load failed");
+          }
+        })
+        .expect(200, done);
+    });
+
+    it("File save API call should work as regular user", done => {
+      agent
+        .post("/api/files/example.com/index.md")
+        .expect("Content-Type", /json/)
+        .send( { "contents": testfile + "\ntesting testing 123" })
+        .expect(res => {
+          if (res.body.status != "ok") {
+            throw new Error("File save failed");
+          }
+        })
+        .expect(200, done);
+    });
+
+    // NB: This should revert the change made in the above test
+    it("Revert API call should work as regular user", done => {
+      agent
+        .get("/api/revert/example.com")
+        .expect("Content-Type", /json/)
+        .expect(res => {
+          if (res.body.status != "ok") {
+            throw new Error("Revert API call failed");
+          }
+        })
+        .expect(200, done);
+    });
+
+    // NB: Since we just called revert, we should find no changes
+    // FIXME: This is bad, isn't it. Tests shouldn't depend on other tests.
+    // But how else to do it? I don't know.
+    it("Changes API call should work as regular user", done => {
+      agent
+        .get("/api/changes")
+        .expect("Content-Type", /json/)
+        .expect(res => {
+          if (res.body.status != "ok") {
+            throw new Error("File changes API call failed");
+          }
+          if (res.body.changes[0].files.length != 0) {
+            throw new Error("Changes API test found unexpected changes");
+          }
+        })
+        .expect(200, done);
+    });
+
+    it("Publish API call should work as regular user", done => {
+      agent
+        .get("/api/publish/example.com/test")
+        .expect("Content-Type", /json/)
+        .expect(res => {
+          if (res.body.status != "ok") {
+            throw new Error("Publish API call failed");
+          }
+        })
+        .expect(200, done);
+    });
+
+    it("Update API call should work as regular user", done => {
+      agent
+        .get("/api/update/example.com")
+        .expect("Content-Type", /json/)
+        .expect(res => {
+          if (res.body.status != "ok") {
+            throw new Error("Update API call failed");
           }
         })
         .expect(200, done);
