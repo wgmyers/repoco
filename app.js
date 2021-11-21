@@ -118,6 +118,7 @@ mongoose.connect(`mongodb://${secrets.secrets.DB_USER}:${secrets.secrets.DB_PASS
       await admin.check_admin_exists();
     } catch (err) {
       console.error("Admin user check failed");
+      console.dir(err);
       // FIXME: shut down if we can't check for admin
     }
   }
