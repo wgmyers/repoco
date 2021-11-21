@@ -161,11 +161,11 @@ published to test but not to live and report them on the dashboard. But how?
 * Git push should grab user details from user
 * Much testing / error checking on git integration needed
 * Dashboard button toggles should be disabled if there are no changes. Or should they?
-* Load error triggers dirty file flag. Really annoying.
-* Load / save errors should pop up flash warning
-* Need express-session solution for production deployment
 * Missing files not handled consistently depending on path presence
 * Hiding Jekyll headers makes sense, but a way to optionally edit parts of them might be nice
+* FIXED Need express-session solution for production deployment
+* FIXED Load error triggers dirty file flag. Really annoying.
+* FIXED Load / save errors should pop up flash warning
 * FIXED npm audit complaining about node-sass - moved to dart-sass
 
 ## Future Ideas
