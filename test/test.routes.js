@@ -259,6 +259,42 @@ describe("Test routes", () => {
         .expect(200, done);
     });
 
+    it("/dashboard route works logged in as regular user", done => {
+      agent
+        .get("/dashboard")
+        .expect("Content-Type", /html/)
+        .expect(res => {
+          if (!res.text.match(/Controls/)) {
+            throw new Error("Dashboard page did not load");
+          }
+        })
+        .expect(200, done);
+    });
+
+    it("/edit route works logged in as regular user", done => {
+      agent
+        .get("/edit")
+        .expect("Content-Type", /html/)
+        .expect(res => {
+          if (!res.text.match(/Editor/)) {
+            throw new Error("Edit page did not load");
+          }
+        })
+        .expect(200, done);
+    });
+
+    it("/help route works logged in as regular user", done => {
+      agent
+        .get("/help")
+        .expect("Content-Type", /html/)
+        .expect(res => {
+          if (!res.text.match(/Help/)) {
+            throw new Error("Help page did not load");
+          }
+        })
+        .expect(200, done);
+    });
+
     it("regular user logout works", done => {
       agent
         .get("/logout")
