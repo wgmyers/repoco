@@ -6,49 +6,33 @@
 4. DONE Edit page integrating file tree and MD editor for markdown w/ load/save file
 5. DONE Git integration - publish / mark edited but unpublished files
 6. DONE User login
-7. Security audit and code cleanup - include proper session handling
-8. Proper test suite with reasonable coverage
+7. DONE Security audit and code cleanup - include proper session handling
+8. DONE Test suite with reasonable coverage
 9. Deploy!
 10. Make Github repo public, register repoco.org, build documentation site etc
-11. Add support for plaintext and csv editors, other phase 2 features
+11. Add support for plaintext and csv editors, other phase 2 features as per below
 
 ## TASKS
 
 ### DOING
 
-Testing:
-* Test login as user
-* Unit tests
-* mocha --exit issue (?)
-
 Get-Deploy-Ready
 * PM2 config
-
-User settings:
-* Add a user settings page where you can change eg password and email (?)
-
-Authentication:
-* Implement 'Remember Me'
-* Add password reset mechanism
 
 Auto-deploy:
 * Implement method of auto-deploying on git push in a repo
 
-Config:
-* Lose `pages` section - just replicate editable portion of filetree under `files`
-
-Editor:
-* Mark unpublished changed files in filetree
-* Support arbitrary filetrees defined under files in config
-* Have 'No File Loaded' msg when no file loaded, not an empty editor
-* Add filename in top banner in case we back out of new file load and tree no longer in sync with editor
-* Handle multiple editors (csv editor, code editor)
-
 Help page:
 * Have one
 
+Deploy:
+* All kinds of server setup
+
 ### DONE
 
+* Remove spurious 'Remember Me' from login page
+* Basic API tests implemented
+* Basic user tests implemented
 * Basic admin tests implemented
 * Proper memory store for session handler
 * Graceful exit on SIGINT - we explicitly close mongoose connection and server
@@ -116,6 +100,31 @@ Help page:
 * Research filetree / MD editor / CSV editor / git components
 * Devise data structure
 * Set up node/express scaffolding
+
+### PHASE TWO
+
+Testing:
+* Better tests
+* Unit tests
+* mocha --exit issue (?)
+
+User settings:
+* Add a user settings page where you can change eg password and email
+
+Authentication:
+* Implement 'Remember Me'
+* Add password reset mechanism
+
+Config:
+* Lose `pages` section - just replicate editable portion of filetree under `files`
+
+Editor:
+* Mark unpublished changed files in filetree
+* Support arbitrary filetrees defined under files in config
+* Have 'No File Loaded' msg when no file loaded, not an empty editor
+* Add filename in top banner in case we back out of new file load and tree no longer in sync with editor
+* Handle multiple editors (csv editor, code editor)
+
 
 # NOTES
 
