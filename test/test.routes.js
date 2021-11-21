@@ -40,7 +40,7 @@ describe("Test routes", () => {
     await sleep(1000);
   });
 
-  describe("Routes w/ no user", () => {
+  describe("HTML Routes w/ no user", () => {
 
     it("index route works", done => {
       agent
@@ -82,6 +82,95 @@ describe("Test routes", () => {
         .get("/poop")
         .expect("Content-Type", /html/)
         .expect(404, done);
+    });
+
+  });
+
+  describe("API routes w/ no user", () => {
+
+    it("Filetree API call should fail with no user", done => {
+      agent
+        .get("/api/filetrees")
+        .expect("Content-Type", /json/)
+        .expect(res => {
+          if (res.body.status != "error") {
+            throw new Error("Filetree API call succeeded but no user logged in");
+          }
+        })
+        .expect(200, done);
+    });
+
+    it("File load API call should fail with no user", done => {
+      agent
+        .get("/api/files/example.com/index.md")
+        .expect("Content-Type", /json/)
+        .expect(res => {
+          if (res.body.status != "error") {
+            throw new Error("File load succeeded but no user logged in");
+          }
+        })
+        .expect(200, done);
+    });
+
+    it("File save API call should fail with no user", done => {
+      agent
+        .post("/api/files/example.com/index.md")
+        .send({ "contents": "This should not work"})
+        .expect("Content-Type", /json/)
+        .expect(res => {
+          if (res.body.status != "error") {
+            throw new Error("File load succeeded but no user logged in");
+          }
+        })
+        .expect(200, done);
+    });
+
+    it("File changes API call should fail with no user", done => {
+      agent
+        .get("/api/changes")
+        .expect("Content-Type", /json/)
+        .expect(res => {
+          if (res.body.status != "error") {
+            throw new Error("File changes API call succeeded but no user logged in");
+          }
+        })
+        .expect(200, done);
+    });
+
+    it("Publish API call should fail with no user", done => {
+      agent
+        .get("/api/publish/example.com/test")
+        .expect("Content-Type", /json/)
+        .expect(res => {
+          if (res.body.status != "error") {
+            throw new Error("Publish API call succeeded but no user logged in");
+          }
+        })
+        .expect(200, done);
+    });
+
+    it("Update API call should fail with no user", done => {
+      agent
+        .get("/api/update/example.com")
+        .expect("Content-Type", /json/)
+        .expect(res => {
+          if (res.body.status != "error") {
+            throw new Error("Update API call succeeded but no user logged in");
+          }
+        })
+        .expect(200, done);
+    });
+
+    it("Revert API call should fail with no user", done => {
+      agent
+        .get("/api/revert/example.com")
+        .expect("Content-Type", /json/)
+        .expect(res => {
+          if (res.body.status != "error") {
+            throw new Error("Revert API call succeeded but no user logged in");
+          }
+        })
+        .expect(200, done);
     });
 
   });
@@ -195,7 +284,7 @@ describe("Test routes", () => {
     // At this point, we don't have one, so we must log in as
     // admin, do so, and then log out again.
     before(async () => {
-
+      console.log("Setting up test user");
       // Log in as admin
       agent
         .post("/login")
@@ -229,6 +318,29 @@ describe("Test routes", () => {
           }
         });
 
+      // Wait for user to be added before we modify them
+      await sleep(500);
+      agent
+        .post(`/updateuser/${test_user_creds.username}`)
+        .redirects(2)
+        .type("form")
+        .send({
+          "site-example.com": "on",
+          "active": "on",
+          "email": test_user_creds.email
+         })
+        .expect("Content-Type", /html/)
+        .expect(res => {
+          if (!res.text.match(/User.*?updated/)) {
+            throw new Error("Could not update user");
+          }
+        })
+        .end((err, res) => {
+          if (err) {
+            throw new Error("Could not modify test user permissions");
+          }
+        })
+
       // Log out
       agent
         .get("/logout")
@@ -242,6 +354,7 @@ describe("Test routes", () => {
 
       // NB: wait again otherwise POST /login won't work in first user test
       await sleep(500);
+      console.log("Test user ready");
     });
 
     it("regular user login works", done => {
@@ -290,6 +403,18 @@ describe("Test routes", () => {
         .expect(res => {
           if (!res.text.match(/Help/)) {
             throw new Error("Help page did not load");
+          }
+        })
+        .expect(200, done);
+    });
+
+    it("/api/filetrees works as regular user", done => {
+      agent
+        .get("/api/filetrees")
+        .expect("Content-Type", /json/)
+        .expect(res => {
+          if (res.body.status != "ok") {
+            throw new Error("/api/filetrees call failed");
           }
         })
         .expect(200, done);
