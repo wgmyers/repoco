@@ -86,6 +86,12 @@ describe("Test routes", () => {
 
   });
 
+  const test_user_creds = {
+    username: "TestUser",
+    password: "testuser",
+    email: "testuser@example.com"
+  }
+
   describe("Admin user routes", () => {
 
     const admin_creds = {
@@ -96,7 +102,7 @@ describe("Test routes", () => {
     it("admin login works", done => {
       agent
         .post("/login")
-        .redirects(5)
+        .redirects(2)
         .type("form")
         .send(admin_creds)
         .expect("Content-Type", /html/)
@@ -106,7 +112,7 @@ describe("Test routes", () => {
             throw new Error("Did not redirect to admin page");
           }
         })
-        .expect(200, done)
+        .expect(200, done);
     });
 
     it("admin route works logged in as admin", done => {
@@ -121,10 +127,57 @@ describe("Test routes", () => {
         .expect(200, done);
     });
 
+    it("admin can create a user", done => {
+      agent
+        .post("/adduser")
+        .redirects(2)
+        .type("form")
+        .send(test_user_creds)
+        .expect("Content-Type", /html/)
+        .expect(res => {
+          if(!res.text.match(/User.*?created/)) {
+            throw new Error("Did not create user");
+          }
+        })
+        .expect(200, done);
+    });
+
+    it("admin can modify a user", done => {
+      agent
+        .post(`/updateuser/${test_user_creds.username}`)
+        .redirects(2)
+        .type("form")
+        .send({
+          "site-example.com": "on",
+          "active": "on",
+          "email": test_user_creds.email
+         })
+        .expect("Content-Type", /html/)
+        .expect(res => {
+          if (!res.text.match(/User.*?updated/)) {
+            throw new Error("Could not update user");
+          }
+        })
+        .expect(200,done)
+    })
+
+    it("admin can delete a user", done => {
+      agent
+        .get(`/deluser/${test_user_creds.username}`)
+        .redirects(2)
+        .expect("Content-Type", /html/)
+        .expect(res => {
+          if (!res.text.match(/User.*?deleted/)) {
+            throw new Error("Could not delete user");
+          }
+        })
+        .expect(200, done);
+    });
+
     it("admin logout works", done => {
       agent
         .get("/logout")
-        .redirects(5)
+        .redirects(2)
         .expect("Content-Type", /html/)
         .expect(res => {
           if (!res.text.match(/Login/)) {
