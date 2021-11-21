@@ -5,3 +5,4 @@ repos/
 .secrets
 assets/
 .nyc_output
+config/sites
