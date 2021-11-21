@@ -92,12 +92,12 @@ describe("Test routes", () => {
     email: "testuser@example.com"
   }
 
-  describe("Admin user routes", () => {
+  const admin_creds = {
+    username: secrets.secrets.DEFAULT_ADMIN_USER,
+    password: secrets.secrets.DEFAULT_ADMIN_PWD
+  }
 
-    const admin_creds = {
-      username: secrets.secrets.DEFAULT_ADMIN_USER,
-      password: secrets.secrets.DEFAULT_ADMIN_PWD
-    }
+  describe("Admin user routes", () => {
 
     it("admin login works", done => {
       agent
@@ -182,6 +182,77 @@ describe("Test routes", () => {
         .expect(res => {
           if (!res.text.match(/Login/)) {
             throw new Error("Unexpected res.text in /logout");
+          }
+        })
+        .expect(200, done);
+    });
+
+  });
+
+  describe("Regular user routes", () => {
+
+    // We need to create a regular user before we can test them.
+    // At this point, we don't have one, so we must log in as
+    // admin, do so, and then log out again.
+    before(async () => {
+
+      // Log in as admin
+      console.log("Logging in as admin");
+      agent
+        .post("/login")
+        .redirects(2)
+        .type("form")
+        .send(admin_creds)
+        .expect(200)
+        .end((err, res) => {
+          if (err) {
+            throw new Error("Could not log in as admin");
+          }
+        });
+      await sleep(500);
+      // Create test user
+      console.log("Adding test user");
+      agent
+        .post("/adduser")
+        .redirects(2)
+        .type("form")
+        .send(test_user_creds)
+        .expect(res => {
+          if(!res.text.match(/User.*?created/)) {
+            throw new Error("Did not create user");
+          }
+        })
+        .expect(200)
+        .end((err, res) => {
+          if (err) {
+            throw new Error("Could not create test user");
+          }
+        });
+      // Log out
+      console.log("Logging out admin");
+      agent
+        .get("/logout")
+        .redirects(2)
+        .expect(200)
+        .end((err, res) => {
+          if (err) {
+            throw new Error("Could not log out admin");
+          }
+        });
+      console.log("Waiting for user creation");
+      await sleep(500);
+    });
+
+    it("regular user login works", done => {
+      agent
+        .post("/login")
+        .redirects(2)
+        .type("form")
+        .send(test_user_creds)
+        .expect("Content-Type", /html/)
+        .expect(res => {
+          if (!res.text.match(/Controls/)) {
+            throw new Error("Did not redirect to dashboard page");
           }
         })
         .expect(200, done);
