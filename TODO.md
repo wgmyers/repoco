@@ -31,9 +31,9 @@ Deploy:
 ### DONE
 
 * Remove spurious 'Remember Me' from login page
-* Basic API tests implemented
-* Basic user tests implemented
-* Basic admin tests implemented
+* Basic API route tests implemented
+* Basic user route tests implemented
+* Basic admin route tests implemented
 * Proper memory store for session handler
 * Graceful exit on SIGINT - we explicitly close mongoose connection and server
 * Editor now pops up alerts on error
@@ -104,8 +104,9 @@ Deploy:
 ### PHASE TWO
 
 Testing:
-* Better tests
-* Unit tests
+* Break up test.routes.js into sensible chunks
+* Improve test.user.js somewhat
+* Unit tests at all
 * mocha --exit issue (?)
 
 User settings:
