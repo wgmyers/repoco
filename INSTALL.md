@@ -105,7 +105,7 @@ SITE_ROOT=/home/ploni/src/www-dev/my-site
 
 case $GIT_PUSH_OPTION_0 in
 
-  prod)
+  live)
     cd $SITE_ROOT
     ./build/deploy-prod.sh
     ;;

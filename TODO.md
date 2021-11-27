@@ -18,13 +18,11 @@
 
 Showstopper bugs:
 * Only md files in the root dir of git repo can be edited
-* Publish live fails after publish test, claiming nothing to publish.
-
-Help page:
-* Have one
+* Help page needs either removed or populated
 
 ### DONE
 
+* Fix issue where publish to live failed after publish to test
 * Deploy script written and documented
 * Remove spurious 'Remember Me' from login page
 * Basic API route tests implemented
@@ -266,7 +264,7 @@ SITE_ROOT=/home/ploni/src/www-dev/my-site
 
 case $GIT_PUSH_OPTION_0 in
 
-  prod)
+  live)
     cd $SITE_ROOT
     ./build/deploy-prod.sh
     ;;
