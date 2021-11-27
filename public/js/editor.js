@@ -13,7 +13,8 @@ const editor_vars = {
 // FIXME: sort settings out
 const easyMDE = new EasyMDE({
   minHeight: "70vh",
-  sideBySideFullscreen: false
+  sideBySideFullscreen: false,
+  spellChecker: false
 });
 
 // Catch change events so we can toggle dirty flag and save/revert button status

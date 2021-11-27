@@ -21,6 +21,7 @@ Showstopper bugs:
 
 ### DONE
 
+* Disable easyMDE spellchecker
 * Path for subdir containing .md files now available in config
 * Publish now commits as logged in user
 * Fix issue where 'master' was hardwired - now set GIT_MAIN option in .env
@@ -107,6 +108,7 @@ Testing:
 
 User settings:
 * Add a user settings page where you can change eg password and email
+* Maybe optionally re-enable spellchecker?
 
 Authentication:
 * Implement 'Remember Me'
