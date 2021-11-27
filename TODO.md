@@ -22,6 +22,7 @@ Showstopper bugs:
 
 ### DONE
 
+* Publish now commits as logged in user
 * Fix issue where 'master' was hardwired - now set GIT_MAIN option in .env
 * Fix issue where publish to live failed after publish to test
 * Deploy script written and documented
