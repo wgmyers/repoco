@@ -163,17 +163,19 @@ DB credentials live in .secrets and not .env
 
 ## Issues
 
+* If there is another push to repo, publish fails, requiring a manual git pull
+from the repos dir. This is pants. But how to fix?
 * EasyMDE loads font-awesome from CDN, not locally :(
   See https://github.com/Ionaru/easy-markdown-editor/issues/29
 * User email not validated at all
 * After publishing to test, dashboard says 'up to date', but we have changes
 not yet made live. This might seem confusing to users. We should track changes
 published to test but not to live and report them on the dashboard. But how?
-* Git push should grab user details from user - see do_publish in git.js
 * Much testing / error checking on git integration needed
 * Dashboard button toggles should be disabled if there are no changes. Or should they?
 * Missing files not handled consistently depending on path presence
 * Hiding Jekyll headers makes sense, but a way to optionally edit parts of them might be nice
+* FIXED Git push should grab user details from user - see do_publish in git.js
 * FIXED Navigating away from editor page loses all unsaved changes
 * FIXED Need express-session solution for production deployment
 * FIXED Load error triggers dirty file flag. Really annoying.
