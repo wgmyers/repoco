@@ -47,7 +47,7 @@ router.get("/api/changes", async (req, res) => {
 
 router.get("/api/publish/:site/:target", async (req, res) => {
   if (auth.site_allowed(req.user, req.params.site)) {
-    const result = await git.do_publish(req.params.site, req.params.target);
+    const result = await git.do_publish(req.params.site, req.params.target, req.user.username, req.user.email);
     res.json(result);
   } else {
     res.json(auth.not_authorised());
