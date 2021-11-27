@@ -11,9 +11,13 @@ $ git clone git@github.com:wgmyers/repoco.git
 
 I built this on node version 12.22.7, npm 6.14.15.
 
-I'm running it on a server using node 15.5.1, npm 7.11.1.
+I /was/ running it on a server using node 15.5.1, npm 7.11.1.
 
-Everything seems ok?
+Now that's back to node 14.18.1, npm 6.14.8, for Reasons.
+
+Everything seems ok with these versions (and presumably later?).
+
+Yes, I should probably update some stuff.
 
 ## 3. Ensure you have MongoDB installed
 
@@ -59,7 +63,7 @@ Manually set up the users for the production and optionally test DBs.
 Copy .env.example to .env and fill in suitable values.
 
 If your main repos are still called 'master', set GIT_MAIN to that, otherwise
-use 'main'.
+use 'main', or whatever you use.
 
 In particular, you need to create the config/sites directory, if that is where
 you are putting things.
