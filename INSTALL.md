@@ -9,7 +9,11 @@ $ git clone git@github.com:wgmyers/repoco.git
 
 ## 2. Ensure you have node and npm installed
 
-FIXME: Versions?
+I built this on node version 12.22.7, npm 6.14.15.
+
+I'm running it on a server using node 15.5.1, npm 7.11.1.
+
+Everything seems ok?
 
 ## 3. Ensure you have MongoDB installed
 
@@ -58,6 +62,9 @@ In particular, you need to create the config/sites directory, if that is where
 you are putting things.
 
 Use config/example/example.com.yml as a template for your own sites.
+
+FIXME: Currently, we can only edit .md files in the root directory of the git repo.
+This is a bug and I am fixing it.
 
 Next, same thing with .secrets.example - obviously the DB user and test DB user
 should be the same as in last step.
@@ -118,7 +125,25 @@ following in the root of each _main_ repo.
 
 `git config receive.advertisePushOptions true`
 
+__NB__
+
+If your build scripts contain git commands, they may fail silently when being
+called from a git hook. This is because git hooks set a variable called GIT_DIR
+which git prefers over PWD; however, this is probably not being set to the value
+you want and stops everything working.
+
+If this is the case, you need to call
+
+`unset GIT_DIR`
+
+prior to any git commands in your build scripts.
+
+See:
+
+https://stackoverflow.com/questions/4043609/getting-fatal-not-a-git-repository-when-using-post-update-hook-to-execut#4100577
+
 ## 7. Set up some users and see if it all works
 
 Your default admin user will be auto-created using the details you have chosen.
-Now you can log in as that user and add some actual users.
+Now you can log in as that user and add some actual users, give them permissions
+to edit some sites, and see if it all works.
