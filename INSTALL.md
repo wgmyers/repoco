@@ -58,6 +58,9 @@ Manually set up the users for the production and optionally test DBs.
 
 Copy .env.example to .env and fill in suitable values.
 
+If your main repos are still called 'master', set GIT_MAIN to that, otherwise
+use 'main'.
+
 In particular, you need to create the config/sites directory, if that is where
 you are putting things.
 
