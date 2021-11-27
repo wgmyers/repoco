@@ -5,7 +5,7 @@
 const editor_vars = {
   loaded: false,
   dirty: false,
-  filename: undefined,
+  filepath: undefined,
   generator: undefined
 };
 
@@ -70,7 +70,7 @@ function disable_buttons() {
 // Save calls save file
 // Revert calls load file
 function handle_save_click() {
-  save_file(editor_vars.filename, editor_vars.generator);
+  save_file(editor_vars.filepath, editor_vars.generator);
 }
 
 function handle_revert_click() {
@@ -109,13 +109,13 @@ function process_jekyll_md(filename, fileconts) {
 }
 
 // save_file
-async function save_file(filename, generator) {
+async function save_file(filepath, generator) {
   let text;
 
   // First we prepare a simple JSON payload, restoring Jekyll headers if needed
   switch (generator) {
   case "jekyll":
-    text = jekyll_headers[filename] + "---\n\n" + easyMDE.value();
+    text = jekyll_headers[filepath.filename] + "---\n\n" + easyMDE.value();
     break;
   default:
     text = easyMDE.value();
@@ -124,7 +124,7 @@ async function save_file(filename, generator) {
 
   // Next we call the API with it
   // See https://stackoverflow.com/questions/29775797/fetch-post-json-data#29823632
-  const response = await fetch(`/api/files/${filename}`, {
+  const response = await fetch(`/api/files/${filepath.site}/${filepath.path}/${filepath.filename}`, {
     method: "POST",
     headers: {
       "Accept": "application/json",
@@ -137,11 +137,11 @@ async function save_file(filename, generator) {
   if (json.status == "ok") {
     editor_vars.dirty = false;
     disable_buttons();
-    mk_alert("alert-holder", "info", `Saved ${filename} ok`);
+    mk_alert("alert-holder", "info", `Saved ${filepath.filename} ok`);
   } else {
     // If not, display an error message
-    console.error(`Could not save ${filename}`);
-    mk_alert("alert-holder", "danger", `Could not save ${filename}`);
+    console.error(`Could not save ${filepath.filename}`);
+    mk_alert("alert-holder", "danger", `Could not save ${filepath.filename}`);
   }
 
 }
@@ -156,12 +156,12 @@ function looks_dodgy(file) {
 // load_file
 // Custom file loader
 // See https://javascript.info/fetch
-async function load_file(filename, generator) {
-  if (looks_dodgy(filename)) {
+async function load_file(filepath, generator) {
+  if (looks_dodgy(filepath.site) || looks_dodgy(filepath.path) || looks_dodgy(filepath.filename)) {
     mk_alert("alert-holder","danger", `Could not load ${filename}`);
     return;
   }
-  const response = await fetch(`/api/files/${filename}`);
+  const response = await fetch(`/api/files/${filepath.site}/${filepath.path}/${filepath.filename}`);
 
   if (response.ok) { // if HTTP-status is 200-299
     // get the response body (the method explained below)
@@ -169,14 +169,14 @@ async function load_file(filename, generator) {
     if (json.status == "ok") {
       switch(generator) {
       case "jekyll":
-        easyMDE.value(process_jekyll_md(filename, json.contents));
+        easyMDE.value(process_jekyll_md(filepath.filename, json.contents));
         break;
       default:
         easyMDE.value(json.contents);
       }
       editor_vars.loaded = true;
       editor_vars.dirty = false;
-      editor_vars.filename = filename;
+      editor_vars.filepath = filepath;
       editor_vars.generator = generator;
       disable_buttons();
 
@@ -200,13 +200,13 @@ function load_file_event(event) {
     modal_title.innerHTML = "Confirm Load New File";
     modal_text.innerHTML = "Are you sure? All unsaved changes to current file will be lost.";
     modal_ok.addEventListener("click", () => {
-      load_file(event.detail.file, event.detail.generator);
+      load_file(event.detail.filepath, event.detail.generator);
       modal.hide();
       modal.dispose();
     });
     modal.show(); // show it
   } else {
-    load_file(event.detail.file, event.detail.generator);
+    load_file(event.detail.filepath, event.detail.generator);
   }
 }
 

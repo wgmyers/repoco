@@ -6,6 +6,7 @@ files:
     - 'help.md'
     - 'index.md'
 generator: "banana"
+path: "subdir_of_repo_with_markdown_files"
 git:
   type: 'local'
   targets:

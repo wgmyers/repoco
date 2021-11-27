@@ -20,17 +20,17 @@ router.get("/api/filetrees", (req, res) => {
   }
 });
 
-router.get("/api/files/:site/:file", (req, res) => {
+router.get("/api/files/:site/:path/:file", (req, res) => {
   if (auth.file_allowed(req.user, req.params.site, req.params.file)) {
-    res.json(files.load_file(req.params.site, req.params.file));
+    res.json(files.load_file(req.params.site, req.params.path, req.params.file));
   } else {
     res.json(auth.not_authorised());
   }
 });
 
-router.post("/api/files/:site/:file", (req, res) => {
+router.post("/api/files/:site/:path/:file", (req, res) => {
   if (auth.file_allowed(req.user, req.params.site, req.params.file)) {
-    res.json(files.save_file(req.params.site, req.params.file, req.body));
+    res.json(files.save_file(req.params.site, req.params.path, req.params.file, req.body));
   } else {
     res.json(auth.not_authorised());
   }

@@ -4,12 +4,12 @@
 
 /* eslint-env jquery */
 
-function load_file_event(file, generator) {
+function load_file_event(filepath, generator) {
   const event = new CustomEvent(
     "load_file",
     {
       detail: {
-        file: file,
+        filepath: filepath,
         generator: generator
       },
       bubbles: true,
