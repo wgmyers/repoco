@@ -17,11 +17,11 @@
 ### DOING
 
 Showstopper bugs:
-* Only md files in the root dir of git repo can be edited
 * Help page needs either removed or populated
 
 ### DONE
 
+* Path for subdir containing .md files now available in config
 * Publish now commits as logged in user
 * Fix issue where 'master' was hardwired - now set GIT_MAIN option in .env
 * Fix issue where publish to live failed after publish to test
