@@ -1,6 +1,6 @@
 {
   "name": "repoco",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "A minimalist headless CMS with local git repo support",
   "repository": "github:wgmyers/repoco",
   "author": {
@@ -10,13 +10,14 @@
   },
   "main": "bin/www",
   "scripts": {
-    "dev": "nodemon bin/www",
+    "prod": "NODE_ENV=production node ./bin/www",
+    "dev": "nodemon ./bin/www",
     "scss": "sass --watch scss:public/css",
     "lint": "eslint *.js lib/*.js public/js/*.js",
     "test": "mocha --exit",
     "coverage": "nyc npm run test"
   },
-  "keywords": [],
+  "keywords": ["CMS", "headless", "jekyll", "git", "local", "self-host"],
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.3.4",
