@@ -16,17 +16,11 @@
 
 ### DOING
 
-Get-Deploy-Ready
-* PM2 config
-
 Auto-deploy:
 * Implement method of auto-deploying on git push in a repo
 
 Help page:
 * Have one
-
-Deploy:
-* All kinds of server setup
 
 ### DONE
 
@@ -262,15 +256,27 @@ Docs on --push-option: https://git-scm.com/docs/git-push
 
 So, IIUC, we can have a post-receive hook that looks like:
 
+
 ```
-switch(push-option) {
-  case: 'prod'
-    run-production-deploy-script
-  case: 'test'
-    run-test-deploy-script
-  default:
-    // do nothing
-}
+#!/bin/sh
+
+SITE_ROOT=/home/ploni/src/www-dev/my-site
+
+case $GIT_PUSH_OPTION_0 in
+
+  prod)
+    cd $SITE_ROOT
+    ./build/deploy-prod.sh
+    ;;
+  test)
+    cd $SITE_ROOT
+    ./build/deploy-test.sh
+    ;;
+  *)
+    echo "Bad push option in post-receive hook"
+    ;;
+
+esac
 ```
 
 and we _can_ have both 'Publish live' and 'Publish test' buttons, which will
