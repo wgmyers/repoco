@@ -154,3 +154,49 @@ https://stackoverflow.com/questions/4043609/getting-fatal-not-a-git-repository-w
 Your default admin user will be auto-created using the details you have chosen.
 Now you can log in as that user and add some actual users, give them permissions
 to edit some sites, and see if it all works.
+
+## 8. Adding a new site
+
+### 8.1 Set up config file
+
+Create a file called `yoursite.com.yml` in `config/sites`.
+
+Make sure you set `path` properly if need be, and only list .md files in the
+files/pages section that you want to be editable under Repoco.
+
+Make sure you set `generator` to 'jekyll' if it is a Jekyll site.
+
+FIXME: What happens if `generator` is not set? I don't know.
+
+Also, be sure to update the URIs for the test and prod versions of the site.
+
+### 8.2 Update build scripts in your site repo
+
+Do you need to add `unset GIT_DIR`? Probably.
+
+### 8.3 Clone the repo for this site
+
+Are you putting the repos into `repos` or somewhere else? None of my business,
+tbh, but wherever it is, you'll need a fresh clone of that site in there.
+
+NB: The name of the config file, sans suffix, needs to be the same as the name
+of the repo. So if the site is `yoursite.com` and it lives in a repo called
+`yoursite.com`, your config file should be called `yoursite.com.yml`.
+
+### 8.4 Set up users to work on this site
+
+Log into Repoco as admin. Create any new users you need to create. For now you
+have to set their passwords yourself, so make a note of those so you can tell
+them how to log in, and add them as editors of the newly created Repoco-managed
+site.
+
+### 8.5 Check it works
+
+Log in as the special regular user you use to do editing, which you gave permissions
+to edit the new site in the previous step. Check you can make changes and publish
+them ok. Can you? Good. No? Oh dear. Fix whatever is b0rked.
+
+### 8.6 Tell your new user/s they can go ahead
+
+You'll need to tell them the URI of your Repoco installation and their username
+and password. You now have a new user / new users! Hooray!
