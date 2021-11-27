@@ -102,7 +102,7 @@ describe("Test routes", () => {
 
     it("File load API call should fail with no user", done => {
       agent
-        .get("/api/files/example.com/index.md")
+        .get("/api/files/example.com/NOPATH/index.md")
         .expect("Content-Type", /json/)
         .expect(res => {
           if (res.body.status != "error") {
@@ -114,7 +114,7 @@ describe("Test routes", () => {
 
     it("File save API call should fail with no user", done => {
       agent
-        .post("/api/files/example.com/index.md")
+        .post("/api/files/example.com/NOPATH/index.md")
         .send({ "contents": "This should not work"})
         .expect("Content-Type", /json/)
         .expect(res => {
@@ -424,7 +424,7 @@ describe("Test routes", () => {
 
     it("File load API call should work as regular user", done => {
       agent
-        .get("/api/files/example.com/index.md")
+        .get("/api/files/example.com/NOPATH/index.md")
         .expect("Content-Type", /json/)
         .expect(res => {
           testfile = res.body.contents;
@@ -437,7 +437,7 @@ describe("Test routes", () => {
 
     it("File save API call should work as regular user", done => {
       agent
-        .post("/api/files/example.com/index.md")
+        .post("/api/files/example.com/NOPATH/index.md")
         .expect("Content-Type", /json/)
         .send( { "contents": testfile + "\ntesting testing 123" })
         .expect(res => {
