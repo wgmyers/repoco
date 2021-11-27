@@ -16,14 +16,16 @@
 
 ### DOING
 
-Auto-deploy:
-* Implement method of auto-deploying on git push in a repo
+Showstopper bugs:
+* Only md files in the root dir of git repo can be edited
+* Publish live fails after publish test, claiming nothing to publish.
 
 Help page:
 * Have one
 
 ### DONE
 
+* Deploy script written and documented
 * Remove spurious 'Remember Me' from login page
 * Basic API route tests implemented
 * Basic user route tests implemented
