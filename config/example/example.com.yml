@@ -5,8 +5,6 @@ files:
     - 'example.md'
     - 'help.md'
     - 'index.md'
-  notes:
-    - 'fixme.txt'
 generator: "banana"
 git:
   type: 'local'
