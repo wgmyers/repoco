@@ -170,9 +170,14 @@ FIXME: What happens if `generator` is not set? I don't know.
 
 Also, be sure to update the URIs for the test and prod versions of the site.
 
-### 8.2 Update build scripts in your site repo
+### 8.2 Update your site repo
 
-Do you need to add `unset GIT_DIR`? Probably.
+Do you need to add `unset GIT_DIR` in your build scripts? Probably.
+
+Also, be sure to run `git config receive.advertisePushOptions true` in
+your main repo. Otherwise your post-receive hook won't work.
+
+Oh, and you'll need to implement that post-receive hook. See above.
 
 ### 8.3 Clone the repo for this site
 
