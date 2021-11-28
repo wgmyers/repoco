@@ -4,8 +4,10 @@ This document very not yet done.
 
 ## 1. Clone the repoco repo
 
+```
 $ cd /somewhere/sensible
 $ git clone git@github.com:wgmyers/repoco.git
+```
 
 ## 2. Ensure you have node and npm installed
 
@@ -25,8 +27,10 @@ We've been using version 4.4.x, so hopefully that will be fine.
 
 On FreeBSD you must edit /usr/local/etc/mongodb.conf and add
 
+```
 security:
   authorization: enabled
+```
 
 *after* adding your admin user. (Otherwise, you can't.)
 
