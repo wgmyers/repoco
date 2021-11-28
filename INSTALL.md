@@ -74,7 +74,7 @@ Copy `.env.example` to `.env` and fill in suitable values.
 If your main repos are still called 'master', set GIT_MAIN to that, otherwise
 use 'main', or whatever you use.
 
-In particular, you need to create the config/sites directory, if that is where
+In particular, you need to create the `config/sites` directory, if that is where
 you are putting things.
 
 Use `config/example/example.com.yml` as a template for your own sites.
