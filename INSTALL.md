@@ -25,7 +25,7 @@ Yes, I should probably update some stuff.
 
 We've been using version 4.4.x, so hopefully that will be fine.
 
-On FreeBSD you must edit /usr/local/etc/mongodb.conf and add
+On FreeBSD you must edit `/usr/local/etc/mongodb.conf` and add
 
 ```
 security:
@@ -33,6 +33,8 @@ security:
 ```
 
 *after* adding your admin user. (Otherwise, you can't.)
+
+To add your admin user, invoke the mongo shell and do this:
 
 ```
 use admin
@@ -45,9 +47,12 @@ db.createUser(
 )
 ```
 
+Then enable authorisation.
+
 ## 4. Configure MongoDB
 
-Manually set up the users for the production and optionally test DBs.
+Manually set up the users for the production and optionally test DBs in the
+mongo shell like so:
 
 ```
 > use database
@@ -64,7 +69,7 @@ Manually set up the users for the production and optionally test DBs.
 
 ### 5.1 Settings
 
-Copy .env.example to .env and fill in suitable values.
+Copy `.env.example` to `.env` and fill in suitable values.
 
 If your main repos are still called 'master', set GIT_MAIN to that, otherwise
 use 'main', or whatever you use.
@@ -72,17 +77,17 @@ use 'main', or whatever you use.
 In particular, you need to create the config/sites directory, if that is where
 you are putting things.
 
-Use config/example/example.com.yml as a template for your own sites.
+Use `config/example/example.com.yml` as a template for your own sites.
 
 FIXME: Currently, we can only edit .md files in the root directory of the git repo.
 This is a bug and I am fixing it.
 
-Next, same thing with .secrets.example - obviously the DB user and test DB user
+Next, same thing with `.secrets.example` - obviously the DB user and test DB user
 should be the same as in last step.
 
 Finally, you need to decide where you are putting your git repos. These must
 be work-trees, not bare repos - one option is to have them in a subdirectory
-of the repoco clone called 'repos' - git will ignore these so you can safely
+of the repoco clone called `repos` - git will ignore these so you can safely
 put them there. Or whereever else you like. Or you may already have them somewhere.
 
 Either way, you need to tell repoco where they are.
