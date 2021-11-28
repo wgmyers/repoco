@@ -79,8 +79,11 @@ you are putting things.
 
 Use `config/example/example.com.yml` as a template for your own sites.
 
-FIXME: Currently, we can only edit .md files in the root directory of the git repo.
-This is a bug and I am fixing it.
+Currently, Repoco can only edit .md files in _either_ the root directory of
+the git repo, or in a subdirectory of root. If it is a subdirectory, you need
+to set `path` in your YAML file. If not, you can leave that out.
+
+__This is a bug and I am fixing it.__
 
 Next, same thing with `.secrets.example` - obviously the DB user and test DB user
 should be the same as in last step.
