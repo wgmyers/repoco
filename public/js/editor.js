@@ -83,7 +83,7 @@ function handle_revert_click() {
   modal_title.innerHTML = "Confirm Revert To Saved";
   modal_text.innerHTML = "Are you sure? All changes since last save will be lost.";
   modal_ok.addEventListener("click", () => {
-    load_file(editor_vars.filename, editor_vars.generator);
+    load_file(editor_vars.filepath, editor_vars.generator);
     modal.hide();
     modal.dispose();
   });
