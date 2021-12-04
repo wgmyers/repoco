@@ -26,6 +26,7 @@ Urgent:
 
 ### DONE
 
+* Fix issue where username is misleadingly capitalised in header
 * Disable easyMDE spellchecker
 * Path for subdir containing .md files now available in config
 * Publish now commits as logged in user

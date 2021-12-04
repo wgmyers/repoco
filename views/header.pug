@@ -19,5 +19,5 @@ header
                 a.nav-link(href="/admin") Admin
             li.nav-item(id="nav-logout")
               a.nav-link(href="/logout") Log Out
-          - var name = user.username[0].toUpperCase() + user.username.slice(1);
-          span.navbar-text.align-self-end Logged in as '#{name}'
+          - var name = user.username;
+          span.navbar-text.align-self-end Logged in as <i>#{name}</i>
