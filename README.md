@@ -1,6 +1,6 @@
 # Repoco
 
-A highly minimalist headless CMS with local git repo support.
+A fairly minimalist mildly opinionated headless CMS with local git repo support.
 
 ## Why?
 
@@ -13,9 +13,10 @@ Not only that, but absolutely none of them worked with a local git repo.
 
 ## What is your use-case
 
-I maintain a number of small websites built with Jekyll. I want to be able to
-give extremely limited edit access to my clients to some of the files, so they
-can make small text changes themselves and publish them. That's it.
+I maintain a number of small websites for non-technical people, all built with
+Jekyll. I want to be able to give these folk limited edit access to some of
+the Jekyll source files, so they can make small text changes themselves and
+publish them, both to the test and live versions of their site. That's it.
 
 I don't want to have to rebuild the whole site in order to integrate a CMS. I
 don't need users to be to able upload anything, redesign things, add pages, remove
