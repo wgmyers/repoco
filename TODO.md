@@ -217,7 +217,7 @@ See https://stackoverflow.com/questions/45400553/the-receiving-end-does-not-supp
 `assets/testrepos` contains our test local bare repos
 `repos/` contains our working copy of the repo
 
-We are using a cut-down version of the actual vmyers.com repo for now, so the
+We are using a cut-down version of the actual repo for now, so the
 config file will have to be amended for live.
 
 We should also add another repo (example or some such) and BE VERY CAREFUL when
@@ -347,8 +347,6 @@ From favicon.io, using Marck Script font, fg \#FFA, bg \#222
 ## Edit page notes
 
 For markdown editing: EasyMDE.
-
-See notes over in vmyers.com TODO.md.
 
 For filetree: Fancytree
 
