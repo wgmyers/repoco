@@ -3,7 +3,188 @@ extends layout
 block layout-content
   main.flex-shrink-0
     .container
-      h1 Help
-      p This is your help page.
-      p Help.
-  
+      a(name="top")
+      h1 How do I...
+      
+      ul
+        li
+          a(href="#editpage") Edit a page
+        li
+          a(href="#previewedit") Preview an edit
+        li
+          a(href="#fullscreen") Enlarge the edit window
+        li 
+          a(href="#undoedit") Undo an edit
+        li
+          a(href="#markdown") Get help with Markdown
+        li
+          a(href="#publishtest") Publish to the test site
+        li
+          a(href="#publishlive") Publish to the live site
+        li
+          a(href="#revert") Revert my saved changes
+      hr
+      
+      img.helpimage.border.border-2.border-secondary.rounded.ms-5.float-end(src="/images/help/repoco-editor.png" alt="The editor window")
+      
+      a(name="editpage")  
+      h3 Edit A Page
+      p Visit the edit page by clicking on 'Editor' in the top menu.
+      p Select the file you want to edit from the list on the left.
+      p Click the 'Save' button when you are done.
+      a(href="#top") Back...
+      hr
+      
+      a(name="previewedit")
+      h3 Preview An Edit
+      p To preview your edits, click on the 'eye' icon in the editor window.
+      p 
+        | You can also get a side-by-side view by clicking on the side-by-side
+        | icon to the right of the eye.
+      p Click on the icon again to go back to normal mode.
+      a(href="#top") Back...
+      hr
+        
+      a(name="fullscreen")
+      h3 Go Fullscreen
+      p
+        | Clicking the X-arrows icon, next to the side-by-sidee icon, will give
+        | you a full-screen view of your editor window.
+      p To go back to normal view, press the 'Esc' (escape) key on your keyboard.
+      a(href="#top") Back...
+      hr
+        
+      a(name="undoedit")
+      h3 Undo An Edit
+      p
+        | You can undo edits you have made in the editor window by clicking the
+        | 'Revert' button at the top right.
+      p
+        | However, this will only go back as far as your last save. If you have
+        | saved changes by clicking the 'Save' button, the 'Revert' button will
+        | not work.
+      p In this case, you will need to revert your changes from the dashboard.
+      a(href="#top") Back...
+      hr
+
+      a(name="markdown")
+      h3 Help With Markdown
+      p Here is a quick Markdown cheatsheet.
+
+      .container
+        .row
+          .col
+            blockquote.blockquote.bg-light.border.border-1.border-secondary.rounded.p-3
+              pre
+                code
+                  | # Largest Heading
+                  | ## Large Heading
+                  | ### Medium heading                
+                  | #### Small heading
+                  | ##### Smaller heading
+                  | ###### Smallest heading          
+                  | 
+                  | * Bullet point
+                  | * Another bullet point           
+                  | 
+                  | 1. Ordered list item             
+                  | 2. Next ordered list item
+          .col
+            blockquote.blockquote.bg-light.border.border-1.border-secondary.rounded.p-3
+              pre
+                code
+                  | *Italic text*
+                  | _Italic text_
+                  |  
+                  | **Bold text** 
+                  | __Bold text__
+                  | 
+                  | ***Bold Italic text*** 
+                  | ___Bold Italic text___
+                  |       
+                  | [Link text](http://www.example.com)
+                  | 
+                  | Horizontal rule: either '---' or '***'
+        
+      
+      p 
+        | There is a more detailed cheatsheet
+        |
+        a(href="https://www.markdownguide.org/cheat-sheet") here
+        | .
+      a(href="#top") Back...
+      hr
+      
+      
+      img.helpimage.border.border-2.border-secondary.rounded.ms-5.float-end(src="/images/help/repoco-dashboard.png" alt="The dashboard buttons")
+        
+      a(name="publishtest")
+      h3 Publish To Test
+      p
+        | To publish your changes to the test version of your site, first go to
+        | the dashboard page by clicking on 'Dashboard' in the top menu.
+      p
+        | Next, unlock the yellow 'Publish Test' button in the middle of the
+        | screen by clicking the 'Enable' toggle.
+      p 
+        | Finally, click the button. It may take a second or two for
+        | the publish to go through, and a message will appear at the top of the
+        | screen telling you whether the publish worked or not.
+      p
+        | You can dismiss messages at the top of the screen by clicking the 'X'
+        | on the right-hand side.
+      p 
+        | You can check for yourself whether the publish worked by clicking on
+        | the 'View test site' link and navigating to the page/s you changed.
+      a(href="#top") Back...
+      hr
+        
+      a(name="publishlive")
+      h3 Publish To Live
+      p
+        | To publish your changes to the live version of your site, first go to
+        | the dashboard page by clicking on 'Dashboard' in the top menu.
+      p
+        | Next, unlock the green 'Publish Live' button to the left of the
+        | screen by clicking the 'Enable' toggle.
+      p 
+        | Finally, click the button. It may take a second or two for
+        | the publish to go through, and a message will appear at the top of the
+        | screen telling you whether the publish worked or not.
+      p
+        | You can dismiss messages at the top of the screen by clicking the 'X'
+        | on the right-hand side.
+      p 
+        | You can check for yourself whether the publish worked by clicking on
+        | the 'View live site' link and navigating to the page/s you changed.
+      a(href="#top") Back...
+      hr    
+
+      a(name="revert")
+      h3 Revert Saved Changes
+      p
+        | To undo all saved changes since your last publish, first go to the
+        | dashboard page by clicking on 'Dashboard' in the top menu.
+      p
+        | Next, unlock the red 'Revert Changes' button on the right of the screen
+        | by clicking the 'Enable' toggle.
+      p
+        | Finally, click the button. It may take a second or two for the revert
+        | to go through, and a message will appear at the top of the screen
+        | telling you whether the revert worked or not.
+      p
+        | You can dismiss messages at the top of the screen by clicking the 'X'
+        | on the right-hand side.
+      p
+        | You can verify whether the revert worked by clicking back on the 'Editor'
+        | link in the top menu, and viewing the files you have reverted.
+      p
+        | WARNING: <i>All</i> changes to all files since your last publish will
+        | have gone.
+      p
+        | NB: Revert will no longer work if you have clicked either of the
+        | 'Publish Test' or 'Publish Live' buttons. In this case, you may be
+        | able to have the unwanted changes reverted, but you will need to
+        | contact your Repoco admin.
+      a(href="#top") Back...
+      hr 

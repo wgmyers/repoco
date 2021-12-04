@@ -21,11 +21,9 @@ Release:
 * Make Github repo public
 * Tag latest push with version number
 
-Urgent:
-* Help page needs either removed or populated
-
 ### DONE
 
+* Add first draft help page
 * Fix issue where username is misleadingly capitalised in header
 * Disable easyMDE spellchecker
 * Path for subdir containing .md files now available in config
