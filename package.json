@@ -17,7 +17,14 @@
     "test": "mocha --exit",
     "coverage": "nyc npm run test"
   },
-  "keywords": ["CMS", "headless", "jekyll", "git", "local", "self-host"],
+  "keywords": [
+    "CMS",
+    "headless",
+    "jekyll",
+    "git",
+    "local",
+    "self-host"
+  ],
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.3.4",
