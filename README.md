@@ -53,3 +53,20 @@ And here we are.
 ## I see what you did there
 
 Thanks.
+
+## Does it actually work yet?
+
+Mostly, so long as a) you only want to allow users to edit Markdown files, b) you
+are happy to live with the bug that these files can only be a maximum of one
+directory deep in a repo, and c) you are ok with the fact that I am still
+actively working on this before I call something a 'release'.
+
+Oh and d) the documentation is long and tedious and overly chatty. You probably
+guessed that already if you read down this far.
+
+See the TODO file for details.
+
+## I found a bug / have a suggestion
+
+You are my new favourite person. Please tell me about it / submit a pull request,
+as you see fit.
