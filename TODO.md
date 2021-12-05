@@ -23,6 +23,7 @@ Release:
 
 ### DONE
 
+* Help page anchor scroll position bug fixed
 * Add first draft help page
 * Fix issue where username is misleadingly capitalised in header
 * Disable easyMDE spellchecker
