@@ -25,7 +25,7 @@
     "local",
     "self-host"
   ],
-  "license": "ISC",
+  "license": "GPL",
   "devDependencies": {
     "chai": "^4.3.4",
     "eslint": "^8.3.0",
