@@ -159,7 +159,7 @@ function looks_dodgy(file) {
 // See https://javascript.info/fetch
 async function load_file(filepath, generator) {
   if (looks_dodgy(filepath.site) || looks_dodgy(filepath.path) || looks_dodgy(filepath.filename)) {
-    mk_alert("alert-holder","danger", `Could not load ${filename}`);
+    mk_alert("alert-holder","danger", `Could not load ${filepath.filename}`);
     return;
   }
   const response = await fetch(`/api/files/${filepath.site}/${filepath.path}/${filepath.filename}`);
@@ -217,12 +217,12 @@ function leave_page_event(event) {
     //following two lines will cause the browser to ask the user if they
     //want to leave. The text of this dialog is controlled by the browser.
     event.preventDefault(); //per the standard
-    event.returnValue = ''; //required for Chrome
+    event.returnValue = ""; //required for Chrome
   }
 }
 
 // Catch attempt to leave page so we can check for unsaved data
-window.addEventListener('beforeunload', leave_page_event);
+window.addEventListener("beforeunload", leave_page_event);
 
 // Catch event emitted by filetree
 document.addEventListener("load_file", load_file_event, false);
