@@ -9,20 +9,21 @@
 7. DONE Security audit and code cleanup - include proper session handling
 8. DONE Test suite with reasonable coverage
 9. DONE Deploy!
-10. Make Github repo public, register repoco.org, build documentation site etc
+10. DONE Add licence, make Github repo public,
 11. Add support for plaintext and csv editors, other phase 2 features as per below
 
 ## TASKS
 
 ### DOING
 
-Release:
-* Choose a licence and use it
-* Make Github repo public
-* Tag latest push with version number
+Phase 2 stuff
+* Fix filetree issues + refactor config file accordingly
+* Add support for arbitrary editors (eg MD, plaintext for anything else)
+* Add support for csv editor in particular
 
 ### DONE
 
+* Add licence, make repo public
 * Help page anchor scroll position bug fixed
 * Add first draft help page
 * Fix issue where username is misleadingly capitalised in header
@@ -202,6 +203,7 @@ No, they shouldn't because otherwise we can't publish to live after publish to t
 * Add create / delete file
 * Add support for Jekyll blog posts w/ draft and preview
 * Support non local repos eg Github etc
+* Build documentation site for Repoco (? - github is fine for now, no?)
 
 ## Git snowflake configuration
 
