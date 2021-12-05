@@ -11127,4 +11127,10 @@ main > .container {
   height: auto;
 }
 
+.helpsection:before {
+  height: 54px;
+  content: "";
+  display: block;
+}
+
 /*# sourceMappingURL=custom.css.map */

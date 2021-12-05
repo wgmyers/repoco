@@ -13,7 +13,17 @@ main > .container {
     padding: 60px 15px 0;
 }
 
+// Responsive images on help page
+// but they are never too big
 .helpimage {
   max-width: 50%;
   height: auto;
+}
+
+// Add space before each section so anchor links
+// don't hide the section title.
+.helpsection:before {
+    height: 54px;
+    content: "";
+    display:block;
 }
