@@ -23,6 +23,7 @@ Phase 2 stuff
 
 ### DONE
 
+* Using Coverity tool to scan for defects - see below
 * Add licence, make repo public
 * Help page anchor scroll position bug fixed
 * Add first draft help page
@@ -342,6 +343,15 @@ not. This stops a situation where a user finds a way to write to their own confi
 file and put a bunch of ../../../../ nonsense in there, giving permission to
 write arbitrary files on the system.
 
+### Static analysis
+
+Using Coverity:
+
+https://scan.coverity.com/projects/wgmyers-repoco
+
+Scanned:
+
+0.5.3 - 1 defect
 
 ## Favicon
 
