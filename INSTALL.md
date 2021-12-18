@@ -95,11 +95,14 @@ put them there. Or whereever else you like. Or you may already have them somewhe
 
 Either way, you need to tell repoco where they are.
 
-### 5.2 Install modules
+### 5.2 Install modules and build
 
 `npm install`
 
-There is (as yet) no build script. Everything is pre-built. You can run it now.
+`npm run build`
+
+All the build target does is run sass to create the custom.css and custom.css.map
+files in `public/css`. This stops github thinking the project is 80% css.
 
 ## Run
 
