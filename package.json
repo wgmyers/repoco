@@ -12,6 +12,7 @@
   "scripts": {
     "prod": "NODE_ENV=production node ./bin/www",
     "dev": "nodemon ./bin/www",
+    "build": "sass scss:public/css",
     "scss": "sass --watch scss:public/css",
     "lint": "eslint *.js lib/*.js public/js/*.js",
     "test": "mocha --exit",

@@ -1,5 +1,6 @@
 node_modules/
 **/empty.js
+public/css/custom.*
 repos/
 .env
 .secrets
