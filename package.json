@@ -46,7 +46,7 @@
     "express": "^4.17.2",
     "express-session": "^1.17.2",
     "jquery": "^3.6.0",
-    "jquery.fancytree": "^2.38.0",
+    "jquery.fancytree": "^2.38.1",
     "js-yaml": "^4.1.0",
     "memorystore": "^1.6.6",
     "mongoose": "^6.1.7",
