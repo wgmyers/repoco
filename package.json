@@ -41,7 +41,7 @@
     "body-parser": "^1.19.1",
     "bootstrap": "^5.1.3",
     "connect-flash": "^0.1.1",
-    "dotenv": "^14.2.0",
+    "dotenv": "^14.3.2",
     "easymde": "^2.16.1",
     "express": "^4.17.2",
     "express-session": "^1.17.2",
