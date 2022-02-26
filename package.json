@@ -1,6 +1,6 @@
 {
   "name": "repoco",
-  "version": "0.5.11",
+  "version": "0.5.12",
   "description": "A minimalist headless CMS with local git repo support",
   "repository": "github:wgmyers/repoco",
   "author": {
