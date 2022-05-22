@@ -135,6 +135,16 @@ Editor:
 
 # NOTES
 
+## Passport 0.6.x
+
+This introduces a breaking change in logout() - it now requires a callback function.
+
+See https://stackoverflow.com/questions/72336177/error-reqlogout-requires-a-callback-function
+
+and
+
+https://medium.com/passportjs/fixing-session-fixation-b2b68619c51d
+
 ## Authentication
 
 We need an admin user (who can add users and alter their permissions) and one
