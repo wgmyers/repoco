@@ -319,7 +319,9 @@ describe("Test routes", () => {
         });
 
       // Wait for user to be added before we modify them
-      await sleep(500);
+      console.log("Waiting for user add to complete");
+      await sleep(400);
+      console.log("Trying to update user");
       agent
         .post(`/updateuser/${test_user_creds.username}`)
         .redirects(2)
@@ -332,16 +334,21 @@ describe("Test routes", () => {
         .expect("Content-Type", /html/)
         .expect(res => {
           if (!res.text.match(/User.*?updated/)) {
+            console.log("Error in /updateuser/ call - res is:")
+            console.log(res.text);
+            console.log("Error end");
             throw new Error("Could not update user");
           }
         })
         .end((err, res) => {
           if (err) {
+            console.dir(err);
             throw new Error("Could not modify test user permissions");
           }
         })
 
       // Log out
+      await sleep(400);
       agent
         .get("/logout")
         .redirects(2)
@@ -353,7 +360,7 @@ describe("Test routes", () => {
         });
 
       // NB: wait again otherwise POST /login won't work in first user test
-      await sleep(500);
+      await sleep(400);
       console.log("Test user ready");
     });
 
