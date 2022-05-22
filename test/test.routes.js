@@ -270,7 +270,7 @@ describe("Test routes", () => {
         .expect("Content-Type", /html/)
         .expect(res => {
           if (!res.text.match(/Login/)) {
-            throw new Error("Unexpected res.text in /logout");
+            throw new Error(`Unexpected res.text in /logout - ${res.text}`);
           }
         })
         .expect(200, done);
