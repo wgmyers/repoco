@@ -49,7 +49,7 @@
     "jquery.fancytree": "^2.38.2",
     "js-yaml": "^4.1.0",
     "memorystore": "^1.6.7",
-    "mongoose": "^6.6.1",
+    "mongoose": "^6.6.5",
     "morgan": "^1.10.0",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
