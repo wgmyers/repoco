@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "body-parser": "^1.20.0",
-    "bootstrap": "^5.2.1",
+    "bootstrap": "^5.2.3",
     "connect-flash": "^0.1.1",
     "dotenv": "^16.0.3",
     "easymde": "^2.18.0",
