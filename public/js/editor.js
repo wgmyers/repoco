@@ -116,7 +116,12 @@ async function save_file(filepath, generator) {
   // First we prepare a simple JSON payload, restoring Jekyll headers if needed
   switch (generator) {
   case "jekyll":
-    text = jekyll_headers[filepath.filename] + "---\n\n" + easyMDE.value();
+    // Handle case where we do not in fact have jekyll headers eg for an include
+    if (filepath.filename in jekyll_headers) {
+      text = jekyll_headers[filepath.filename] + "---\n\n" + easyMDE.value();
+    } else {
+      text = easyMDE.value();
+    }
     break;
   default:
     text = easyMDE.value();
