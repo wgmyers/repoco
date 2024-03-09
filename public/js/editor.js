@@ -100,7 +100,10 @@ const jekyll_headers = {};
 function process_jekyll_md(filename, fileconts) {
   let [head, ...bodyparts] = fileconts.split("---\n\n");
   let body;
-  if (!bodyparts) {
+
+  // If no front matter was present, bodyparts will be a zero length array
+  // Body will now be in 'head'
+  if (bodyparts.length == 0) {
     body = head;
   } else {
     jekyll_headers[filename] = head;
